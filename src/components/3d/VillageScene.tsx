@@ -24,7 +24,12 @@ function SimplePerson({
 
   useFrame((state) => {
     if (!groupRef.current) return;
-    groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 1.6 + position[0]) * (active ? 0.025 : 0.01);
+    const pulse = Math.sin(state.clock.elapsedTime * 1.6 + position[0]);
+    const step = Math.sin(state.clock.elapsedTime * 0.85 + position[2]);
+    groupRef.current.position.x = position[0] + step * (active ? 0.06 : 0.018);
+    groupRef.current.position.y = position[1] + pulse * (active ? 0.035 : 0.012);
+    groupRef.current.rotation.y = step * (active ? 0.18 : 0.06);
+    groupRef.current.rotation.z = pulse * (active ? 0.025 : 0.008);
   });
 
   return (
@@ -143,6 +148,99 @@ function DockAndWater({ alert }: { alert: boolean }) {
   );
 }
 
+function ColonialHarborBackdrop({ alert, completed }: { alert: boolean; completed: boolean }) {
+  const lampRef = useRef<THREE.PointLight>(null);
+  const bannerColor = alert ? '#7f1d1d' : completed ? '#854d0e' : '#1e293b';
+
+  useFrame((state) => {
+    if (!lampRef.current) return;
+    lampRef.current.intensity = (alert ? 18 : 12) + Math.sin(state.clock.elapsedTime * 3.1) * 2;
+  });
+
+  return (
+    <group>
+      <group position={[-5.15, 0.68, -3.35]} rotation={[0, 0.18, 0]}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[2.65, 1.65, 1.05]} />
+          <meshStandardMaterial color={alert ? '#3f1d12' : '#4b5563'} roughness={0.88} />
+        </mesh>
+        <mesh position={[0, 0.95, 0]} rotation={[0, 0, 0.2]} castShadow>
+          <boxGeometry args={[2.9, 0.18, 1.2]} />
+          <meshStandardMaterial color="#1f2937" roughness={0.82} />
+        </mesh>
+        <mesh position={[0.0, 0.13, 0.55]}>
+          <boxGeometry args={[1.95, 0.52, 0.035]} />
+          <meshBasicMaterial color={bannerColor} transparent opacity={0.86} />
+        </mesh>
+        <Text position={[0, 0.14, 0.59]} fontSize={0.12} maxWidth={1.8} color="#f8fafc" anchorX="center" anchorY="middle">
+          Kho thuộc địa
+        </Text>
+      </group>
+
+      <group position={[4.85, 0.55, -3.6]} rotation={[0, -0.2, 0]}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[2.05, 1.35, 0.82]} />
+          <meshStandardMaterial color={alert ? '#451a03' : '#374151'} roughness={0.85} />
+        </mesh>
+        <mesh position={[0, 0.8, 0]}>
+          <boxGeometry args={[2.26, 0.14, 0.94]} />
+          <meshStandardMaterial color="#111827" roughness={0.78} />
+        </mesh>
+        {[-0.55, 0.55].map((x) => (
+          <mesh key={x} position={[x, 0.1, 0.43]}>
+            <boxGeometry args={[0.38, 0.42, 0.035]} />
+            <meshBasicMaterial color={alert ? '#fed7aa' : '#bae6fd'} transparent opacity={0.22} />
+          </mesh>
+        ))}
+      </group>
+
+      <group position={[-4.15, 0.56, 0.25]}>
+        <mesh castShadow>
+          <cylinderGeometry args={[0.055, 0.065, 1.35, 16]} />
+          <meshStandardMaterial color="#111827" roughness={0.58} metalness={0.25} />
+        </mesh>
+        <mesh position={[0, 0.76, 0]}>
+          <sphereGeometry args={[0.18, 24, 24]} />
+          <meshBasicMaterial color={alert ? '#fb923c' : '#fde68a'} transparent opacity={0.72} />
+        </mesh>
+        <pointLight ref={lampRef} position={[0, 0.8, 0]} color={alert ? '#fb923c' : '#fde68a'} distance={4.2} intensity={12} />
+      </group>
+
+      {[-4.6, -3.7, 3.55, 4.28].map((x, index) => (
+        <group key={x} position={[x, 0.2, 1.55 + (index % 2) * 0.32]} rotation={[0, index % 2 ? -0.18 : 0.14, 0]}>
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[0.58, 0.42, 0.58]} />
+            <meshStandardMaterial color={index < 2 ? '#92400e' : '#78350f'} roughness={0.88} />
+          </mesh>
+          <mesh position={[0, 0.24, 0]}>
+            <boxGeometry args={[0.48, 0.035, 0.48]} />
+            <meshStandardMaterial color="#451a03" roughness={0.8} />
+          </mesh>
+        </group>
+      ))}
+
+      <group position={[0, 2.72, -4.22]}>
+        {[
+          [-2.7, 'Cần Vương'],
+          [-0.9, 'Yên Thế'],
+          [0.9, 'Đông Du'],
+          [2.7, 'Duy Tân']
+        ].map(([x, label]) => (
+          <group key={label} position={[Number(x), 0, 0.1]}>
+            <mesh>
+              <boxGeometry args={[1.28, 0.34, 0.035]} />
+              <meshBasicMaterial color={completed ? '#facc15' : '#0f172a'} transparent opacity={completed ? 0.34 : 0.5} />
+            </mesh>
+            <Text position={[0, 0, 0.03]} fontSize={0.12} maxWidth={1.1} color="#f8fafc" anchorX="center" anchorY="middle">
+              {label}
+            </Text>
+          </group>
+        ))}
+      </group>
+    </group>
+  );
+}
+
 function JourneyMarkers({ completed }: { completed: boolean }) {
   const markers: Array<[number, string]> = [
     [-3.2, 'Thuộc địa'],
@@ -176,6 +274,31 @@ function JourneyMarkers({ completed }: { completed: boolean }) {
   );
 }
 
+function DepartureAction({ completed }: { completed: boolean }) {
+  const actionRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!actionRef.current) return;
+    actionRef.current.position.x = completed ? -1.15 + Math.sin(state.clock.elapsedTime * 1.2) * 0.22 : -2.2;
+    actionRef.current.position.y = 0.42 + Math.sin(state.clock.elapsedTime * 2.6) * 0.025;
+  });
+
+  if (!completed) return null;
+
+  return (
+    <group ref={actionRef} position={[-1.15, 0.42, 1.82]}>
+      <mesh rotation={[0, 0, -0.18]}>
+        <boxGeometry args={[0.72, 0.04, 0.06]} />
+        <meshBasicMaterial color="#facc15" transparent opacity={0.9} />
+      </mesh>
+      <mesh position={[0.38, 0.03, 0]}>
+        <coneGeometry args={[0.12, 0.28, 24]} />
+        <meshBasicMaterial color="#facc15" />
+      </mesh>
+    </group>
+  );
+}
+
 export function VillageScene() {
   const currentNode = useDialogueStore((state) => state.currentNode);
   const nodeId = currentNode?.id || '';
@@ -194,8 +317,10 @@ export function VillageScene() {
       <pointLight position={[-2, 2.8, 1.4]} intensity={alert ? 20 : 28} color={completed ? '#facc15' : '#38bdf8'} distance={8} />
 
       <DockAndWater alert={alert} />
+      <ColonialHarborBackdrop alert={alert} completed={completed} />
       <HarborShip alert={alert} />
       <JourneyMarkers completed={completed} />
+      <DepartureAction completed={completed} />
 
       <SimplePerson position={[-2.95, 0.12, 0.9]} coat="#0f172a" accent="#38bdf8" hat active={!completed} />
       <SimplePerson position={[0.1, 0.12, 1.05]} coat="#334155" accent="#facc15" active />

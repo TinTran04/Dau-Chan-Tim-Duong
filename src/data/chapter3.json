@@ -4,150 +4,182 @@
       "id": "ch3_start",
       "type": "line",
       "speaker": "Người dẫn chuyện",
-      "text": "Tìm thấy con đường không phải là kết thúc. Từ đây, nhận thức phải trở thành hành động, tư tưởng phải được truyền bá, và tổ chức phải được xây dựng.",
+      "text": "Tìm thấy phương hướng chưa phải là điểm kết thúc. Phòng tư liệu chuyển sang chế độ hành động: tư tưởng phải được truyền bá, lực lượng phải được tổ chức, và đường lối phải được xác lập.",
       "sceneCode": "C3.0",
+      "next": "ch3_lead_1"
+    },
+    {
+      "id": "ch3_lead_1",
+      "type": "line",
+      "speaker": "Ba ngăn chuẩn bị",
+      "text": "Sau bước ngoặt năm 1920, ba ngăn hồ sơ mở ra cùng lúc: tư tưởng, chính trị và tổ chức. Nếu thiếu một ngăn, con đường mới vẫn chưa thể thành lực lượng.",
+      "sceneCode": "C3.dan1",
       "next": "ch3_scene_1"
     },
     {
       "id": "ch3_scene_1",
       "type": "choice",
       "speaker": "Sau bước ngoặt 1920",
-      "prompt": "Sau khi xác định con đường cách mạng vô sản, nhiệm vụ nào cần được đặt vào trung tâm hồ sơ?",
+      "prompt": "Ba ngăn tư tưởng, chính trị và tổ chức mở ra sau năm 1920. Việc nào phải được đặt vào trung tâm để biến nhận thức thành lực lượng?",
       "sceneCode": "C3.1",
       "options": [
         {
           "key": "A",
-          "label": "Sau năm 1920, nhiệm vụ là chuẩn bị về tư tưởng, chính trị và tổ chức cho một chính đảng cách mạng.",
-          "quality": "best",
-          "feedback": "Chính xác. Tìm thấy con đường phải đi cùng quá trình chuẩn bị để biến nhận thức thành lực lượng cách mạng.",
-          "consequence": "ch3_scene_2",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
-        },
-        {
-          "key": "B",
           "label": "Sau khi tìm thấy con đường đúng, cần tiếp tục truyền bá và tổ chức lực lượng.",
           "quality": "partial",
           "feedback": "Đúng nhưng chưa đủ. Cần nêu rõ ba mặt chuẩn bị: tư tưởng, chính trị và tổ chức.",
-          "consequence": "ch3_scene_2",
+          "consequence": "ch3_lead_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
-          "key": "C",
+          "key": "B",
           "label": "Chỉ cần tìm thấy lý luận đúng là cách mạng tự động thắng lợi.",
           "quality": "wrong",
           "feedback": "Sai. Lý luận đúng cần được truyền bá, tổ chức và gắn với phong trào thực tiễn.",
-          "consequence": "ch3_scene_2",
+          "consequence": "ch3_lead_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "C",
+          "label": "Các hoạt động sau năm 1920 không còn hướng về Việt Nam.",
+          "quality": "wrong",
+          "feedback": "Sai. Các hoạt động sau năm 1920 đều hướng tới việc chuẩn bị cho cách mạng Việt Nam.",
+          "consequence": "ch3_lead_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Các hoạt động sau năm 1920 không còn hướng về Việt Nam.",
-          "quality": "wrong",
-          "feedback": "Sai. Các hoạt động sau năm 1920 đều hướng tới việc chuẩn bị cho cách mạng Việt Nam.",
-          "consequence": "ch3_scene_2",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Sau năm 1920, nhiệm vụ là chuẩn bị về tư tưởng, chính trị và tổ chức cho một chính đảng cách mạng.",
+          "quality": "best",
+          "feedback": "Chính xác. Tìm thấy con đường phải đi cùng quá trình chuẩn bị để biến nhận thức thành lực lượng cách mạng.",
+          "consequence": "ch3_lead_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         }
       ]
+    },
+    {
+      "id": "ch3_lead_2",
+      "type": "line",
+      "speaker": "Máy in chuyển động",
+      "text": "Bánh xe máy in bắt đầu quay. Báo chí và tác phẩm không còn nằm yên trên giấy, mà trở thành cách đưa sự thật về chủ nghĩa thực dân đến với phong trào.",
+      "sceneCode": "C3.dan2",
+      "next": "ch3_scene_2"
     },
     {
       "id": "ch3_scene_2",
       "type": "choice",
       "speaker": "Báo chí và tác phẩm",
-      "prompt": "Le Paria, Bản án chế độ thực dân Pháp và báo Thanh Niên được đặt lên bàn. Vai trò của chúng là gì?",
+      "prompt": "Le Paria, Bản án chế độ thực dân Pháp và báo Thanh Niên được đưa vào máy in tư liệu. Vai trò lịch sử của chúng là gì?",
       "sceneCode": "C3.2",
       "options": [
         {
           "key": "A",
-          "label": "Báo chí và tác phẩm giúp vạch trần chủ nghĩa thực dân, truyền bá tư tưởng cách mạng và thức tỉnh phong trào.",
-          "quality": "best",
-          "feedback": "Hồ sơ được khôi phục. Chữ viết, báo chí và tác phẩm trở thành công cụ đấu tranh tư tưởng - chính trị.",
-          "consequence": "ch3_scene_3",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
+          "label": "Những tác phẩm này chỉ ghi lại kỷ niệm cá nhân.",
+          "quality": "wrong",
+          "feedback": "Sai. Các tác phẩm và tờ báo này hướng tới việc thức tỉnh, tổ chức và dẫn dắt phong trào.",
+          "consequence": "ch3_lead_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "B",
           "label": "Le Paria, Bản án chế độ thực dân Pháp, báo Thanh Niên đều góp phần truyền bá nhận thức mới.",
           "quality": "partial",
           "feedback": "Đúng một phần. Cần bổ sung vai trò vạch trần chủ nghĩa thực dân và gắn với phong trào cách mạng.",
-          "consequence": "ch3_scene_3",
+          "consequence": "ch3_lead_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Đây chỉ là hoạt động văn học, không liên quan đến cách mạng.",
-          "quality": "wrong",
-          "feedback": "Sai. Tài liệu cho thấy đây là hoạt động truyền bá tư tưởng và chuẩn bị chính trị.",
-          "consequence": "ch3_scene_3",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Báo chí và tác phẩm giúp vạch trần chủ nghĩa thực dân, truyền bá tư tưởng cách mạng và thức tỉnh phong trào.",
+          "quality": "best",
+          "feedback": "Hồ sơ được khôi phục. Chữ viết, báo chí và tác phẩm trở thành công cụ đấu tranh tư tưởng - chính trị.",
+          "consequence": "ch3_lead_3",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "D",
-          "label": "Những tác phẩm này chỉ ghi lại kỷ niệm cá nhân.",
+          "label": "Đây chỉ là hoạt động văn học, không liên quan đến cách mạng.",
           "quality": "wrong",
-          "feedback": "Sai. Các tác phẩm và tờ báo này hướng tới việc thức tỉnh, tổ chức và dẫn dắt phong trào.",
-          "consequence": "ch3_scene_3",
+          "feedback": "Sai. Tài liệu cho thấy đây là hoạt động truyền bá tư tưởng và chuẩn bị chính trị.",
+          "consequence": "ch3_lead_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
+      "id": "ch3_lead_3",
+      "type": "line",
+      "speaker": "Mạng lưới tổ chức",
+      "text": "Những đường nối tổ chức hiện trên bảng. Một tư tưởng muốn đi xa cần người truyền đi, nơi huấn luyện và lực lượng tiếp nối.",
+      "sceneCode": "C3.dan3",
+      "next": "ch3_scene_3"
+    },
+    {
       "id": "ch3_scene_3",
       "type": "choice",
       "speaker": "Xây dựng tổ chức",
-      "prompt": "Một tư tưởng muốn đi xa cần người truyền đi. Bạn xác định vai trò của Hội Việt Nam Cách mạng Thanh niên như thế nào?",
+      "prompt": "Trên bảng tổ chức, Hội Việt Nam Cách mạng Thanh niên là một nút nối quan trọng. Bạn xác định vai trò của nút này ra sao?",
       "sceneCode": "C3.3",
       "options": [
         {
           "key": "A",
+          "label": "Hội hoàn toàn tách rời quá trình thành lập Đảng.",
+          "quality": "wrong",
+          "feedback": "Sai. Hội là một mắt xích quan trọng trong quá trình chuẩn bị về tổ chức.",
+          "consequence": "ch3_lead_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "B",
           "label": "Hội Việt Nam Cách mạng Thanh niên là tổ chức tiền thân, chuẩn bị chính trị và tổ chức cho sự ra đời của Đảng.",
           "quality": "best",
           "feedback": "Chính xác. Mạng lưới tổ chức bắt đầu nối các mảnh tư tưởng với lực lượng cách mạng.",
-          "consequence": "ch3_scene_4",
+          "consequence": "ch3_lead_4",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
-          "key": "B",
+          "key": "C",
           "label": "Hội góp phần truyền bá chủ nghĩa Mác - Lênin và đào tạo lực lượng cách mạng.",
           "quality": "partial",
           "feedback": "Đúng nhưng chưa đủ. Cần đặt Hội vào vai trò tiền thân và chuẩn bị cho sự ra đời của Đảng.",
-          "consequence": "ch3_scene_4",
+          "consequence": "ch3_lead_4",
           "ideologyDelta": 4,
           "forcesDelta": 60
-        },
-        {
-          "key": "C",
-          "label": "Hội hoàn toàn tách rời quá trình thành lập Đảng.",
-          "quality": "wrong",
-          "feedback": "Sai. Hội là một mắt xích quan trọng trong quá trình chuẩn bị về tổ chức.",
-          "consequence": "ch3_scene_4",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
         },
         {
           "key": "D",
           "label": "Hội chỉ là nhóm học tập nhỏ, không có tác động lịch sử.",
           "quality": "wrong",
           "feedback": "Sai. Tài liệu khẳng định vai trò truyền bá và đào tạo lực lượng của Hội.",
-          "consequence": "ch3_scene_4",
+          "consequence": "ch3_lead_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
+      "id": "ch3_lead_4",
+      "type": "line",
+      "speaker": "Cuốn Đường cách mệnh",
+      "text": "Cuốn Đường cách mệnh mở ra trên bàn học. Từng trang sách gom kinh nghiệm thế giới để trả lời câu hỏi: cách mạng Việt Nam cần được dẫn dắt như thế nào?",
+      "sceneCode": "C3.dan4",
+      "next": "ch3_scene_4"
+    },
+    {
       "id": "ch3_scene_4",
       "type": "choice",
       "speaker": "Đường cách mệnh",
-      "prompt": "Trên bàn học ở Quảng Châu, cuốn Đường cách mệnh được mở ra. Nội dung cốt lõi nào cần được ghi lại?",
+      "prompt": "Cuốn Đường cách mệnh mở ở trang then chốt. Nội dung nào cần được ghi lại để nối lý luận với đường lối cách mạng Việt Nam?",
       "sceneCode": "C3.4",
       "options": [
         {
@@ -155,54 +187,62 @@
           "label": "Tác phẩm khẳng định cách mạng Việt Nam cần Đảng Cộng sản lãnh đạo, lấy Mác - Lênin làm nền tảng, lực lượng là toàn dân với nòng cốt công - nông.",
           "quality": "best",
           "feedback": "Hồ sơ nối mạch đúng. Đường lối cách mạng cần có lý luận, tổ chức lãnh đạo và lực lượng cách mạng rõ ràng.",
-          "consequence": "ch3_scene_5",
+          "consequence": "ch3_lead_5",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Tác phẩm tổng kết kinh nghiệm cách mạng thế giới để vận dụng vào Việt Nam.",
-          "quality": "partial",
-          "feedback": "Đúng một phần. Cần bổ sung kết luận trung tâm về Đảng lãnh đạo, nền tảng Mác - Lênin và lực lượng công - nông.",
-          "consequence": "ch3_scene_5",
-          "ideologyDelta": 4,
-          "forcesDelta": 60
-        },
-        {
-          "key": "C",
-          "label": "Cách mạng chỉ cần lòng yêu nước tự phát, không cần tổ chức lãnh đạo.",
+          "label": "Cách mạng Việt Nam phải sao chép nguyên mẫu cách mạng tư sản phương Tây.",
           "quality": "wrong",
-          "feedback": "Sai. Tài liệu nhấn mạnh vai trò của Đảng Cộng sản và sự chuẩn bị tổ chức.",
-          "consequence": "ch3_scene_5",
+          "feedback": "Sai. Tác phẩm tổng kết kinh nghiệm thế giới để vận dụng sáng tạo vào Việt Nam, không sao chép máy móc.",
+          "consequence": "ch3_lead_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
+          "key": "C",
+          "label": "Tác phẩm tổng kết kinh nghiệm cách mạng thế giới để vận dụng vào Việt Nam.",
+          "quality": "partial",
+          "feedback": "Đúng một phần. Cần bổ sung kết luận trung tâm về Đảng lãnh đạo, nền tảng Mác - Lênin và lực lượng công - nông.",
+          "consequence": "ch3_lead_5",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
           "key": "D",
-          "label": "Cách mạng Việt Nam phải sao chép nguyên mẫu cách mạng tư sản phương Tây.",
+          "label": "Cách mạng chỉ cần lòng yêu nước tự phát, không cần tổ chức lãnh đạo.",
           "quality": "wrong",
-          "feedback": "Sai. Tác phẩm tổng kết kinh nghiệm thế giới để vận dụng sáng tạo vào Việt Nam, không sao chép máy móc.",
-          "consequence": "ch3_scene_5",
+          "feedback": "Sai. Tài liệu nhấn mạnh vai trò của Đảng Cộng sản và sự chuẩn bị tổ chức.",
+          "consequence": "ch3_lead_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
+      "id": "ch3_lead_5",
+      "type": "line",
+      "speaker": "Bàn hội nghị 1930",
+      "text": "Các mảnh tổ chức rời rạc được đưa về cùng một bàn hội nghị. Hồ sơ chỉ hoàn chỉnh khi đường lối đúng gặp được tổ chức lãnh đạo thống nhất.",
+      "sceneCode": "C3.dan5",
+      "next": "ch3_scene_5"
+    },
+    {
       "id": "ch3_scene_5",
       "type": "choice",
       "speaker": "Hội nghị 1930",
-      "prompt": "Những mảnh tổ chức rời rạc được đặt lên cùng một bàn. Ý nghĩa của việc thành lập Đảng và Cương lĩnh đầu tiên là gì?",
+      "prompt": "Bàn hội nghị năm 1930 đang chờ mảnh ghép cuối. Ý nghĩa nào làm rõ việc thành lập Đảng và Cương lĩnh chính trị đầu tiên?",
       "sceneCode": "C3.5",
       "options": [
         {
           "key": "A",
-          "label": "Thành lập Đảng Cộng sản Việt Nam và Cương lĩnh đầu tiên đã chấm dứt khủng hoảng về đường lối cứu nước và tổ chức lãnh đạo.",
-          "quality": "best",
-          "feedback": "Chính xác. Hồ sơ cuối cùng được hoàn thiện: con đường cứu nước được xác lập và tổ chức lãnh đạo ra đời.",
+          "label": "Đây là sự trở lại của các con đường cứu nước cũ.",
+          "quality": "wrong",
+          "feedback": "Sai. Đây là sự xác lập con đường mới: độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
           "consequence": "ch3_summary",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "B",
@@ -215,18 +255,18 @@
         },
         {
           "key": "C",
-          "label": "Đây chỉ là sự kiện tổ chức, không liên quan đến đường lối cứu nước.",
-          "quality": "wrong",
-          "feedback": "Sai. Sự kiện này gắn chặt với đường lối cách mạng và Cương lĩnh chính trị đầu tiên.",
+          "label": "Thành lập Đảng Cộng sản Việt Nam và Cương lĩnh đầu tiên đã chấm dứt khủng hoảng về đường lối cứu nước và tổ chức lãnh đạo.",
+          "quality": "best",
+          "feedback": "Chính xác. Hồ sơ cuối cùng được hoàn thiện: con đường cứu nước được xác lập và tổ chức lãnh đạo ra đời.",
           "consequence": "ch3_summary",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "D",
-          "label": "Đây là sự trở lại của các con đường cứu nước cũ.",
+          "label": "Đây chỉ là sự kiện tổ chức, không liên quan đến đường lối cứu nước.",
           "quality": "wrong",
-          "feedback": "Sai. Đây là sự xác lập con đường mới: độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
+          "feedback": "Sai. Sự kiện này gắn chặt với đường lối cách mạng và Cương lĩnh chính trị đầu tiên.",
           "consequence": "ch3_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -237,7 +277,7 @@
       "id": "ch3_summary",
       "type": "line",
       "speaker": "Tổng kết chương III",
-      "text": "Từ khủng hoảng đường lối, qua hành trình tìm kiếm và chuẩn bị lâu dài, hồ sơ đã được khôi phục: con đường cứu nước được xác lập, tổ chức lãnh đạo ra đời, và cách mạng Việt Nam bước sang thời kỳ mới.",
+      "text": "Từ khủng hoảng đường lối đến hành trình tìm kiếm và chuẩn bị lâu dài, hồ sơ cuối cùng được nối lại: con đường cứu nước được xác lập, tổ chức lãnh đạo ra đời, và cách mạng Việt Nam bước sang thời kỳ mới.",
       "sceneCode": "C3.summary",
       "next": "true_ending"
     }

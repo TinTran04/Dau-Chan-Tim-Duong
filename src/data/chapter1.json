@@ -4,150 +4,182 @@
       "id": "ch1_start",
       "type": "line",
       "speaker": "Người dẫn chuyện",
-      "text": "Những trang hồ sơ đầu tiên mở ra. Một đất nước mất chủ quyền, một xã hội bị đặt dưới ách cai trị, và một câu hỏi bắt đầu hiện lên.",
+      "text": "Ngọn đèn trên bàn nghiên cứu bật sáng. Trước mắt bạn là một đất nước mất chủ quyền, những phong trào yêu nước còn dang dở, và một câu hỏi đang chờ được giải mã.",
       "sceneCode": "C1.0",
+      "next": "ch1_lead_1"
+    },
+    {
+      "id": "ch1_lead_1",
+      "type": "line",
+      "speaker": "Hồ sơ mở đầu",
+      "text": "Tấm bản đồ Việt Nam cuối thế kỷ XIX hiện lên với những vùng bị tô sẫm. Mỗi vết mực gợi một áp lực của chế độ thuộc địa đang đè nặng lên xã hội.",
+      "sceneCode": "C1.dan1",
       "next": "ch1_scene_1"
     },
     {
       "id": "ch1_scene_1",
       "type": "choice",
       "speaker": "Hồ sơ thuộc địa",
-      "prompt": "Trên bản đồ cuối thế kỷ XIX - đầu thế kỷ XX, bạn cần xác định mâu thuẫn lớn nhất của xã hội Việt Nam lúc này.",
+      "prompt": "Trên bản đồ thuộc địa, một vùng cảnh báo nhấp nháy ở trung tâm xã hội Việt Nam. Bạn chọn mối mâu thuẫn nào để mở đúng hồ sơ?",
       "sceneCode": "C1.1",
       "options": [
         {
           "key": "A",
-          "label": "Mâu thuẫn lớn nhất là giữa dân tộc Việt Nam và thực dân Pháp.",
-          "quality": "best",
-          "feedback": "Chính xác. Hồ sơ cho thấy độc lập, chủ quyền bị xâm phạm; mâu thuẫn dân tộc với chủ nghĩa thực dân trở thành yêu cầu cấp thiết nhất.",
-          "consequence": "ch1_scene_2",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
+          "label": "Mâu thuẫn chủ yếu là giữa các phong trào yêu nước với nhau.",
+          "quality": "wrong",
+          "feedback": "Mối liên kết sai lệch. Các phong trào có khuynh hướng khác nhau, nhưng đó không phải mâu thuẫn lớn nhất của xã hội thuộc địa.",
+          "consequence": "ch1_lead_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "B",
           "label": "Mâu thuẫn trong xã hội thuộc địa có nhiều mặt, nhưng nổi bật nhất vẫn là vấn đề dân tộc.",
           "quality": "partial",
           "feedback": "Nhận định có cơ sở, nhưng cần nói rõ hơn: trong bối cảnh mất nước, mâu thuẫn trung tâm là giữa dân tộc Việt Nam và thực dân Pháp.",
-          "consequence": "ch1_scene_2",
+          "consequence": "ch1_lead_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Mâu thuẫn chủ yếu là giữa các phong trào yêu nước với nhau.",
-          "quality": "wrong",
-          "feedback": "Mối liên kết sai lệch. Các phong trào có khuynh hướng khác nhau, nhưng đó không phải mâu thuẫn lớn nhất của xã hội thuộc địa.",
-          "consequence": "ch1_scene_2",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Mâu thuẫn lớn nhất là giữa dân tộc Việt Nam và thực dân Pháp.",
+          "quality": "best",
+          "feedback": "Chính xác. Hồ sơ cho thấy độc lập, chủ quyền bị xâm phạm; mâu thuẫn dân tộc với chủ nghĩa thực dân trở thành yêu cầu cấp thiết nhất.",
+          "consequence": "ch1_lead_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "D",
           "label": "Mâu thuẫn chỉ nằm trong nội bộ triều đình phong kiến.",
           "quality": "wrong",
           "feedback": "Hồ sơ không ủng hộ kết luận này. Vấn đề lịch sử bao trùm là đất nước mất độc lập và nhân dân bị áp bức dưới chế độ thuộc địa.",
-          "consequence": "ch1_scene_2",
+          "consequence": "ch1_lead_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
+    },
+    {
+      "id": "ch1_lead_2",
+      "type": "line",
+      "speaker": "Ngăn tư liệu cũ",
+      "text": "Hai hồ sơ Cần Vương và Yên Thế trượt khỏi ngăn tủ cũ. Bên trong vẫn còn hơi nóng của lòng yêu nước, nhưng các dòng ghi chú cho thấy con đường ấy chưa mở được lối ra.",
+      "sceneCode": "C1.dan2",
+      "next": "ch1_scene_2"
     },
     {
       "id": "ch1_scene_2",
       "type": "choice",
       "speaker": "Những ngọn lửa cũ",
-      "prompt": "Cần Vương và Yên Thế hiện lên như những ngọn lửa bền bỉ. Bạn sẽ ghi chú đặc điểm của các phong trào này như thế nào?",
+      "prompt": "Các trang Cần Vương và Yên Thế hiện lên cạnh nhau. Dấu ấn nào giúp bạn hiểu đúng giá trị và giới hạn của những ngọn lửa yêu nước này?",
       "sceneCode": "C1.2",
       "options": [
         {
           "key": "A",
-          "label": "Cần Vương và Yên Thế thể hiện lòng yêu nước mạnh mẽ nhưng còn giới hạn bởi khuynh hướng phong kiến.",
-          "quality": "best",
-          "feedback": "Hồ sơ được phân loại đúng. Các phong trào này rất giá trị về tinh thần yêu nước, nhưng chưa đáp ứng yêu cầu mới của lịch sử.",
-          "consequence": "ch1_scene_3",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
-        },
-        {
-          "key": "B",
           "label": "Các phong trào này có tinh thần đấu tranh cao, nhưng chưa đủ để mở ra đường lối mới.",
           "quality": "partial",
           "feedback": "Đúng một phần. Cần bổ sung khuynh hướng lịch sử của chúng: chủ yếu vẫn gắn với giới hạn phong kiến.",
-          "consequence": "ch1_scene_3",
+          "consequence": "ch1_lead_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
-          "key": "C",
+          "key": "B",
           "label": "Các phong trào này không có ý nghĩa vì cuối cùng thất bại.",
           "quality": "wrong",
           "feedback": "Nhận định này phủ nhận sai vai trò lịch sử. Thất bại không xóa bỏ tinh thần yêu nước và ý chí đấu tranh của nhân dân.",
-          "consequence": "ch1_scene_3",
+          "consequence": "ch1_lead_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "C",
+          "label": "Các phong trào này đã xác định được con đường cách mạng hiện đại.",
+          "quality": "wrong",
+          "feedback": "Sai trọng tâm. Tài liệu cho thấy các phong trào cuối cùng vẫn chưa tìm được đường lối phù hợp với thời đại mới.",
+          "consequence": "ch1_lead_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Các phong trào này đã xác định được con đường cách mạng hiện đại.",
-          "quality": "wrong",
-          "feedback": "Sai trọng tâm. Tài liệu cho thấy các phong trào cuối cùng vẫn chưa tìm được đường lối phù hợp với thời đại mới.",
-          "consequence": "ch1_scene_3",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Cần Vương và Yên Thế thể hiện lòng yêu nước mạnh mẽ nhưng còn giới hạn bởi khuynh hướng phong kiến.",
+          "quality": "best",
+          "feedback": "Hồ sơ được phân loại đúng. Các phong trào này rất giá trị về tinh thần yêu nước, nhưng chưa đáp ứng yêu cầu mới của lịch sử.",
+          "consequence": "ch1_lead_3",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         }
       ]
+    },
+    {
+      "id": "ch1_lead_3",
+      "type": "line",
+      "speaker": "Luồng gió mới",
+      "text": "Một cơn gió đầu thế kỷ XX lật qua các trang Đông Du, Duy Tân, Đông Kinh Nghĩa Thục. Hy vọng xuất hiện, nhưng lời giải cuối cùng vẫn chưa nằm trong hồ sơ.",
+      "sceneCode": "C1.dan3",
+      "next": "ch1_scene_3"
     },
     {
       "id": "ch1_scene_3",
       "type": "choice",
       "speaker": "Những khuynh hướng mới",
-      "prompt": "Đông Du, Duy Tân và Đông Kinh Nghĩa Thục đưa những luồng tư tưởng mới vào xã hội. Bạn đánh giá chúng ra sao?",
+      "prompt": "Những mảnh tư liệu Đông Du, Duy Tân và Đông Kinh Nghĩa Thục được đặt lên bàn. Bạn sẽ gắn nhãn lịch sử cho các khuynh hướng mới ấy ra sao?",
       "sceneCode": "C1.3",
       "options": [
         {
           "key": "A",
-          "label": "Đông Du, Duy Tân, Đông Kinh Nghĩa Thục góp phần thức tỉnh dân tộc nhưng vẫn chưa đưa cách mạng đến thắng lợi.",
-          "quality": "best",
-          "feedback": "Chính xác. Hồ sơ ghi nhận cả đóng góp thức tỉnh dân tộc lẫn giới hạn của các khuynh hướng đầu thế kỷ XX.",
-          "consequence": "ch1_scene_4",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
-        },
-        {
-          "key": "B",
-          "label": "Các khuynh hướng mới giúp xã hội Việt Nam tiếp xúc với tư tưởng tiến bộ hơn.",
-          "quality": "partial",
-          "feedback": "Đúng nhưng chưa đủ. Cần thấy rằng chúng vẫn thất bại, từ đó làm rõ hơn cuộc khủng hoảng về đường lối cứu nước.",
-          "consequence": "ch1_scene_4",
-          "ideologyDelta": 4,
-          "forcesDelta": 60
-        },
-        {
-          "key": "C",
-          "label": "Chỉ cần dựa vào sự giúp đỡ của nước ngoài là có thể giành độc lập.",
+          "label": "Các phong trào đầu thế kỷ XX hoàn toàn không liên quan đến quá trình tìm đường cứu nước.",
           "quality": "wrong",
-          "feedback": "Kết luận này lệch với tài liệu. Nguyễn Tất Thành không chọn cách dựa dẫm vào bên ngoài, mà muốn tự mình quan sát và kiểm nghiệm thực tế.",
-          "consequence": "ch1_scene_4",
+          "feedback": "Sai. Chính những thành công giới hạn và thất bại của các phong trào này tạo nên bài học lịch sử quan trọng.",
+          "consequence": "ch1_lead_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
+          "key": "B",
+          "label": "Đông Du, Duy Tân, Đông Kinh Nghĩa Thục góp phần thức tỉnh dân tộc nhưng vẫn chưa đưa cách mạng đến thắng lợi.",
+          "quality": "best",
+          "feedback": "Chính xác. Hồ sơ ghi nhận cả đóng góp thức tỉnh dân tộc lẫn giới hạn của các khuynh hướng đầu thế kỷ XX.",
+          "consequence": "ch1_lead_4",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "C",
+          "label": "Các khuynh hướng mới giúp xã hội Việt Nam tiếp xúc với tư tưởng tiến bộ hơn.",
+          "quality": "partial",
+          "feedback": "Đúng nhưng chưa đủ. Cần thấy rằng chúng vẫn thất bại, từ đó làm rõ hơn cuộc khủng hoảng về đường lối cứu nước.",
+          "consequence": "ch1_lead_4",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
           "key": "D",
-          "label": "Các phong trào đầu thế kỷ XX hoàn toàn không liên quan đến quá trình tìm đường cứu nước.",
+          "label": "Chỉ cần dựa vào sự giúp đỡ của nước ngoài là có thể giành độc lập.",
           "quality": "wrong",
-          "feedback": "Sai. Chính những thành công giới hạn và thất bại của các phong trào này tạo nên bài học lịch sử quan trọng.",
-          "consequence": "ch1_scene_4",
+          "feedback": "Kết luận này lệch với tài liệu. Nguyễn Tất Thành không chọn cách dựa dẫm vào bên ngoài, mà muốn tự mình quan sát và kiểm nghiệm thực tế.",
+          "consequence": "ch1_lead_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
+      "id": "ch1_lead_4",
+      "type": "line",
+      "speaker": "Câu hỏi gốc",
+      "text": "Những sợi chỉ đỏ trên bảng tư liệu lần lượt dừng lại. Bạn phải nối phần còn thiếu: vì sao lịch sử không thể tiếp tục đi theo những con đường cũ?",
+      "sceneCode": "C1.dan4",
+      "next": "ch1_scene_4"
+    },
+    {
       "id": "ch1_scene_4",
       "type": "choice",
       "speaker": "Câu hỏi của lịch sử",
-      "prompt": "Các con đường cũ lần lượt khép lại. Từ sự thất bại của các phong trào yêu nước, bạn rút ra kết luận nào?",
+      "prompt": "Bảng tư liệu còn một ô trống mang tên \"khủng hoảng đường lối\". Kết luận nào giúp bạn khóa lại chương mở đầu?",
       "sceneCode": "C1.4",
       "options": [
         {
@@ -161,21 +193,21 @@
         },
         {
           "key": "B",
-          "label": "Các phong trào thất bại nhưng vẫn để lại bài học và tinh thần yêu nước.",
-          "quality": "partial",
-          "feedback": "Đúng một phần, nhưng chưa chạm vào kết luận trung tâm: cuộc khủng hoảng về đường lối cứu nước.",
-          "consequence": "ch1_summary",
-          "ideologyDelta": 4,
-          "forcesDelta": 60
-        },
-        {
-          "key": "C",
           "label": "Nhân dân Việt Nam không có tinh thần đấu tranh nên các phong trào thất bại.",
           "quality": "wrong",
           "feedback": "Sai. Tài liệu khẳng định tinh thần yêu nước và ý chí đấu tranh rất mạnh mẽ; vấn đề nằm ở đường lối và phương thức.",
           "consequence": "ch1_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
+        },
+        {
+          "key": "C",
+          "label": "Các phong trào thất bại nhưng vẫn để lại bài học và tinh thần yêu nước.",
+          "quality": "partial",
+          "feedback": "Đúng một phần, nhưng chưa chạm vào kết luận trung tâm: cuộc khủng hoảng về đường lối cứu nước.",
+          "consequence": "ch1_summary",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "D",
@@ -192,7 +224,7 @@
       "id": "ch1_summary",
       "type": "line",
       "speaker": "Tổng kết chương I",
-      "text": "Bạn đã khôi phục được vấn đề mở đầu: lòng yêu nước đã có, nhưng đường lối đúng vẫn chưa tìm thấy. Hành trình phải bắt đầu từ câu hỏi ấy.",
+      "text": "Chương hồ sơ đầu tiên khép lại với một kết luận rõ hơn: lòng yêu nước đã bền bỉ cháy, nhưng đường lối cứu nước đúng vẫn chưa xuất hiện. Hành trình tìm đường bắt đầu từ khoảng trống đó.",
       "sceneCode": "C1.summary",
       "next": "next_chapter"
     }

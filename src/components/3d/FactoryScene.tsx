@@ -7,6 +7,25 @@ import * as THREE from 'three';
 
 type Vec3 = [number, number, number];
 
+function OrganizingLink({ from, to, color }: { from: Vec3; to: Vec3; color: string }) {
+  const start = new THREE.Vector3(...from);
+  const end = new THREE.Vector3(...to);
+  const direction = new THREE.Vector3().subVectors(end, start);
+  const midpoint = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+  const length = direction.length();
+  const quaternion = new THREE.Quaternion().setFromUnitVectors(
+    new THREE.Vector3(0, 1, 0),
+    direction.clone().normalize()
+  );
+
+  return (
+    <mesh position={midpoint.toArray()} quaternion={quaternion}>
+      <cylinderGeometry args={[0.012, 0.012, length, 12]} />
+      <meshBasicMaterial color={color} transparent opacity={0.62} />
+    </mesh>
+  );
+}
+
 function ArchivePerson({
   position,
   coat,
@@ -24,7 +43,12 @@ function ArchivePerson({
 
   useFrame((state) => {
     if (!groupRef.current) return;
-    groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 1.45 + position[0]) * (active ? 0.025 : 0.01);
+    const pulse = Math.sin(state.clock.elapsedTime * 1.45 + position[0]);
+    const step = Math.sin(state.clock.elapsedTime * 0.9 + position[2]);
+    groupRef.current.position.x = position[0] + step * (active ? 0.07 : 0.018);
+    groupRef.current.position.y = position[1] + pulse * (active ? 0.034 : 0.012);
+    groupRef.current.rotation.y = step * (active ? 0.2 : 0.06);
+    groupRef.current.rotation.z = pulse * (active ? 0.02 : 0.006);
   });
 
   return (
@@ -156,6 +180,129 @@ function ProjectorBeam({ alert, completed }: { alert: boolean; completed: boolea
   );
 }
 
+function RevolutionPreparationBackdrop({ alert, completed }: { alert: boolean; completed: boolean }) {
+  const wheelRef = useRef<THREE.Mesh>(null);
+  const glowColor = alert ? '#fb923c' : completed ? '#facc15' : '#38bdf8';
+  const organizationNodes: Vec3[] = [
+    [-1.0, -0.1, 0.12],
+    [0, 0.32, 0.12],
+    [1.0, -0.1, 0.12],
+    [0, -0.48, 0.12]
+  ];
+
+  useFrame((state, delta) => {
+    if (!wheelRef.current) return;
+    wheelRef.current.rotation.z += delta * (completed ? 1.2 : 0.55);
+    wheelRef.current.position.y = 1.03 + Math.sin(state.clock.elapsedTime * 1.8) * 0.025;
+  });
+
+  return (
+    <group>
+      <group position={[-4.45, 1.05, -1.82]} rotation={[0, 0.22, 0]}>
+        {[0, 0.62, 1.24].map((y) => (
+          <mesh key={y} position={[0, y, 0]} castShadow receiveShadow>
+            <boxGeometry args={[1.05, 0.08, 1.05]} />
+            <meshStandardMaterial color="#451a03" roughness={0.82} />
+          </mesh>
+        ))}
+        {[
+          [-0.28, 0.33, '#e5e7eb'],
+          [0.22, 0.33, '#facc15'],
+          [-0.2, 0.95, '#fb7185'],
+          [0.28, 0.95, '#e5e7eb']
+        ].map(([x, y, color]) => (
+          <mesh key={`${x}-${y}`} position={[Number(x), Number(y), 0.08]} rotation={[0.1, 0, Number(x) * 0.08]} castShadow>
+            <boxGeometry args={[0.34, 0.035, 0.46]} />
+            <meshStandardMaterial color={String(color)} roughness={0.58} />
+          </mesh>
+        ))}
+      </group>
+
+      <group position={[3.85, 0.95, -1.58]} rotation={[0, -0.25, 0]}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[1.38, 0.55, 0.82]} />
+          <meshStandardMaterial color="#111827" roughness={0.7} metalness={0.18} />
+        </mesh>
+        <mesh ref={wheelRef} position={[-0.55, 0.08, 0.45]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+          <torusGeometry args={[0.24, 0.035, 16, 48]} />
+          <meshStandardMaterial color={glowColor} roughness={0.5} metalness={0.2} />
+        </mesh>
+        <mesh position={[0.22, 0.36, 0.48]}>
+          <boxGeometry args={[0.7, 0.04, 0.48]} />
+          <meshBasicMaterial color="#f8fafc" transparent opacity={0.84} />
+        </mesh>
+        <Text position={[0.22, 0.42, 0.53]} fontSize={0.1} maxWidth={0.62} color="#111827" anchorX="center" anchorY="middle">
+          Báo Thanh Niên
+        </Text>
+      </group>
+
+      <group position={[0, 2.58, -4.12]}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[3.15, 1.55, 0.08]} />
+          <meshStandardMaterial color={alert ? '#2a100d' : '#0f172a'} roughness={0.64} />
+        </mesh>
+        {organizationNodes.slice(0, -1).map((point, index) => (
+          <OrganizingLink key={`org-top-${index}`} from={point} to={organizationNodes[index + 1]} color={glowColor} />
+        ))}
+        <OrganizingLink from={organizationNodes[0]} to={organizationNodes[3]} color={glowColor} />
+        <OrganizingLink from={organizationNodes[1]} to={organizationNodes[3]} color={glowColor} />
+        <OrganizingLink from={organizationNodes[2]} to={organizationNodes[3]} color={glowColor} />
+        {[
+          [-1.0, -0.1, 'Tư tưởng'],
+          [0, 0.32, 'Chính trị'],
+          [1.0, -0.1, 'Tổ chức'],
+          [0, -0.48, 'Đảng 1930']
+        ].map(([x, y, label]) => (
+          <group key={String(label)} position={[Number(x), Number(y), 0.12]}>
+            <mesh>
+              <sphereGeometry args={[label === 'Đảng 1930' ? 0.13 : 0.1, 24, 24]} />
+              <meshBasicMaterial color={label === 'Đảng 1930' ? '#facc15' : glowColor} transparent opacity={0.9} />
+            </mesh>
+            <Text position={[0, -0.22, 0.03]} fontSize={0.1} maxWidth={0.8} color="#f8fafc" anchorX="center" anchorY="middle">
+              {label}
+            </Text>
+          </group>
+        ))}
+      </group>
+
+      <group position={[0.92, 0.78, 1.34]} rotation={[0, -0.16, 0]}>
+        <mesh castShadow>
+          <boxGeometry args={[0.72, 0.045, 0.92]} />
+          <meshBasicMaterial color="#fef3c7" transparent opacity={0.92} />
+        </mesh>
+        <Text position={[0, 0.04, 0.03]} rotation={[-Math.PI / 2, 0, 0]} fontSize={0.09} maxWidth={0.6} color="#7f1d1d" anchorX="center" anchorY="middle">
+          Cương lĩnh
+        </Text>
+      </group>
+    </group>
+  );
+}
+
+function ResolutionAction({ completed }: { completed: boolean }) {
+  const stampRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!stampRef.current) return;
+    stampRef.current.position.y = completed ? 0.9 + Math.abs(Math.sin(state.clock.elapsedTime * 2.4)) * 0.18 : 0.9;
+    stampRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 1.7) * 0.08;
+  });
+
+  if (!completed) return null;
+
+  return (
+    <group ref={stampRef} position={[0.25, 0.9, 0.8]} rotation={[0, 0, -0.18]}>
+      <mesh castShadow>
+        <cylinderGeometry args={[0.18, 0.22, 0.32, 24]} />
+        <meshStandardMaterial color="#7f1d1d" roughness={0.55} />
+      </mesh>
+      <mesh position={[0, -0.22, 0]} castShadow>
+        <cylinderGeometry args={[0.34, 0.34, 0.08, 32]} />
+        <meshBasicMaterial color="#facc15" transparent opacity={0.82} />
+      </mesh>
+    </group>
+  );
+}
+
 function ArchiveRoom({ alert, completed }: { alert: boolean; completed: boolean }) {
   return (
     <>
@@ -170,8 +317,10 @@ function ArchiveRoom({ alert, completed }: { alert: boolean; completed: boolean 
       </mesh>
 
       <DocumentaryTimeline alert={alert} completed={completed} />
+      <RevolutionPreparationBackdrop alert={alert} completed={completed} />
       <EditingTable alert={alert} />
       <ProjectorBeam alert={alert} completed={completed} />
+      <ResolutionAction completed={completed} />
 
       <ArchivePerson position={[-2.65, 0.0, 0.75]} coat="#1e293b" accent="#38bdf8" holdingPaper active={!alert} />
       <ArchivePerson position={[2.35, 0.0, 0.55]} coat="#4c1d95" accent="#facc15" holdingPaper active={completed} />

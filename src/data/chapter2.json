@@ -4,150 +4,182 @@
       "id": "ch2_start",
       "type": "line",
       "speaker": "Người dẫn chuyện",
-      "text": "Từ Bến Nhà Rồng, dấu chân đi qua đại dương. Thế giới không chỉ được nhìn thấy, mà được kiểm nghiệm bằng lao động, quan sát và những bài học thực tiễn.",
+      "text": "Từ Bến Nhà Rồng, đường sáng trên bản đồ vượt qua đại dương. Mỗi điểm đến không chỉ là một cái tên, mà là một lần lao động, quan sát và kiểm nghiệm thực tế.",
       "sceneCode": "C2.0",
+      "next": "ch2_lead_1"
+    },
+    {
+      "id": "ch2_lead_1",
+      "type": "line",
+      "speaker": "Tiếng còi tàu",
+      "text": "Sương sớm phủ lên bến cảng Sài Gòn. Khi tiếng còi tàu vang lên, bản đồ trước mặt bạn mở ra chặng đầu của một cuộc tìm kiếm lời giải cho dân tộc.",
+      "sceneCode": "C2.dan1",
       "next": "ch2_scene_1"
     },
     {
       "id": "ch2_scene_1",
       "type": "choice",
       "speaker": "Bến Nhà Rồng",
-      "prompt": "Ngày 5 tháng 6 năm 1911, con tàu rời bến. Bạn ghi nhận ý nghĩa của sự kiện này như thế nào?",
+      "prompt": "Con tàu rời Bến Nhà Rồng ngày 5 tháng 6 năm 1911. Trên bản đồ hành trình, bạn ghi ý nghĩa của mốc khởi đầu này như thế nào?",
       "sceneCode": "C2.1",
       "options": [
         {
           "key": "A",
-          "label": "Sự kiện 5/6/1911 mở đầu hành trình tìm đường cứu nước bằng tư duy độc lập và trải nghiệm thực tiễn.",
-          "quality": "best",
-          "feedback": "Chính xác. Đây là điểm khởi đầu của quá trình tìm tòi, quan sát và kiểm nghiệm con đường cứu nước mới.",
-          "consequence": "ch2_scene_2",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
+          "label": "Đây chỉ là chuyến đi kiếm sống cá nhân, không gắn với mục tiêu cứu nước.",
+          "quality": "wrong",
+          "feedback": "Sai. Tài liệu nhấn mạnh mục đích ra đi là tìm con đường giải phóng dân tộc.",
+          "consequence": "ch2_lead_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "B",
           "label": "Đây là một mốc quan trọng cho thấy quyết tâm ra nước ngoài để tìm lời giải cho dân tộc.",
           "quality": "partial",
           "feedback": "Đúng một phần. Cần nói rõ hơn tính chất độc lập và thực tiễn của hành trình tìm đường cứu nước.",
-          "consequence": "ch2_scene_2",
+          "consequence": "ch2_lead_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Đây chỉ là chuyến đi kiếm sống cá nhân, không gắn với mục tiêu cứu nước.",
-          "quality": "wrong",
-          "feedback": "Sai. Tài liệu nhấn mạnh mục đích ra đi là tìm con đường giải phóng dân tộc.",
-          "consequence": "ch2_scene_2",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Sự kiện 5/6/1911 mở đầu hành trình tìm đường cứu nước bằng tư duy độc lập và trải nghiệm thực tiễn.",
+          "quality": "best",
+          "feedback": "Chính xác. Đây là điểm khởi đầu của quá trình tìm tòi, quan sát và kiểm nghiệm con đường cứu nước mới.",
+          "consequence": "ch2_lead_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "D",
           "label": "Đây là thời điểm Nguyễn Tất Thành đã xác định hoàn toàn con đường cách mạng vô sản.",
           "quality": "wrong",
           "feedback": "Sai thời điểm. Năm 1911 mới là điểm khởi đầu; con đường cách mạng vô sản được xác định sau quá trình nhận thức đến năm 1920.",
-          "consequence": "ch2_scene_2",
+          "consequence": "ch2_lead_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
+    },
+    {
+      "id": "ch2_lead_2",
+      "type": "line",
+      "speaker": "Bản đồ thế giới",
+      "text": "Các điểm Pháp, Mỹ, Anh lần lượt sáng trên tường bản đồ. Mỗi ánh sáng kéo theo một câu hỏi: phải nhìn thế giới bằng trải nghiệm thực tế như thế nào?",
+      "sceneCode": "C2.dan2",
+      "next": "ch2_scene_2"
     },
     {
       "id": "ch2_scene_2",
       "type": "choice",
       "speaker": "Quan sát thế giới",
-      "prompt": "Pháp, Mỹ, Anh và nhiều vùng đất khác hiện lên. Nguyễn Tất Thành đã tiếp cận thế giới bằng cách nào?",
+      "prompt": "Các tuyến Pháp, Mỹ, Anh sáng lên cùng những ghi chú lao động và tự học. Cách tiếp cận thế giới nào khớp nhất với hành trình ấy?",
       "sceneCode": "C2.2",
       "options": [
         {
           "key": "A",
+          "label": "Người sang phương Tây để sao chép nguyên mẫu một nước mạnh.",
+          "quality": "wrong",
+          "feedback": "Kết luận này trái với tinh thần độc lập, sáng tạo. Người tìm hiểu để chọn con đường phù hợp với dân tộc.",
+          "consequence": "ch2_lead_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "B",
           "label": "Nguyễn Tất Thành lao động, tự học, quan sát xã hội và kiểm nghiệm thực tế để tìm đường cứu nước.",
           "quality": "best",
           "feedback": "Hồ sơ sáng lên. Hành trình này kết hợp lao động, tự học, nghiên cứu và tham gia thực tiễn.",
-          "consequence": "ch2_scene_3",
+          "consequence": "ch2_lead_3",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
-          "key": "B",
+          "key": "C",
           "label": "Người muốn tìm hiểu các nước phương Tây để biết họ làm ăn, tổ chức xã hội ra sao.",
           "quality": "partial",
           "feedback": "Nhận định đúng nhưng chưa đủ. Việc tìm hiểu đó gắn với lao động, quan sát nhân dân và kiểm nghiệm thực tiễn cách mạng.",
-          "consequence": "ch2_scene_3",
+          "consequence": "ch2_lead_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
-          "key": "C",
+          "key": "D",
           "label": "Người chỉ cần đọc sách lý luận, không cần trải nghiệm đời sống thực tế.",
           "quality": "wrong",
           "feedback": "Sai. Tài liệu nhấn mạnh trải nghiệm lao động và quan sát đời sống thực tế là phần quan trọng của hành trình.",
-          "consequence": "ch2_scene_3",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
-        },
-        {
-          "key": "D",
-          "label": "Người sang phương Tây để sao chép nguyên mẫu một nước mạnh.",
-          "quality": "wrong",
-          "feedback": "Kết luận này trái với tinh thần độc lập, sáng tạo. Người tìm hiểu để chọn con đường phù hợp với dân tộc.",
-          "consequence": "ch2_scene_3",
+          "consequence": "ch2_lead_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
+    },
+    {
+      "id": "ch2_lead_3",
+      "type": "line",
+      "speaker": "Quan hệ bạn - thù",
+      "text": "Sau những năm quan sát thuộc địa và chính quốc, các đường biên trên bản đồ bắt đầu đổi nghĩa. Điều cần nhận ra không chỉ là quốc gia, mà là quan hệ áp bức và bị áp bức.",
+      "sceneCode": "C2.dan3",
+      "next": "ch2_scene_3"
     },
     {
       "id": "ch2_scene_3",
       "type": "choice",
       "speaker": "Bạn và thù",
-      "prompt": "Từ thực tiễn các nước thuộc địa và chính quốc, bạn rút ra nhận thức nào về bạn và thù?",
+      "prompt": "Bản đồ không còn chỉ chia theo lãnh thổ. Từ thực tiễn thuộc địa và chính quốc, bạn nối lại nhận thức về bạn và thù như thế nào?",
       "sceneCode": "C2.3",
       "options": [
         {
           "key": "A",
-          "label": "Nhân dân lao động các nước là bạn; chủ nghĩa đế quốc, thực dân là kẻ thù chung.",
-          "quality": "best",
-          "feedback": "Chính xác. Bản đồ thế giới được đọc lại theo quan hệ áp bức và bị áp bức, không chỉ theo màu cờ hay biên giới.",
-          "consequence": "ch2_scene_4",
-          "ideologyDelta": 10,
-          "forcesDelta": 120
-        },
-        {
-          "key": "B",
           "label": "Qua thực tiễn, Người thấy nhiều dân tộc và người lao động cùng chịu áp bức.",
           "quality": "partial",
           "feedback": "Đúng một phần. Cần bổ sung kết luận rõ hơn: nhân dân lao động là bạn, thực dân và đế quốc là kẻ thù chung.",
-          "consequence": "ch2_scene_4",
+          "consequence": "ch2_lead_4",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
-          "key": "C",
+          "key": "B",
           "label": "Tất cả người dân ở các nước chính quốc đều là kẻ thù.",
           "quality": "wrong",
           "feedback": "Sai. Tài liệu phân biệt nhân dân lao động ở chính quốc với chủ nghĩa thực dân và đế quốc.",
-          "consequence": "ch2_scene_4",
+          "consequence": "ch2_lead_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "C",
+          "label": "Chỉ Việt Nam bị áp bức, các dân tộc thuộc địa khác không liên quan.",
+          "quality": "wrong",
+          "feedback": "Sai. Hành trình cho thấy nhiều dân tộc thuộc địa và nhân dân lao động trên thế giới cùng có cảnh ngộ bị áp bức.",
+          "consequence": "ch2_lead_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Chỉ Việt Nam bị áp bức, các dân tộc thuộc địa khác không liên quan.",
-          "quality": "wrong",
-          "feedback": "Sai. Hành trình cho thấy nhiều dân tộc thuộc địa và nhân dân lao động trên thế giới cùng có cảnh ngộ bị áp bức.",
-          "consequence": "ch2_scene_4",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
+          "label": "Nhân dân lao động các nước là bạn; chủ nghĩa đế quốc, thực dân là kẻ thù chung.",
+          "quality": "best",
+          "feedback": "Chính xác. Bản đồ thế giới được đọc lại theo quan hệ áp bức và bị áp bức, không chỉ theo màu cờ hay biên giới.",
+          "consequence": "ch2_lead_4",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         }
       ]
+    },
+    {
+      "id": "ch2_lead_4",
+      "type": "line",
+      "speaker": "Bàn hội nghị",
+      "text": "Một bản yêu sách được đặt giữa bàn hội nghị quốc tế. Tiếng nói chính nghĩa đã được gửi đi, nhưng sự im lặng của các cường quốc lại để lộ một bài học nghiêm khắc.",
+      "sceneCode": "C2.dan4",
+      "next": "ch2_scene_4"
     },
     {
       "id": "ch2_scene_4",
       "type": "choice",
       "speaker": "Bản yêu sách 1919",
-      "prompt": "Bản yêu sách của nhân dân An Nam được gửi tới Hội nghị Vécxây. Bài học nào cần được ghi vào hồ sơ?",
+      "prompt": "Bản yêu sách 1919 nằm giữa bàn hội nghị, còn các cường quốc vẫn im lặng. Bài học nào cần được đóng dấu vào hồ sơ?",
       "sceneCode": "C2.4",
       "options": [
         {
@@ -155,48 +187,65 @@
           "label": "Sự kiện này giúp rút ra bài học phải dựa vào lực lượng của chính mình để giải phóng dân tộc.",
           "quality": "best",
           "feedback": "Hồ sơ được đóng dấu đúng. Sự im lặng của các nước đế quốc làm rõ bài học tự lực trong sự nghiệp giải phóng dân tộc.",
-          "consequence": "ch2_scene_5",
+          "consequence": "ch2_lead_5",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Bản yêu sách là tiếng nói chính nghĩa của người Việt Nam yêu nước trên diễn đàn quốc tế.",
-          "quality": "partial",
-          "feedback": "Đúng nhưng chưa đủ. Cần gắn ý nghĩa đó với bài học: không thể trông chờ vào các nước đế quốc.",
-          "consequence": "ch2_scene_5",
-          "ideologyDelta": 4,
-          "forcesDelta": 60
-        },
-        {
-          "key": "C",
           "label": "Chỉ cần gửi kiến nghị thì các nước đế quốc sẽ trao độc lập.",
           "quality": "wrong",
           "feedback": "Sai. Chính việc yêu sách không được chấp nhận giúp Người thấy rõ bản chất của các nước đế quốc.",
-          "consequence": "ch2_scene_5",
+          "consequence": "ch2_lead_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
+        },
+        {
+          "key": "C",
+          "label": "Bản yêu sách là tiếng nói chính nghĩa của người Việt Nam yêu nước trên diễn đàn quốc tế.",
+          "quality": "partial",
+          "feedback": "Đúng nhưng chưa đủ. Cần gắn ý nghĩa đó với bài học: không thể trông chờ vào các nước đế quốc.",
+          "consequence": "ch2_lead_5",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "D",
           "label": "Bản yêu sách không có ý nghĩa gì vì không được chấp nhận.",
           "quality": "wrong",
           "feedback": "Sai. Dù không đạt kết quả trực tiếp, đây là tiếng nói chính nghĩa quan trọng và để lại bài học nhận thức sâu sắc.",
-          "consequence": "ch2_scene_5",
+          "consequence": "ch2_lead_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
+      "id": "ch2_lead_5",
+      "type": "line",
+      "speaker": "Trang tài liệu tháng 7/1920",
+      "text": "Tháng 7 năm 1920, một trang tài liệu được mở dưới ánh đèn. Những dòng trong Luận cương Lênin khiến con đường từng mờ tối bắt đầu hiện thành phương hướng.",
+      "sceneCode": "C2.dan5",
+      "next": "ch2_scene_5"
+    },
+    {
       "id": "ch2_scene_5",
       "type": "choice",
       "speaker": "Trang Luận cương",
-      "prompt": "Tháng 7 năm 1920, một trang tài liệu mở ra. Đâu là ý nghĩa của Luận cương Lênin và Đại hội Tua?",
+      "prompt": "Trang Luận cương Lênin và mốc Đại hội Tua cùng sáng lên. Bạn chọn ý nghĩa nào để hoàn tất bước ngoặt 1920?",
       "sceneCode": "C2.5",
       "options": [
         {
           "key": "A",
+          "label": "Đây chỉ là một tài liệu tham khảo bình thường, không ảnh hưởng lớn.",
+          "quality": "wrong",
+          "feedback": "Sai. Tài liệu khẳng định đây là bước ngoặt lý luận trong hành trình tìm đường cứu nước.",
+          "consequence": "ch2_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "B",
           "label": "Luận cương Lênin giúp Nguyễn Ái Quốc tìm thấy con đường giải phóng dân tộc theo cách mạng vô sản.",
           "quality": "best",
           "feedback": "Chính xác. Đây là bước ngoặt lý luận giúp xác định con đường giải phóng dân tộc gắn với cách mạng vô sản.",
@@ -205,22 +254,13 @@
           "forcesDelta": 120
         },
         {
-          "key": "B",
+          "key": "C",
           "label": "Đây là bước ngoặt lý luận quan trọng trong quá trình chuyển biến nhận thức.",
           "quality": "partial",
           "feedback": "Đúng nhưng chưa đầy đủ. Cần nói rõ nội dung bước ngoặt: tìm thấy con đường cách mạng vô sản cho dân tộc Việt Nam.",
           "consequence": "ch2_summary",
           "ideologyDelta": 4,
           "forcesDelta": 60
-        },
-        {
-          "key": "C",
-          "label": "Đây chỉ là một tài liệu tham khảo bình thường, không ảnh hưởng lớn.",
-          "quality": "wrong",
-          "feedback": "Sai. Tài liệu khẳng định đây là bước ngoặt lý luận trong hành trình tìm đường cứu nước.",
-          "consequence": "ch2_summary",
-          "ideologyDelta": -8,
-          "forcesDelta": 0
         },
         {
           "key": "D",
@@ -237,7 +277,7 @@
       "id": "ch2_summary",
       "type": "line",
       "speaker": "Tổng kết chương II",
-      "text": "Hành trình 1911-1920 đã biến câu hỏi cứu nước thành nhận thức mới: phải hiểu thế giới, nhận rõ bạn thù, tự lực giải phóng dân tộc và tìm thấy con đường cách mạng vô sản.",
+      "text": "Tuyến hải trình 1911-1920 đã biến câu hỏi cứu nước thành nhận thức mới: hiểu thế giới, nhận rõ bạn thù, tự lực giải phóng dân tộc và tìm thấy con đường cách mạng vô sản.",
       "sceneCode": "C2.summary",
       "next": "next_chapter"
     }

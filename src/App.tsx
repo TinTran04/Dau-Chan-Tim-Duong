@@ -9,6 +9,7 @@ import { MainMenu } from './ui/MainMenu';
 import { HUD } from './ui/HUD';
 import { DialogueSystem } from './ui/DialogueSystem';
 import { ResultScreen } from './ui/ResultScreen';
+import { GameGuide } from './ui/GameGuide';
 import { useGameStore } from './stores/useGameStore';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -118,6 +119,8 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {!endGameStatus && <GameGuide isStarted={isStarted} />}
     </>
   );
 }
