@@ -1,39 +1,133 @@
 # Dấu Chân Tìm Đường
 
-**Dấu Chân Tìm Đường** là game học tập lịch sử dạng visual novel tương tác, kết hợp diorama 3D thời gian thực với hệ thống lựa chọn hội thoại. Người chơi theo chân một nhân vật thanh niên hư cấu trên hành trình tìm hiểu con đường cứu nước, phân tích tư liệu và đưa ra lập luận dựa trên chứng cứ lịch sử.
+`Dấu Chân Tìm Đường` là game ôn tập lịch sử sau thuyết trình, kết hợp giao diện lựa chọn đáp án với bối cảnh 3D thời gian thực. Người chơi nhập vai một nhà nghiên cứu trẻ, đi qua từng chương để nối lại hồ sơ về hành trình tìm đường cứu nước.
 
-> Nội dung chi tiết từng chương hiện là khung bối cảnh ban đầu. Phần câu hỏi, tư liệu và đáp án lịch sử sẽ được thay bằng nội dung chính thức sau.
+Game tập trung vào việc giúp người chơi nhớ lại nội dung thuyết trình bằng tương tác: đọc lời dẫn, chọn đáp án, xem giải thích ngay, tích lũy điểm và hoàn thành hồ sơ.
 
-## Bối cảnh game
+## Nội dung game
 
-Game gồm 4 chương, mỗi chương có một không gian 3D riêng:
+Game hiện có 3 chương:
 
-- **Chương I - Hành trình tìm đường cứu nước**: bến cảng, con tàu, vali tư liệu và các mốc hành trình.
-- **Chương II - Tiếp thu Đông - Tây**: phòng bản đồ tri thức, các cụm nguồn tư tưởng và lõi chuyển hóa sáng tạo.
-- **Chương III - Từ chủ nghĩa yêu nước đến chủ nghĩa Mác-Lênin**: phòng tư liệu, máy chiếu, documentary timeline và bàn dựng hồ sơ.
-- **Chương IV - Nếu không có chuyến đi năm 1911?**: phòng mô phỏng phản thực tế với các nhánh lịch sử có kiểm chứng.
+### Chương I - Những Con Đường Chưa Mở
 
-Nhân vật chính là một người tìm đường/nhà nghiên cứu trẻ hư cấu. Các nhân vật phụ đóng vai trò người kể chuyện, nhà khảo cứu, người phản biện, biên tập viên tư liệu và hệ thống mô phỏng.
+Nội dung chính:
 
-## Tính năng chính
+- Việt Nam cuối thế kỷ XIX - đầu thế kỷ XX.
+- Đất nước mất độc lập, xã hội thuộc địa hình thành.
+- Các phong trào Cần Vương, Yên Thế, Đông Du, Duy Tân, Đông Kinh Nghĩa Thục.
+- Kết luận về khủng hoảng đường lối cứu nước.
 
-- Diorama 3D theo từng chương, dựng bằng Three.js qua `@react-three/fiber`.
-- Hệ thống hội thoại gồm lời dẫn, nhân vật, câu hỏi lựa chọn và nhánh hậu quả.
-- Chỉ số người chơi gồm **Nhận thức lịch sử**, **Tư liệu**, chương đã đạt, số lập luận đúng/sai và tư liệu đã mở khóa.
-- Kết quả cuối phiên theo chất lượng hồ sơ học tập: cần ôn tập, đạt yêu cầu hoặc hoàn chỉnh.
-- Lưu tiến trình/kỷ lục cục bộ bằng `localStorage` với key `dau_chan_tim_duong_player`.
-- Bảng điểm online đồng bộ qua Google Sheets Web App.
-- Menu có nhạc nền, hiệu ứng chuyển cảnh và giao diện hoạt họa bằng Framer Motion.
+Bối cảnh 3D:
+
+- Bến cảng, tàu, nhà kho, thùng hàng.
+- Bảng tư liệu các phong trào yêu nước.
+- Không khí mở đầu hành trình tìm đường.
+
+### Chương II - Qua Những Đại Dương
+
+Nội dung chính:
+
+- Sự kiện ra đi ngày 5/6/1911.
+- Hành trình qua Pháp, Mỹ, Anh và nhiều nơi khác.
+- Lao động, tự học, quan sát thực tế.
+- Nhận thức về bạn và thù.
+- Bản Yêu sách năm 1919.
+- Luận cương Lênin và Đại hội Tua năm 1920.
+
+Bối cảnh 3D:
+
+- Phòng bản đồ hải trình.
+- Tuyến sáng qua Bến Nhà Rồng, Pháp, Mỹ - Anh, Yêu sách 1919, Luận cương 1920.
+- Cụm tri thức mô phỏng quá trình chuyển biến nhận thức.
+
+### Chương III - Con Đường Được Xác Lập
+
+Nội dung chính:
+
+- Chuẩn bị tư tưởng, chính trị và tổ chức sau năm 1920.
+- Báo chí và tác phẩm như `Le Paria`, `Bản án chế độ thực dân Pháp`, báo `Thanh Niên`.
+- Hội Việt Nam Cách mạng Thanh niên.
+- Tác phẩm `Đường cách mệnh`.
+- Thành lập Đảng Cộng sản Việt Nam năm 1930 và Cương lĩnh chính trị đầu tiên.
+
+Bối cảnh 3D:
+
+- Phòng tư liệu, máy in, kệ hồ sơ.
+- Bảng liên kết tư tưởng - chính trị - tổ chức - Đảng 1930.
+- Tài liệu Cương lĩnh và hành động hoàn tất hồ sơ.
 
 ## Gameplay
 
-Người chơi đọc các đoạn hội thoại và chọn phương án phản hồi trong từng nút lựa chọn. Mỗi đáp án có thể thay đổi:
+Mỗi chương gồm các node lời dẫn và câu hỏi lựa chọn.
 
-- `ideology`: chỉ số nhận thức lịch sử, giới hạn từ 0 đến 100.
-- `forces`: lượng tư liệu/lập luận tích lũy.
-- `consequence`: nhánh truyện kế tiếp hoặc kết cục.
+Mỗi câu hỏi có 4 đáp án:
 
-Nếu nhận thức lịch sử giảm về 0 hoặc người chơi chọn sai ở các trạm kiểm chứng quan trọng, hồ sơ sẽ chuyển sang trạng thái cần ôn tập. Nếu vượt qua đủ 4 chương, điểm cuối cùng được tính từ nhận thức lịch sử và tư liệu tích lũy, sau đó lưu vào lịch sử người chơi và có thể gửi lên bảng điểm.
+- 1 đáp án tốt nhất.
+- 1 đáp án gần đúng nhưng chưa đủ.
+- 2 đáp án sai.
+
+Sau khi chọn, game hiển thị giải thích ngay rồi chuyển sang tình huống tiếp theo. Đáp án tốt nhất cho nhiều điểm nhất; đáp án gần đúng vẫn cho đi tiếp nhưng ít điểm hơn; đáp án sai làm giảm độ chính xác hồ sơ.
+
+Game có nút `Hướng dẫn` để người chơi mở lại luật chơi bất cứ lúc nào.
+
+## Cơ chế điểm
+
+Game dùng 2 chỉ số chính:
+
+- `ideology`: độ chính xác hồ sơ, bắt đầu từ `50`.
+- `forces`: tư liệu khôi phục, bắt đầu từ `1000`.
+
+Mỗi lựa chọn trong file JSON có:
+
+- `quality`: `best`, `partial`, hoặc `wrong`.
+- `ideologyDelta`: mức thay đổi độ chính xác.
+- `forcesDelta`: mức thay đổi tư liệu.
+- `feedback`: giải thích sau khi chọn.
+- `consequence`: node tiếp theo.
+
+Điểm cuối game:
+
+```ts
+Math.max(0, ideology * 100) + forces
+```
+
+Nếu `ideology <= 0`, người chơi thua và cần ôn tập lại hồ sơ.
+
+## Bảng xếp hạng
+
+Game dùng Google Sheets thông qua Google Apps Script để lưu bảng điểm.
+
+File tích hợp:
+
+```text
+src/services/leaderboard.ts
+```
+
+Google Sheet cần có 3 cột:
+
+```text
+name | score | date
+```
+
+Apps Script cần hỗ trợ:
+
+```text
+?action=get
+?action=add&name=...&score=...
+```
+
+## Nhạc nền
+
+Nhạc được đặt trong thư mục `public`:
+
+```text
+menu_music.mp3
+chapter1_archive.mp3
+chapter2_voyage.mp3
+chapter3_resolution.mp3
+```
+
+Menu và từng chương có nhạc riêng. Nhạc được fade dần khi chuyển chương. Nếu trình duyệt chặn autoplay, nhạc sẽ phát sau khi người chơi click hoặc bấm phím.
 
 ## Công nghệ
 
@@ -46,82 +140,125 @@ Nếu nhận thức lịch sử giảm về 0 hoặc người chơi chọn sai �
 - `@react-three/postprocessing`
 - Zustand
 - Framer Motion
-- Tailwind CSS 4
-- Google Sheets Web App API cho leaderboard
+- Tailwind CSS
+- Lucide React
+- Google Sheets Web App API
+- GitHub Pages
 
 ## Cấu trúc dự án
 
 ```text
 src/
-  components/3d/      Scene và model 3D theo từng chương
-  data/               Dữ liệu hội thoại JSON cho 4 chương
-  services/           Tích hợp leaderboard
-  stores/             Zustand stores cho game state và dialogue state
-  ui/                 Main menu, HUD, dialogue box, result screen
-  App.tsx             Điều phối scene 3D, UI layer và trạng thái kết thúc
-  main.tsx            Entry point React
+  App.tsx
+  components/3d/
+    VillageScene.tsx
+    ValleyScene.tsx
+    FactoryScene.tsx
+    VanguardModel.tsx
+  data/
+    chapter1.json
+    chapter2.json
+    chapter3.json
+  services/
+    leaderboard.ts
+  stores/
+    useGameStore.ts
+    useDialogueStore.ts
+  ui/
+    MainMenu.tsx
+    HUD.tsx
+    DialogueSystem.tsx
+    ResultScreen.tsx
+    GameGuide.tsx
 public/
-  menu_music.mp3      Nhạc nền menu
-  favicon.svg
+  menu_music.mp3
+  chapter1_archive.mp3
+  chapter2_voyage.mp3
+  chapter3_resolution.mp3
+docs/
+  superpowers/
+    noidunglamgame.docx
+    du-an-game-dau-chan-tim-duong.md
 ```
 
 ## Cài đặt
 
-Yêu cầu Node.js phiên bản hiện đại.
-
-```bash
+```powershell
 npm install
 ```
 
 ## Chạy local
 
-```bash
+```powershell
 npm run dev
 ```
 
-Vite được cấu hình chạy ở cổng `5175`.
+Vite đang chạy ở port `5175`.
+
+Đường dẫn local thường dùng:
 
 ```text
 http://localhost:5175/Dau-Chan-Tim-Duong/
 ```
 
+Nếu port `5175` bị chiếm, cần tắt process Node đang giữ port hoặc đổi port chạy Vite.
+
 ## Build production
 
-```bash
+```powershell
 npm run build
 ```
 
-Kiểm tra bản build:
+Xem thử bản build:
 
-```bash
+```powershell
 npm run preview
-```
-
-## Kiểm tra lint
-
-```bash
-npm run lint
 ```
 
 ## Deploy GitHub Pages
 
-Dự án đã cấu hình:
+Dự án đang cấu hình:
 
-- `homepage`: `https://TinTran04.github.io/Dau-Chan-Tim-Duong`
-- Vite `base`: `/Dau-Chan-Tim-Duong/`
-- script deploy dùng `gh-pages`
+```json
+"homepage": "https://TinTran04.github.io/Dau-Chan-Tim-Duong"
+```
 
-Chạy:
+Deploy:
 
-```bash
+```powershell
 npm run deploy
 ```
 
-## Ghi chú phát triển
+Script `deploy` sẽ build và đưa thư mục `dist` lên nhánh GitHub Pages bằng `gh-pages`.
 
-- Nội dung chương nằm trong các file `src/data/chapter*.json`. Mỗi node có `id`, `type`, nội dung hiển thị, lựa chọn và `consequence` để điều hướng nhánh truyện.
-- Scene 3D được chọn theo `chapter` trong `src/App.tsx`.
-- Nhân vật chính dùng chung nằm trong `src/components/3d/VanguardModel.tsx`.
-- Logic tính điểm, lưu local và thống kê phiên chơi nằm trong `src/stores/useGameStore.ts`.
-- Logic nạp chương, đi tiếp node, xử lý lựa chọn và kết thúc game nằm trong `src/stores/useDialogueStore.ts`.
-- Leaderboard hiện gọi trực tiếp Google Sheets Web App trong `src/services/leaderboard.ts`.
+## Chỉnh sửa nội dung
+
+Nội dung câu hỏi, lời dẫn, đáp án và feedback nằm trong:
+
+```text
+src/data/chapter1.json
+src/data/chapter2.json
+src/data/chapter3.json
+```
+
+Khi sửa câu hỏi cần giữ:
+
+- Mỗi câu có đúng 4 lựa chọn.
+- Mỗi câu có 1 `best`, 1 `partial`, 2 `wrong`.
+- Khi xáo trộn A/B/C/D, phải giữ `quality`, `feedback`, `ideologyDelta`, `forcesDelta` đi cùng đáp án tương ứng.
+
+## Ghi chú tài liệu
+
+Tài liệu mô tả đầy đủ hơn nằm ở:
+
+```text
+docs/superpowers/du-an-game-dau-chan-tim-duong.md
+```
+
+Nội dung gốc do nhóm cung cấp nằm ở:
+
+```text
+docs/superpowers/noidunglamgame.docx
+```
+
+Lưu ý: thư mục `docs` đang nằm trong `.gitignore`, nên các tài liệu trong `docs` sẽ không được push nếu không cấu hình lại Git.
