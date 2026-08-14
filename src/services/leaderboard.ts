@@ -1,4 +1,4 @@
-export const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbznumpMtKRW8ZrZEitLPvrvS3jHcvDAU8eAqfpik4KPNZtRgfLmIOThh9N4NpBCfruz/exec';
+export const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbz3l58coPHUIIp734kFOqBPkWSZs4fDXWp2BGeOiowmhW_W_S-t3JDTT2XycKYNNCo2CQ/exec';
 
 export interface LeaderboardEntry {
   name: string;
