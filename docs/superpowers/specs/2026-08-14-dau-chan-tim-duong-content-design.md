@@ -36,6 +36,21 @@ Giong van can:
 
 Nguon kien thuc bam theo `noidunglamgame.docx`.
 
+## Am Nhac
+
+Game co nhac nen rieng cho menu va tung chuong. Nhac nen can ho tro cam giac lich su va hanh trinh, nhung khong lan at loi dan hoac thao tac cua nguoi choi.
+
+- Menu: `menu_music.mp3`
+  - Vai tro: mo man, tao cam giac chuan bi buoc vao ho so lich su.
+- Chuong 1: `chapter1_archive.mp3`
+  - Vai tro: ho so, boi canh, cang nhe, suy tu.
+- Chuong 2: `chapter2_voyage.mp3`
+  - Vai tro: hanh trinh, dai duong, chuyen dong va trai nghiem thuc tien.
+- Chuong 3: `chapter3_resolution.mp3`
+  - Vai tro: trang trong, quyet tam, ket noi to chuc va hoan thien con duong.
+
+Khi chuyen tu menu vao game hoac giua cac chuong, nhac nen nen fade-out/fade-in thay vi doi dot ngot. Tuy chon bat/tat nhac neu duoc them sau nay se ap dung cho toan bo game.
+
 ## Nhan Vat Chinh
 
 Nhan vat chinh la avatar dai dien cho nguoi choi: mot nha nghien cuu tre khong co ten co dinh va khong co loi thoai ca tinh rieng.
