@@ -8,9 +8,9 @@ const chapterRoman = {
 } as const;
 
 const chapterTitles = {
-  1: 'Nhung Con Duong Chua Mo',
-  2: 'Qua Nhung Dai Duong',
-  3: 'Con Duong Duoc Xac Lap',
+  1: 'Những Con Đường Chưa Mở',
+  2: 'Qua Những Đại Dương',
+  3: 'Con Đường Được Xác Lập',
 } as const;
 
 export function HUD() {
@@ -26,7 +26,7 @@ export function HUD() {
       <div className="absolute top-4 left-4 flex flex-col gap-3">
         <div className="backdrop-blur-md bg-black/50 border border-white/10 px-4 py-3 rounded-lg flex flex-col gap-2 min-w-[220px]">
           <div className="flex justify-between items-center">
-            <span className="font-sans font-bold text-xs text-brand-gold uppercase tracking-wider">Do chinh xac ho so</span>
+            <span className="font-sans font-bold text-xs text-brand-gold uppercase tracking-wider">Độ chính xác hồ sơ</span>
             <span className="font-press text-[10px] text-white">{ideology}%</span>
           </div>
           <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
@@ -40,7 +40,7 @@ export function HUD() {
         </div>
 
         <div className="backdrop-blur-md bg-black/50 border border-white/10 px-4 py-3 rounded-lg flex justify-between items-center">
-          <span className="font-sans font-bold text-xs text-green-400 uppercase tracking-wider">Tu lieu khoi phuc</span>
+          <span className="font-sans font-bold text-xs text-green-400 uppercase tracking-wider">Tư liệu khôi phục</span>
           <span className="font-press text-[10px] text-white">{forces.toLocaleString()}</span>
         </div>
       </div>
@@ -48,7 +48,7 @@ export function HUD() {
       <div className="absolute top-4 right-4">
         <div className="backdrop-blur-md bg-black/50 border border-white/10 px-6 py-3 rounded-lg text-right">
           <h2 className="font-sans font-black text-sm text-brand-gold uppercase tracking-widest">
-            Chuong {chapterRoman[chapter]}
+            Chương {chapterRoman[chapter]}
           </h2>
           <p className="font-sans text-xs text-gray-300 mt-1">{chapterTitles[chapter]}</p>
         </div>

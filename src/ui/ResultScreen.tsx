@@ -32,47 +32,47 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
 
         <div className={`mb-6 p-4 rounded-lg flex justify-between items-center ${isWin ? 'bg-yellow-900/30 border border-yellow-500/50' : 'bg-red-900/30 border border-red-500/50'}`}>
           <div className="text-left font-sans">
-            <p className="text-gray-400 text-sm">HO SO</p>
+            <p className="text-gray-400 text-sm">HỒ SƠ</p>
             <p className="text-white font-bold text-xl uppercase">{playerName}</p>
           </div>
           <div className="text-right font-sans">
-            <p className="text-gray-400 text-sm">DIEM HO SO</p>
+            <p className="text-gray-400 text-sm">ĐIỂM HỒ SƠ</p>
             <p className={`font-black text-3xl ${isWin ? 'text-brand-gold' : 'text-brand-red'}`}>
-              {score.toLocaleString()} D
+              {score.toLocaleString()} điểm
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 font-sans">
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">NHAN DINH TOT NHAT</span>
+            <span className="text-gray-400 text-xs mb-1">NHẬN ĐỊNH TỐT NHẤT</span>
             <span className="text-green-400 font-bold text-2xl">{sessionStats.correctAnswers} / {totalChoices}</span>
           </div>
 
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">NHAN DINH SAI LECH</span>
+            <span className="text-gray-400 text-xs mb-1">NHẬN ĐỊNH SAI LỆCH</span>
             <span className="text-red-400 font-bold text-2xl">{sessionStats.wrongAnswers}</span>
           </div>
 
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">TU LIEU KHOI PHUC</span>
+            <span className="text-gray-400 text-xs mb-1">TƯ LIỆU KHÔI PHỤC</span>
             <span className="text-purple-400 font-bold text-2xl">{forces.toLocaleString()}</span>
           </div>
 
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">CHUONG DAT</span>
+            <span className="text-gray-400 text-xs mb-1">CHƯƠNG ĐẠT</span>
             <span className="text-blue-400 font-bold text-2xl">{sessionStats.chapterReached} / 3</span>
           </div>
         </div>
 
         {sessionStats.correctDetails.length > 0 && (
           <div className="bg-black/40 border border-white/10 rounded-lg p-4 mb-8 max-h-48 overflow-y-auto text-left font-sans scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-            <h3 className="text-gray-400 text-sm font-bold mb-3 uppercase tracking-wider sticky top-0 bg-zinc-950/90 py-1">LICH SU LUA CHON TOT NHAT</h3>
+            <h3 className="text-gray-400 text-sm font-bold mb-3 uppercase tracking-wider sticky top-0 bg-zinc-950/90 py-1">LỊCH SỬ LỰA CHỌN TỐT NHẤT</h3>
             <ul className="space-y-3">
               {sessionStats.correctDetails.map((detail, index) => (
                 <li key={`${detail.chapter}-${index}`} className="border-b border-white/5 pb-2 last:border-0 last:pb-0">
                   <div className="flex gap-2 mb-1 text-sm text-gray-300">
-                    <span className="text-brand-gold font-bold whitespace-nowrap">Chuong {detail.chapter}:</span>
+                    <span className="text-brand-gold font-bold whitespace-nowrap">Chương {detail.chapter}:</span>
                     <span className="italic line-clamp-2" title={detail.question}>{detail.question}</span>
                   </div>
                   <div className="text-green-400 font-bold text-sm pl-8">{detail.answer}</div>
@@ -86,7 +86,7 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
           onClick={onRestart}
           className={`px-10 py-4 font-bold rounded shadow-lg transform transition hover:scale-105 tracking-widest ${isWin ? 'bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 active:from-yellow-700 active:to-yellow-800 text-white font-black text-xl shadow-[0_0_20px_rgba(234,179,8,0.4)]' : 'bg-red-700 hover:bg-red-600 active:bg-red-800 text-white'}`}
         >
-          {isWin ? 'KHOI PHUC LAI HO SO' : 'ON TAP LAI'}
+          {isWin ? 'KHÔI PHỤC LẠI HỒ SƠ' : 'ÔN TẬP LẠI'}
         </button>
       </div>
     </div>

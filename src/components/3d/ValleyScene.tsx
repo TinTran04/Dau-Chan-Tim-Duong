@@ -16,25 +16,25 @@ type Cluster = {
 
 const CLUSTERS: Cluster[] = [
   {
-    label: 'Ben Nha Rong',
+    label: 'Bến Nhà Rồng',
     position: [-3.4, 1.4, -1.5],
     color: '#facc15',
     orbit: [[-3.9, 1.9, -1.3], [-2.9, 1.95, -1.8], [-3.3, 0.9, -1.05]]
   },
   {
-    label: 'Phap - My - Anh',
+    label: 'Pháp - Mỹ - Anh',
     position: [-1.45, 2.45, -2.7],
     color: '#34d399',
     orbit: [[-2.0, 2.9, -2.45], [-0.95, 2.85, -2.95], [-1.45, 1.95, -2.25]]
   },
   {
-    label: 'Ban va thu',
+    label: 'Bạn và thù',
     position: [1.45, 2.45, -2.7],
     color: '#38bdf8',
     orbit: [[0.95, 2.85, -2.95], [2.0, 2.9, -2.45], [1.45, 1.95, -2.25]]
   },
   {
-    label: 'Luan cuong',
+    label: 'Luận cương',
     position: [3.4, 1.4, -1.5],
     color: '#fb7185',
     orbit: [[2.9, 1.95, -1.8], [3.9, 1.9, -1.3], [3.3, 0.9, -1.05]]
@@ -154,7 +154,7 @@ function CentralSynthesisCore({ alert, completed }: { alert: boolean; completed:
         anchorX="center"
         anchorY="middle"
       >
-        Hanh trinh nhan thuc
+        Hành trình nhận thức
       </Text>
     </group>
   );

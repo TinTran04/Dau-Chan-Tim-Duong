@@ -35,7 +35,7 @@ export function DialogueSystem() {
                 {currentNode.text}
               </p>
               <div className="absolute bottom-4 right-6 animate-pulse">
-                <span className="font-sans text-brand-gold text-xs">Click de tiep tuc</span>
+                <span className="font-sans text-brand-gold text-xs">Click để tiếp tục</span>
               </div>
             </div>
           </motion.div>
@@ -51,7 +51,7 @@ export function DialogueSystem() {
           >
             <div className="backdrop-blur-xl bg-black/80 border border-brand-gold/40 p-6 rounded-xl w-full mb-4 shadow-xl text-center">
               <p className="font-sans font-bold text-brand-gold text-lg">{currentNode.prompt}</p>
-              <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">Chon cach xu ly ho so</p>
+              <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">Chọn cách xử lý hồ sơ</p>
             </div>
 
             <div className="w-full flex flex-col gap-3">

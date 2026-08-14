@@ -48,7 +48,7 @@ export default function App() {
 
     const playActiveTrack = () => {
       activeTrack.play().catch((error) => {
-        console.log('Dang cho nguoi choi tuong tac de phat nhac...', error);
+        console.log('Đang chờ người chơi tương tác để phát nhạc...', error);
       });
     };
 

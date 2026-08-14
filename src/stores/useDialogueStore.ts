@@ -97,8 +97,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       state.saveProgress(failScore, 'review_needed');
       state.setEndGameStatus({
         type: 'lose',
-        title: 'HO SO CAN ON TAP',
-        message: currentNode.text || 'Ho so da sai lech qua nhieu. Hay quay lai doi chieu tu lieu va khoi phuc mach lich su.'
+        title: 'HỒ SƠ CẦN ÔN TẬP',
+        message: currentNode.text || 'Hồ sơ đã sai lệch quá nhiều. Hãy quay lại đối chiếu tư liệu và khôi phục mạch lịch sử.'
       });
       set({ currentNode: null });
       return;
@@ -120,8 +120,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       state.saveProgress(finalScore, 'complete_profile');
       state.setEndGameStatus({
         type: 'win',
-        title: 'HO SO HOAN THIEN',
-        message: currentNode.text || 'Nhung dau chan roi rac da duoc noi thanh mot hanh trinh co phuong huong.'
+        title: 'HỒ SƠ HOÀN THIỆN',
+        message: currentNode.text || 'Những dấu chân rời rạc đã được nối thành một hành trình có phương hướng.'
       });
       set({ currentNode: null });
       return;
@@ -157,7 +157,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
                 ...stats.correctDetails,
                 {
                   chapter: gameStore.chapter,
-                  question: currentNode.prompt || 'Ho so',
+                  question: currentNode.prompt || 'Hồ sơ',
                   answer: option.label,
                 }
               ]
@@ -171,8 +171,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     if (newIdeology <= 0) {
       gameStore.setEndGameStatus({
         type: 'lose',
-        title: 'HO SO CAN ON TAP',
-        message: 'Ho so da sai lech qua nhieu. Hay quay lai doi chieu tu lieu va khoi phuc mach lich su.'
+        title: 'HỒ SƠ CẦN ÔN TẬP',
+        message: 'Hồ sơ đã sai lệch quá nhiều. Hãy quay lại đối chiếu tư liệu và khôi phục mạch lịch sử.'
       });
       set({ currentNode: null });
       return;
@@ -183,11 +183,11 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         id: `${currentNode.id}_${option.key}_feedback`,
         type: 'line',
         speaker: option.quality === 'best'
-          ? 'Ho so duoc khoi phuc'
+          ? 'Hồ sơ được khôi phục'
           : option.quality === 'partial'
-            ? 'Nhan dinh chua du'
-            : 'Moi lien ket sai lech',
-        text: option.feedback || 'Lua chon da duoc ghi vao ho so.',
+            ? 'Nhận định chưa đủ'
+            : 'Mối liên kết sai lệch',
+        text: option.feedback || 'Lựa chọn đã được ghi vào hồ sơ.',
         next: option.consequence,
         sceneCode: currentNode.sceneCode,
       }

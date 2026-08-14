@@ -3,50 +3,50 @@
     {
       "id": "ch2_start",
       "type": "line",
-      "speaker": "Nguoi dan chuyen",
-      "text": "Tu Ben Nha Rong, dau chan di qua dai duong. The gioi khong chi duoc nhin thay, ma duoc kiem nghiem bang lao dong, quan sat va nhung bai hoc thuc tien.",
+      "speaker": "Người dẫn chuyện",
+      "text": "Từ Bến Nhà Rồng, dấu chân đi qua đại dương. Thế giới không chỉ được nhìn thấy, mà được kiểm nghiệm bằng lao động, quan sát và những bài học thực tiễn.",
       "sceneCode": "C2.0",
       "next": "ch2_scene_1"
     },
     {
       "id": "ch2_scene_1",
       "type": "choice",
-      "speaker": "Ben Nha Rong",
-      "prompt": "Ngay 5 thang 6 nam 1911, con tau roi ben. Ban ghi nhan y nghia cua su kien nay nhu the nao?",
+      "speaker": "Bến Nhà Rồng",
+      "prompt": "Ngày 5 tháng 6 năm 1911, con tàu rời bến. Bạn ghi nhận ý nghĩa của sự kiện này như thế nào?",
       "sceneCode": "C2.1",
       "options": [
         {
           "key": "A",
-          "label": "Su kien 5/6/1911 mo dau hanh trinh tim duong cuu nuoc bang tu duy doc lap va trai nghiem thuc tien.",
+          "label": "Sự kiện 5/6/1911 mở đầu hành trình tìm đường cứu nước bằng tư duy độc lập và trải nghiệm thực tiễn.",
           "quality": "best",
-          "feedback": "Chinh xac. Day la diem khoi dau cua qua trinh tim toi, quan sat va kiem nghiem con duong cuu nuoc moi.",
+          "feedback": "Chính xác. Đây là điểm khởi đầu của quá trình tìm tòi, quan sát và kiểm nghiệm con đường cứu nước mới.",
           "consequence": "ch2_scene_2",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Day la mot moc quan trong cho thay quyet tam ra nuoc ngoai de tim loi giai cho dan toc.",
+          "label": "Đây là một mốc quan trọng cho thấy quyết tâm ra nước ngoài để tìm lời giải cho dân tộc.",
           "quality": "partial",
-          "feedback": "Dung mot phan. Can noi ro hon tinh chat doc lap va thuc tien cua hanh trinh tim duong cuu nuoc.",
+          "feedback": "Đúng một phần. Cần nói rõ hơn tính chất độc lập và thực tiễn của hành trình tìm đường cứu nước.",
           "consequence": "ch2_scene_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Day chi la chuyen di kiem song ca nhan, khong gan voi muc tieu cuu nuoc.",
+          "label": "Đây chỉ là chuyến đi kiếm sống cá nhân, không gắn với mục tiêu cứu nước.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu nhan manh muc dich ra di la tim con duong giai phong dan toc.",
+          "feedback": "Sai. Tài liệu nhấn mạnh mục đích ra đi là tìm con đường giải phóng dân tộc.",
           "consequence": "ch2_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Day la thoi diem Nguyen Tat Thanh da xac dinh hoan toan con duong cach mang vo san.",
+          "label": "Đây là thời điểm Nguyễn Tất Thành đã xác định hoàn toàn con đường cách mạng vô sản.",
           "quality": "wrong",
-          "feedback": "Sai thoi diem. Nam 1911 moi la diem khoi dau; con duong cach mang vo san duoc xac dinh sau qua trinh nhan thuc den nam 1920.",
+          "feedback": "Sai thời điểm. Năm 1911 mới là điểm khởi đầu; con đường cách mạng vô sản được xác định sau quá trình nhận thức đến năm 1920.",
           "consequence": "ch2_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -56,42 +56,42 @@
     {
       "id": "ch2_scene_2",
       "type": "choice",
-      "speaker": "Quan sat the gioi",
-      "prompt": "Phap, My, Anh va nhieu vung dat khac hien len. Nguyen Tat Thanh da tiep can the gioi bang cach nao?",
+      "speaker": "Quan sát thế giới",
+      "prompt": "Pháp, Mỹ, Anh và nhiều vùng đất khác hiện lên. Nguyễn Tất Thành đã tiếp cận thế giới bằng cách nào?",
       "sceneCode": "C2.2",
       "options": [
         {
           "key": "A",
-          "label": "Nguyen Tat Thanh lao dong, tu hoc, quan sat xa hoi va kiem nghiem thuc te de tim duong cuu nuoc.",
+          "label": "Nguyễn Tất Thành lao động, tự học, quan sát xã hội và kiểm nghiệm thực tế để tìm đường cứu nước.",
           "quality": "best",
-          "feedback": "Ho so sang len. Hanh trinh nay ket hop lao dong, tu hoc, nghien cuu va tham gia thuc tien.",
+          "feedback": "Hồ sơ sáng lên. Hành trình này kết hợp lao động, tự học, nghiên cứu và tham gia thực tiễn.",
           "consequence": "ch2_scene_3",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Nguoi muon tim hieu cac nuoc phuong Tay de biet ho lam an, to chuc xa hoi ra sao.",
+          "label": "Người muốn tìm hiểu các nước phương Tây để biết họ làm ăn, tổ chức xã hội ra sao.",
           "quality": "partial",
-          "feedback": "Nhan dinh dung nhung chua du. Viec tim hieu do gan voi lao dong, quan sat nhan dan va kiem nghiem thuc tien cach mang.",
+          "feedback": "Nhận định đúng nhưng chưa đủ. Việc tìm hiểu đó gắn với lao động, quan sát nhân dân và kiểm nghiệm thực tiễn cách mạng.",
           "consequence": "ch2_scene_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Nguoi chi can doc sach ly luan, khong can trai nghiem doi song thuc te.",
+          "label": "Người chỉ cần đọc sách lý luận, không cần trải nghiệm đời sống thực tế.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu nhan manh trai nghiem lao dong va quan sat doi song thuc te la phan quan trong cua hanh trinh.",
+          "feedback": "Sai. Tài liệu nhấn mạnh trải nghiệm lao động và quan sát đời sống thực tế là phần quan trọng của hành trình.",
           "consequence": "ch2_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Nguoi sang phuong Tay de sao chep nguyen mau mot nuoc manh.",
+          "label": "Người sang phương Tây để sao chép nguyên mẫu một nước mạnh.",
           "quality": "wrong",
-          "feedback": "Ket luan nay trai voi tinh than doc lap, sang tao. Nguoi tim hieu de chon con duong phu hop voi dan toc.",
+          "feedback": "Kết luận này trái với tinh thần độc lập, sáng tạo. Người tìm hiểu để chọn con đường phù hợp với dân tộc.",
           "consequence": "ch2_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -101,42 +101,42 @@
     {
       "id": "ch2_scene_3",
       "type": "choice",
-      "speaker": "Ban va thu",
-      "prompt": "Tu thuc tien cac nuoc thuoc dia va chinh quoc, ban rut ra nhan thuc nao ve ban va thu?",
+      "speaker": "Bạn và thù",
+      "prompt": "Từ thực tiễn các nước thuộc địa và chính quốc, bạn rút ra nhận thức nào về bạn và thù?",
       "sceneCode": "C2.3",
       "options": [
         {
           "key": "A",
-          "label": "Nhan dan lao dong cac nuoc la ban; chu nghia de quoc, thuc dan la ke thu chung.",
+          "label": "Nhân dân lao động các nước là bạn; chủ nghĩa đế quốc, thực dân là kẻ thù chung.",
           "quality": "best",
-          "feedback": "Chinh xac. Ban do the gioi duoc doc lai theo quan he ap buc va bi ap buc, khong chi theo mau co hay bien gioi.",
+          "feedback": "Chính xác. Bản đồ thế giới được đọc lại theo quan hệ áp bức và bị áp bức, không chỉ theo màu cờ hay biên giới.",
           "consequence": "ch2_scene_4",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Qua thuc tien, Nguoi thay nhieu dan toc va nguoi lao dong cung chiu ap buc.",
+          "label": "Qua thực tiễn, Người thấy nhiều dân tộc và người lao động cùng chịu áp bức.",
           "quality": "partial",
-          "feedback": "Dung mot phan. Can bo sung ket luan ro hon: nhan dan lao dong la ban, thuc dan va de quoc la ke thu chung.",
+          "feedback": "Đúng một phần. Cần bổ sung kết luận rõ hơn: nhân dân lao động là bạn, thực dân và đế quốc là kẻ thù chung.",
           "consequence": "ch2_scene_4",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Tat ca nguoi dan o cac nuoc chinh quoc deu la ke thu.",
+          "label": "Tất cả người dân ở các nước chính quốc đều là kẻ thù.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu phan biet nhan dan lao dong o chinh quoc voi chu nghia thuc dan va de quoc.",
+          "feedback": "Sai. Tài liệu phân biệt nhân dân lao động ở chính quốc với chủ nghĩa thực dân và đế quốc.",
           "consequence": "ch2_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Chi Viet Nam bi ap buc, cac dan toc thuoc dia khac khong lien quan.",
+          "label": "Chỉ Việt Nam bị áp bức, các dân tộc thuộc địa khác không liên quan.",
           "quality": "wrong",
-          "feedback": "Sai. Hanh trinh cho thay nhieu dan toc thuoc dia va nhan dan lao dong tren the gioi cung co canh ngo bi ap buc.",
+          "feedback": "Sai. Hành trình cho thấy nhiều dân tộc thuộc địa và nhân dân lao động trên thế giới cùng có cảnh ngộ bị áp bức.",
           "consequence": "ch2_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -146,42 +146,42 @@
     {
       "id": "ch2_scene_4",
       "type": "choice",
-      "speaker": "Ban yeu sach 1919",
-      "prompt": "Ban yeu sach cua nhan dan An Nam duoc gui toi Hoi nghi Vecxay. Bai hoc nao can duoc ghi vao ho so?",
+      "speaker": "Bản yêu sách 1919",
+      "prompt": "Bản yêu sách của nhân dân An Nam được gửi tới Hội nghị Vécxây. Bài học nào cần được ghi vào hồ sơ?",
       "sceneCode": "C2.4",
       "options": [
         {
           "key": "A",
-          "label": "Su kien nay giup rut ra bai hoc phai dua vao luc luong cua chinh minh de giai phong dan toc.",
+          "label": "Sự kiện này giúp rút ra bài học phải dựa vào lực lượng của chính mình để giải phóng dân tộc.",
           "quality": "best",
-          "feedback": "Ho so duoc dong dau dung. Su im lang cua cac nuoc de quoc lam ro bai hoc tu luc trong su nghiep giai phong dan toc.",
+          "feedback": "Hồ sơ được đóng dấu đúng. Sự im lặng của các nước đế quốc làm rõ bài học tự lực trong sự nghiệp giải phóng dân tộc.",
           "consequence": "ch2_scene_5",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Ban yeu sach la tieng noi chinh nghia cua nguoi Viet Nam yeu nuoc tren dien dan quoc te.",
+          "label": "Bản yêu sách là tiếng nói chính nghĩa của người Việt Nam yêu nước trên diễn đàn quốc tế.",
           "quality": "partial",
-          "feedback": "Dung nhung chua du. Can gan y nghia do voi bai hoc: khong the trong cho vao cac nuoc de quoc.",
+          "feedback": "Đúng nhưng chưa đủ. Cần gắn ý nghĩa đó với bài học: không thể trông chờ vào các nước đế quốc.",
           "consequence": "ch2_scene_5",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chi can gui kien nghi thi cac nuoc de quoc se trao doc lap.",
+          "label": "Chỉ cần gửi kiến nghị thì các nước đế quốc sẽ trao độc lập.",
           "quality": "wrong",
-          "feedback": "Sai. Chinh viec yeu sach khong duoc chap nhan giup Nguoi thay ro ban chat cua cac nuoc de quoc.",
+          "feedback": "Sai. Chính việc yêu sách không được chấp nhận giúp Người thấy rõ bản chất của các nước đế quốc.",
           "consequence": "ch2_scene_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Ban yeu sach khong co y nghia gi vi khong duoc chap nhan.",
+          "label": "Bản yêu sách không có ý nghĩa gì vì không được chấp nhận.",
           "quality": "wrong",
-          "feedback": "Sai. Dù khong dat ket qua truc tiep, day la tieng noi chinh nghia quan trong va de lai bai hoc nhan thuc sau sac.",
+          "feedback": "Sai. Dù không đạt kết quả trực tiếp, đây là tiếng nói chính nghĩa quan trọng và để lại bài học nhận thức sâu sắc.",
           "consequence": "ch2_scene_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -191,42 +191,42 @@
     {
       "id": "ch2_scene_5",
       "type": "choice",
-      "speaker": "Trang Luan cuong",
-      "prompt": "Thang 7 nam 1920, mot trang tai lieu mo ra. Dau la y nghia cua Luan cuong Lenin va Dai hoi Tua?",
+      "speaker": "Trang Luận cương",
+      "prompt": "Tháng 7 năm 1920, một trang tài liệu mở ra. Đâu là ý nghĩa của Luận cương Lênin và Đại hội Tua?",
       "sceneCode": "C2.5",
       "options": [
         {
           "key": "A",
-          "label": "Luan cuong Lenin giup Nguyen Ai Quoc tim thay con duong giai phong dan toc theo cach mang vo san.",
+          "label": "Luận cương Lênin giúp Nguyễn Ái Quốc tìm thấy con đường giải phóng dân tộc theo cách mạng vô sản.",
           "quality": "best",
-          "feedback": "Chinh xac. Day la buoc ngoat ly luan giup xac dinh con duong giai phong dan toc gan voi cach mang vo san.",
+          "feedback": "Chính xác. Đây là bước ngoặt lý luận giúp xác định con đường giải phóng dân tộc gắn với cách mạng vô sản.",
           "consequence": "ch2_summary",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Day la buoc ngoat ly luan quan trong trong qua trinh chuyen bien nhan thuc.",
+          "label": "Đây là bước ngoặt lý luận quan trọng trong quá trình chuyển biến nhận thức.",
           "quality": "partial",
-          "feedback": "Dung nhung chua day du. Can noi ro noi dung buoc ngoat: tim thay con duong cach mang vo san cho dan toc Viet Nam.",
+          "feedback": "Đúng nhưng chưa đầy đủ. Cần nói rõ nội dung bước ngoặt: tìm thấy con đường cách mạng vô sản cho dân tộc Việt Nam.",
           "consequence": "ch2_summary",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Day chi la mot tai lieu tham khao binh thuong, khong anh huong lon.",
+          "label": "Đây chỉ là một tài liệu tham khảo bình thường, không ảnh hưởng lớn.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu khang dinh day la buoc ngoat ly luan trong hanh trinh tim duong cuu nuoc.",
+          "feedback": "Sai. Tài liệu khẳng định đây là bước ngoặt lý luận trong hành trình tìm đường cứu nước.",
           "consequence": "ch2_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Tu day Nguoi tu bo muc tieu doc lap dan toc.",
+          "label": "Từ đây Người từ bỏ mục tiêu độc lập dân tộc.",
           "quality": "wrong",
-          "feedback": "Sai. Muc tieu doc lap dan toc khong bi tu bo, ma duoc gan voi lap truong cach mang vo san.",
+          "feedback": "Sai. Mục tiêu độc lập dân tộc không bị từ bỏ, mà được gắn với lập trường cách mạng vô sản.",
           "consequence": "ch2_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -236,8 +236,8 @@
     {
       "id": "ch2_summary",
       "type": "line",
-      "speaker": "Tong ket chuong II",
-      "text": "Hanh trinh 1911-1920 da bien cau hoi cuu nuoc thanh nhan thuc moi: phai hieu the gioi, nhan ro ban thu, tu luc giai phong dan toc va tim thay con duong cach mang vo san.",
+      "speaker": "Tổng kết chương II",
+      "text": "Hành trình 1911-1920 đã biến câu hỏi cứu nước thành nhận thức mới: phải hiểu thế giới, nhận rõ bạn thù, tự lực giải phóng dân tộc và tìm thấy con đường cách mạng vô sản.",
       "sceneCode": "C2.summary",
       "next": "next_chapter"
     }

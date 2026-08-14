@@ -3,50 +3,50 @@
     {
       "id": "ch3_start",
       "type": "line",
-      "speaker": "Nguoi dan chuyen",
-      "text": "Tim thay con duong khong phai la ket thuc. Tu day, nhan thuc phai tro thanh hanh dong, tu tuong phai duoc truyen ba, va to chuc phai duoc xay dung.",
+      "speaker": "Người dẫn chuyện",
+      "text": "Tìm thấy con đường không phải là kết thúc. Từ đây, nhận thức phải trở thành hành động, tư tưởng phải được truyền bá, và tổ chức phải được xây dựng.",
       "sceneCode": "C3.0",
       "next": "ch3_scene_1"
     },
     {
       "id": "ch3_scene_1",
       "type": "choice",
-      "speaker": "Sau buoc ngoat 1920",
-      "prompt": "Sau khi xac dinh con duong cach mang vo san, nhiem vu nao can duoc dat vao trung tam ho so?",
+      "speaker": "Sau bước ngoặt 1920",
+      "prompt": "Sau khi xác định con đường cách mạng vô sản, nhiệm vụ nào cần được đặt vào trung tâm hồ sơ?",
       "sceneCode": "C3.1",
       "options": [
         {
           "key": "A",
-          "label": "Sau nam 1920, nhiem vu la chuan bi ve tu tuong, chinh tri va to chuc cho mot chinh dang cach mang.",
+          "label": "Sau năm 1920, nhiệm vụ là chuẩn bị về tư tưởng, chính trị và tổ chức cho một chính đảng cách mạng.",
           "quality": "best",
-          "feedback": "Chinh xac. Tim thay con duong phai di cung qua trinh chuan bi de bien nhan thuc thanh luc luong cach mang.",
+          "feedback": "Chính xác. Tìm thấy con đường phải đi cùng quá trình chuẩn bị để biến nhận thức thành lực lượng cách mạng.",
           "consequence": "ch3_scene_2",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Sau khi tim thay con duong dung, can tiep tuc truyen ba va to chuc luc luong.",
+          "label": "Sau khi tìm thấy con đường đúng, cần tiếp tục truyền bá và tổ chức lực lượng.",
           "quality": "partial",
-          "feedback": "Dung nhung chua du. Can neu ro ba mat chuan bi: tu tuong, chinh tri va to chuc.",
+          "feedback": "Đúng nhưng chưa đủ. Cần nêu rõ ba mặt chuẩn bị: tư tưởng, chính trị và tổ chức.",
           "consequence": "ch3_scene_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chi can tim thay ly luan dung la cach mang tu dong thang loi.",
+          "label": "Chỉ cần tìm thấy lý luận đúng là cách mạng tự động thắng lợi.",
           "quality": "wrong",
-          "feedback": "Sai. Ly luan dung can duoc truyen ba, to chuc va gan voi phong trao thuc tien.",
+          "feedback": "Sai. Lý luận đúng cần được truyền bá, tổ chức và gắn với phong trào thực tiễn.",
           "consequence": "ch3_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Cac hoat dong sau nam 1920 khong con huong ve Viet Nam.",
+          "label": "Các hoạt động sau năm 1920 không còn hướng về Việt Nam.",
           "quality": "wrong",
-          "feedback": "Sai. Cac hoat dong sau nam 1920 deu huong toi viec chuan bi cho cach mang Viet Nam.",
+          "feedback": "Sai. Các hoạt động sau năm 1920 đều hướng tới việc chuẩn bị cho cách mạng Việt Nam.",
           "consequence": "ch3_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -56,42 +56,42 @@
     {
       "id": "ch3_scene_2",
       "type": "choice",
-      "speaker": "Bao chi va tac pham",
-      "prompt": "Le Paria, Ban an che do thuc dan Phap va bao Thanh Nien duoc dat len ban. Vai tro cua chung la gi?",
+      "speaker": "Báo chí và tác phẩm",
+      "prompt": "Le Paria, Bản án chế độ thực dân Pháp và báo Thanh Niên được đặt lên bàn. Vai trò của chúng là gì?",
       "sceneCode": "C3.2",
       "options": [
         {
           "key": "A",
-          "label": "Bao chi va tac pham giup vach tran chu nghia thuc dan, truyen ba tu tuong cach mang va thuc tinh phong trao.",
+          "label": "Báo chí và tác phẩm giúp vạch trần chủ nghĩa thực dân, truyền bá tư tưởng cách mạng và thức tỉnh phong trào.",
           "quality": "best",
-          "feedback": "Ho so duoc khoi phuc. Chu viet, bao chi va tac pham tro thanh cong cu dau tranh tu tuong - chinh tri.",
+          "feedback": "Hồ sơ được khôi phục. Chữ viết, báo chí và tác phẩm trở thành công cụ đấu tranh tư tưởng - chính trị.",
           "consequence": "ch3_scene_3",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Le Paria, Ban an che do thuc dan Phap, bao Thanh Nien deu gop phan truyen ba nhan thuc moi.",
+          "label": "Le Paria, Bản án chế độ thực dân Pháp, báo Thanh Niên đều góp phần truyền bá nhận thức mới.",
           "quality": "partial",
-          "feedback": "Dung mot phan. Can bo sung vai tro vach tran chu nghia thuc dan va gan voi phong trao cach mang.",
+          "feedback": "Đúng một phần. Cần bổ sung vai trò vạch trần chủ nghĩa thực dân và gắn với phong trào cách mạng.",
           "consequence": "ch3_scene_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Day chi la hoat dong van hoc, khong lien quan den cach mang.",
+          "label": "Đây chỉ là hoạt động văn học, không liên quan đến cách mạng.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu cho thay day la hoat dong truyen ba tu tuong va chuan bi chinh tri.",
+          "feedback": "Sai. Tài liệu cho thấy đây là hoạt động truyền bá tư tưởng và chuẩn bị chính trị.",
           "consequence": "ch3_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Nhung tac pham nay chi ghi lai ky niem ca nhan.",
+          "label": "Những tác phẩm này chỉ ghi lại kỷ niệm cá nhân.",
           "quality": "wrong",
-          "feedback": "Sai. Cac tac pham va to bao nay huong toi viec thuc tinh, to chuc va dan dat phong trao.",
+          "feedback": "Sai. Các tác phẩm và tờ báo này hướng tới việc thức tỉnh, tổ chức và dẫn dắt phong trào.",
           "consequence": "ch3_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -101,42 +101,42 @@
     {
       "id": "ch3_scene_3",
       "type": "choice",
-      "speaker": "Xay dung to chuc",
-      "prompt": "Mot tu tuong muon di xa can nguoi truyen di. Ban xac dinh vai tro cua Hoi Viet Nam Cach mang Thanh nien nhu the nao?",
+      "speaker": "Xây dựng tổ chức",
+      "prompt": "Một tư tưởng muốn đi xa cần người truyền đi. Bạn xác định vai trò của Hội Việt Nam Cách mạng Thanh niên như thế nào?",
       "sceneCode": "C3.3",
       "options": [
         {
           "key": "A",
-          "label": "Hoi Viet Nam Cach mang Thanh nien la to chuc tien than, chuan bi chinh tri va to chuc cho su ra doi cua Dang.",
+          "label": "Hội Việt Nam Cách mạng Thanh niên là tổ chức tiền thân, chuẩn bị chính trị và tổ chức cho sự ra đời của Đảng.",
           "quality": "best",
-          "feedback": "Chinh xac. Mang luoi to chuc bat dau noi cac manh tu tuong voi luc luong cach mang.",
+          "feedback": "Chính xác. Mạng lưới tổ chức bắt đầu nối các mảnh tư tưởng với lực lượng cách mạng.",
           "consequence": "ch3_scene_4",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Hoi gop phan truyen ba chu nghia Mac - Lenin va dao tao luc luong cach mang.",
+          "label": "Hội góp phần truyền bá chủ nghĩa Mác - Lênin và đào tạo lực lượng cách mạng.",
           "quality": "partial",
-          "feedback": "Dung nhung chua du. Can dat Hoi vao vai tro tien than va chuan bi cho su ra doi cua Dang.",
+          "feedback": "Đúng nhưng chưa đủ. Cần đặt Hội vào vai trò tiền thân và chuẩn bị cho sự ra đời của Đảng.",
           "consequence": "ch3_scene_4",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Hoi hoan toan tach roi qua trinh thanh lap Dang.",
+          "label": "Hội hoàn toàn tách rời quá trình thành lập Đảng.",
           "quality": "wrong",
-          "feedback": "Sai. Hoi la mot mat xich quan trong trong qua trinh chuan bi ve to chuc.",
+          "feedback": "Sai. Hội là một mắt xích quan trọng trong quá trình chuẩn bị về tổ chức.",
           "consequence": "ch3_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Hoi chi la nhom hoc tap nho, khong co tac dong lich su.",
+          "label": "Hội chỉ là nhóm học tập nhỏ, không có tác động lịch sử.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu khang dinh vai tro truyen ba va dao tao luc luong cua Hoi.",
+          "feedback": "Sai. Tài liệu khẳng định vai trò truyền bá và đào tạo lực lượng của Hội.",
           "consequence": "ch3_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -146,42 +146,42 @@
     {
       "id": "ch3_scene_4",
       "type": "choice",
-      "speaker": "Duong cach menh",
-      "prompt": "Tren ban hoc o Quang Chau, cuon Duong cach menh duoc mo ra. Noi dung cot loi nao can duoc ghi lai?",
+      "speaker": "Đường cách mệnh",
+      "prompt": "Trên bàn học ở Quảng Châu, cuốn Đường cách mệnh được mở ra. Nội dung cốt lõi nào cần được ghi lại?",
       "sceneCode": "C3.4",
       "options": [
         {
           "key": "A",
-          "label": "Tac pham khang dinh cach mang Viet Nam can Dang Cong san lanh dao, lay Mac - Lenin lam nen tang, luc luong la toan dan voi nong cot cong - nong.",
+          "label": "Tác phẩm khẳng định cách mạng Việt Nam cần Đảng Cộng sản lãnh đạo, lấy Mác - Lênin làm nền tảng, lực lượng là toàn dân với nòng cốt công - nông.",
           "quality": "best",
-          "feedback": "Ho so noi mach dung. Duong loi cach mang can co ly luan, to chuc lanh dao va luc luong cach mang ro rang.",
+          "feedback": "Hồ sơ nối mạch đúng. Đường lối cách mạng cần có lý luận, tổ chức lãnh đạo và lực lượng cách mạng rõ ràng.",
           "consequence": "ch3_scene_5",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Tac pham tong ket kinh nghiem cach mang the gioi de van dung vao Viet Nam.",
+          "label": "Tác phẩm tổng kết kinh nghiệm cách mạng thế giới để vận dụng vào Việt Nam.",
           "quality": "partial",
-          "feedback": "Dung mot phan. Can bo sung ket luan trung tam ve Dang lanh dao, nen tang Mac - Lenin va luc luong cong - nong.",
+          "feedback": "Đúng một phần. Cần bổ sung kết luận trung tâm về Đảng lãnh đạo, nền tảng Mác - Lênin và lực lượng công - nông.",
           "consequence": "ch3_scene_5",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Cach mang chi can long yeu nuoc tu phat, khong can to chuc lanh dao.",
+          "label": "Cách mạng chỉ cần lòng yêu nước tự phát, không cần tổ chức lãnh đạo.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu nhan manh vai tro cua Dang Cong san va su chuan bi to chuc.",
+          "feedback": "Sai. Tài liệu nhấn mạnh vai trò của Đảng Cộng sản và sự chuẩn bị tổ chức.",
           "consequence": "ch3_scene_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Cach mang Viet Nam phai sao chep nguyen mau cach mang tu san phuong Tay.",
+          "label": "Cách mạng Việt Nam phải sao chép nguyên mẫu cách mạng tư sản phương Tây.",
           "quality": "wrong",
-          "feedback": "Sai. Tac pham tong ket kinh nghiem the gioi de van dung sang tao vao Viet Nam, khong sao chep may moc.",
+          "feedback": "Sai. Tác phẩm tổng kết kinh nghiệm thế giới để vận dụng sáng tạo vào Việt Nam, không sao chép máy móc.",
           "consequence": "ch3_scene_5",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -191,42 +191,42 @@
     {
       "id": "ch3_scene_5",
       "type": "choice",
-      "speaker": "Hoi nghi 1930",
-      "prompt": "Nhung manh to chuc roi rac duoc dat len cung mot ban. Y nghia cua viec thanh lap Dang va Cuong linh dau tien la gi?",
+      "speaker": "Hội nghị 1930",
+      "prompt": "Những mảnh tổ chức rời rạc được đặt lên cùng một bàn. Ý nghĩa của việc thành lập Đảng và Cương lĩnh đầu tiên là gì?",
       "sceneCode": "C3.5",
       "options": [
         {
           "key": "A",
-          "label": "Thanh lap Dang Cong san Viet Nam va Cuong linh dau tien da cham dut khung hoang ve duong loi cuu nuoc va to chuc lanh dao.",
+          "label": "Thành lập Đảng Cộng sản Việt Nam và Cương lĩnh đầu tiên đã chấm dứt khủng hoảng về đường lối cứu nước và tổ chức lãnh đạo.",
           "quality": "best",
-          "feedback": "Chinh xac. Ho so cuoi cung duoc hoan thien: con duong cuu nuoc duoc xac lap va to chuc lanh dao ra doi.",
+          "feedback": "Chính xác. Hồ sơ cuối cùng được hoàn thiện: con đường cứu nước được xác lập và tổ chức lãnh đạo ra đời.",
           "consequence": "ch3_summary",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Su kien nay thong nhat to chuc va xac dinh duong loi cach mang Viet Nam.",
+          "label": "Sự kiện này thống nhất tổ chức và xác định đường lối cách mạng Việt Nam.",
           "quality": "partial",
-          "feedback": "Dung nhung chua day du. Can neu ro y nghia cham dut khung hoang ve duong loi va to chuc lanh dao.",
+          "feedback": "Đúng nhưng chưa đầy đủ. Cần nêu rõ ý nghĩa chấm dứt khủng hoảng về đường lối và tổ chức lãnh đạo.",
           "consequence": "ch3_summary",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Day chi la su kien to chuc, khong lien quan den duong loi cuu nuoc.",
+          "label": "Đây chỉ là sự kiện tổ chức, không liên quan đến đường lối cứu nước.",
           "quality": "wrong",
-          "feedback": "Sai. Su kien nay gan chat voi duong loi cach mang va Cuong linh chinh tri dau tien.",
+          "feedback": "Sai. Sự kiện này gắn chặt với đường lối cách mạng và Cương lĩnh chính trị đầu tiên.",
           "consequence": "ch3_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Day la su tro lai cua cac con duong cuu nuoc cu.",
+          "label": "Đây là sự trở lại của các con đường cứu nước cũ.",
           "quality": "wrong",
-          "feedback": "Sai. Day la su xac lap con duong moi: doc lap dan toc gan lien voi chu nghia xa hoi.",
+          "feedback": "Sai. Đây là sự xác lập con đường mới: độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
           "consequence": "ch3_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -236,8 +236,8 @@
     {
       "id": "ch3_summary",
       "type": "line",
-      "speaker": "Tong ket chuong III",
-      "text": "Tu khung hoang duong loi, qua hanh trinh tim kiem va chuan bi lau dai, ho so da duoc khoi phuc: con duong cuu nuoc duoc xac lap, to chuc lanh dao ra doi, va cach mang Viet Nam buoc sang thoi ky moi.",
+      "speaker": "Tổng kết chương III",
+      "text": "Từ khủng hoảng đường lối, qua hành trình tìm kiếm và chuẩn bị lâu dài, hồ sơ đã được khôi phục: con đường cứu nước được xác lập, tổ chức lãnh đạo ra đời, và cách mạng Việt Nam bước sang thời kỳ mới.",
       "sceneCode": "C3.summary",
       "next": "true_ending"
     }

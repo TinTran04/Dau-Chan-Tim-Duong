@@ -3,50 +3,50 @@
     {
       "id": "ch1_start",
       "type": "line",
-      "speaker": "Nguoi dan chuyen",
-      "text": "Nhung trang ho so dau tien mo ra. Mot dat nuoc mat chu quyen, mot xa hoi bi dat duoi ach cai tri, va mot cau hoi bat dau hien len.",
+      "speaker": "Người dẫn chuyện",
+      "text": "Những trang hồ sơ đầu tiên mở ra. Một đất nước mất chủ quyền, một xã hội bị đặt dưới ách cai trị, và một câu hỏi bắt đầu hiện lên.",
       "sceneCode": "C1.0",
       "next": "ch1_scene_1"
     },
     {
       "id": "ch1_scene_1",
       "type": "choice",
-      "speaker": "Ho so thuoc dia",
-      "prompt": "Tren ban do cuoi the ky XIX - dau the ky XX, ban can xac dinh mau thuan lon nhat cua xa hoi Viet Nam luc nay.",
+      "speaker": "Hồ sơ thuộc địa",
+      "prompt": "Trên bản đồ cuối thế kỷ XIX - đầu thế kỷ XX, bạn cần xác định mâu thuẫn lớn nhất của xã hội Việt Nam lúc này.",
       "sceneCode": "C1.1",
       "options": [
         {
           "key": "A",
-          "label": "Mau thuan lon nhat la giua dan toc Viet Nam va thuc dan Phap.",
+          "label": "Mâu thuẫn lớn nhất là giữa dân tộc Việt Nam và thực dân Pháp.",
           "quality": "best",
-          "feedback": "Chinh xac. Ho so cho thay doc lap, chu quyen bi xam pham; mau thuan dan toc voi chu nghia thuc dan tro thanh yeu cau cap thiet nhat.",
+          "feedback": "Chính xác. Hồ sơ cho thấy độc lập, chủ quyền bị xâm phạm; mâu thuẫn dân tộc với chủ nghĩa thực dân trở thành yêu cầu cấp thiết nhất.",
           "consequence": "ch1_scene_2",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Mau thuan trong xa hoi thuoc dia co nhieu mat, nhung noi bat nhat van la van de dan toc.",
+          "label": "Mâu thuẫn trong xã hội thuộc địa có nhiều mặt, nhưng nổi bật nhất vẫn là vấn đề dân tộc.",
           "quality": "partial",
-          "feedback": "Nhan dinh co co so, nhung can noi ro hon: trong boi canh mat nuoc, mau thuan trung tam la giua dan toc Viet Nam va thuc dan Phap.",
+          "feedback": "Nhận định có cơ sở, nhưng cần nói rõ hơn: trong bối cảnh mất nước, mâu thuẫn trung tâm là giữa dân tộc Việt Nam và thực dân Pháp.",
           "consequence": "ch1_scene_2",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Mau thuan chu yeu la giua cac phong trao yeu nuoc voi nhau.",
+          "label": "Mâu thuẫn chủ yếu là giữa các phong trào yêu nước với nhau.",
           "quality": "wrong",
-          "feedback": "Moi lien ket sai lech. Cac phong trao co khuynh huong khac nhau, nhung do khong phai mau thuan lon nhat cua xa hoi thuoc dia.",
+          "feedback": "Mối liên kết sai lệch. Các phong trào có khuynh hướng khác nhau, nhưng đó không phải mâu thuẫn lớn nhất của xã hội thuộc địa.",
           "consequence": "ch1_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Mau thuan chi nam trong noi bo trieu dinh phong kien.",
+          "label": "Mâu thuẫn chỉ nằm trong nội bộ triều đình phong kiến.",
           "quality": "wrong",
-          "feedback": "Ho so khong ung ho ket luan nay. Van de lich su bao trum la dat nuoc mat doc lap va nhan dan bi ap buc duoi che do thuoc dia.",
+          "feedback": "Hồ sơ không ủng hộ kết luận này. Vấn đề lịch sử bao trùm là đất nước mất độc lập và nhân dân bị áp bức dưới chế độ thuộc địa.",
           "consequence": "ch1_scene_2",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -56,42 +56,42 @@
     {
       "id": "ch1_scene_2",
       "type": "choice",
-      "speaker": "Nhung ngon lua cu",
-      "prompt": "Can Vuong va Yen The hien len nhu nhung ngon lua ben bi. Ban se ghi chu dac diem cua cac phong trao nay nhu the nao?",
+      "speaker": "Những ngọn lửa cũ",
+      "prompt": "Cần Vương và Yên Thế hiện lên như những ngọn lửa bền bỉ. Bạn sẽ ghi chú đặc điểm của các phong trào này như thế nào?",
       "sceneCode": "C1.2",
       "options": [
         {
           "key": "A",
-          "label": "Can Vuong va Yen The the hien long yeu nuoc manh me nhung con gioi han boi khuynh huong phong kien.",
+          "label": "Cần Vương và Yên Thế thể hiện lòng yêu nước mạnh mẽ nhưng còn giới hạn bởi khuynh hướng phong kiến.",
           "quality": "best",
-          "feedback": "Ho so duoc phan loai dung. Cac phong trao nay rat gia tri ve tinh than yeu nuoc, nhung chua dap ung yeu cau moi cua lich su.",
+          "feedback": "Hồ sơ được phân loại đúng. Các phong trào này rất giá trị về tinh thần yêu nước, nhưng chưa đáp ứng yêu cầu mới của lịch sử.",
           "consequence": "ch1_scene_3",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Cac phong trao nay co tinh than dau tranh cao, nhung chua du de mo ra duong loi moi.",
+          "label": "Các phong trào này có tinh thần đấu tranh cao, nhưng chưa đủ để mở ra đường lối mới.",
           "quality": "partial",
-          "feedback": "Dung mot phan. Can bo sung khuynh huong lich su cua chung: chu yeu van gan voi gioi han phong kien.",
+          "feedback": "Đúng một phần. Cần bổ sung khuynh hướng lịch sử của chúng: chủ yếu vẫn gắn với giới hạn phong kiến.",
           "consequence": "ch1_scene_3",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Cac phong trao nay khong co y nghia vi cuoi cung that bai.",
+          "label": "Các phong trào này không có ý nghĩa vì cuối cùng thất bại.",
           "quality": "wrong",
-          "feedback": "Nhan dinh nay phu nhan sai vai tro lich su. That bai khong xoa bo tinh than yeu nuoc va y chi dau tranh cua nhan dan.",
+          "feedback": "Nhận định này phủ nhận sai vai trò lịch sử. Thất bại không xóa bỏ tinh thần yêu nước và ý chí đấu tranh của nhân dân.",
           "consequence": "ch1_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Cac phong trao nay da xac dinh duoc con duong cach mang hien dai.",
+          "label": "Các phong trào này đã xác định được con đường cách mạng hiện đại.",
           "quality": "wrong",
-          "feedback": "Sai trong tam. Tai lieu cho thay cac phong trao cuoi cung van chua tim duoc duong loi phu hop voi thoi dai moi.",
+          "feedback": "Sai trọng tâm. Tài liệu cho thấy các phong trào cuối cùng vẫn chưa tìm được đường lối phù hợp với thời đại mới.",
           "consequence": "ch1_scene_3",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -101,42 +101,42 @@
     {
       "id": "ch1_scene_3",
       "type": "choice",
-      "speaker": "Nhung khuynh huong moi",
-      "prompt": "Dong Du, Duy Tan va Dong Kinh Nghia Thuc dua nhung luong tu tuong moi vao xa hoi. Ban danh gia chung ra sao?",
+      "speaker": "Những khuynh hướng mới",
+      "prompt": "Đông Du, Duy Tân và Đông Kinh Nghĩa Thục đưa những luồng tư tưởng mới vào xã hội. Bạn đánh giá chúng ra sao?",
       "sceneCode": "C1.3",
       "options": [
         {
           "key": "A",
-          "label": "Dong Du, Duy Tan, Dong Kinh Nghia Thuc gop phan thuc tinh dan toc nhung van chua dua cach mang den thang loi.",
+          "label": "Đông Du, Duy Tân, Đông Kinh Nghĩa Thục góp phần thức tỉnh dân tộc nhưng vẫn chưa đưa cách mạng đến thắng lợi.",
           "quality": "best",
-          "feedback": "Chinh xac. Ho so ghi nhan ca dong gop thuc tinh dan toc lan gioi han cua cac khuynh huong dau the ky XX.",
+          "feedback": "Chính xác. Hồ sơ ghi nhận cả đóng góp thức tỉnh dân tộc lẫn giới hạn của các khuynh hướng đầu thế kỷ XX.",
           "consequence": "ch1_scene_4",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Cac khuynh huong moi giup xa hoi Viet Nam tiep xuc voi tu tuong tien bo hon.",
+          "label": "Các khuynh hướng mới giúp xã hội Việt Nam tiếp xúc với tư tưởng tiến bộ hơn.",
           "quality": "partial",
-          "feedback": "Dung nhung chua du. Can thay rang chung van that bai, tu do lam ro hon cuoc khung hoang ve duong loi cuu nuoc.",
+          "feedback": "Đúng nhưng chưa đủ. Cần thấy rằng chúng vẫn thất bại, từ đó làm rõ hơn cuộc khủng hoảng về đường lối cứu nước.",
           "consequence": "ch1_scene_4",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chi can dua vao su giup do cua nuoc ngoai la co the gianh doc lap.",
+          "label": "Chỉ cần dựa vào sự giúp đỡ của nước ngoài là có thể giành độc lập.",
           "quality": "wrong",
-          "feedback": "Ket luan nay lech voi tai lieu. Nguyen Tat Thanh khong chon cach dua dam vao ben ngoai, ma muon tu minh quan sat va kiem nghiem thuc te.",
+          "feedback": "Kết luận này lệch với tài liệu. Nguyễn Tất Thành không chọn cách dựa dẫm vào bên ngoài, mà muốn tự mình quan sát và kiểm nghiệm thực tế.",
           "consequence": "ch1_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Cac phong trao dau the ky XX hoan toan khong lien quan den qua trinh tim duong cuu nuoc.",
+          "label": "Các phong trào đầu thế kỷ XX hoàn toàn không liên quan đến quá trình tìm đường cứu nước.",
           "quality": "wrong",
-          "feedback": "Sai. Chinh nhung thanh cong gioi han va that bai cua cac phong trao nay tao nen bai hoc lich su quan trong.",
+          "feedback": "Sai. Chính những thành công giới hạn và thất bại của các phong trào này tạo nên bài học lịch sử quan trọng.",
           "consequence": "ch1_scene_4",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -146,42 +146,42 @@
     {
       "id": "ch1_scene_4",
       "type": "choice",
-      "speaker": "Cau hoi cua lich su",
-      "prompt": "Cac con duong cu lan luot khep lai. Tu su that bai cua cac phong trao yeu nuoc, ban rut ra ket luan nao?",
+      "speaker": "Câu hỏi của lịch sử",
+      "prompt": "Các con đường cũ lần lượt khép lại. Từ sự thất bại của các phong trào yêu nước, bạn rút ra kết luận nào?",
       "sceneCode": "C1.4",
       "options": [
         {
           "key": "A",
-          "label": "Su that bai cua cac phong trao cho thay cach mang Viet Nam khung hoang ve duong loi cuu nuoc va can phuong huong moi.",
+          "label": "Sự thất bại của các phong trào cho thấy cách mạng Việt Nam khủng hoảng về đường lối cứu nước và cần phương hướng mới.",
           "quality": "best",
-          "feedback": "Ho so duoc khoi phuc dung mach. Long yeu nuoc da co, nhung lich su can mot con duong cuu nuoc moi phu hop hon.",
+          "feedback": "Hồ sơ được khôi phục đúng mạch. Lòng yêu nước đã có, nhưng lịch sử cần một con đường cứu nước mới phù hợp hơn.",
           "consequence": "ch1_summary",
           "ideologyDelta": 10,
           "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Cac phong trao that bai nhung van de lai bai hoc va tinh than yeu nuoc.",
+          "label": "Các phong trào thất bại nhưng vẫn để lại bài học và tinh thần yêu nước.",
           "quality": "partial",
-          "feedback": "Dung mot phan, nhung chua cham vao ket luan trung tam: cuoc khung hoang ve duong loi cuu nuoc.",
+          "feedback": "Đúng một phần, nhưng chưa chạm vào kết luận trung tâm: cuộc khủng hoảng về đường lối cứu nước.",
           "consequence": "ch1_summary",
           "ideologyDelta": 4,
           "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Nhan dan Viet Nam khong co tinh than dau tranh nen cac phong trao that bai.",
+          "label": "Nhân dân Việt Nam không có tinh thần đấu tranh nên các phong trào thất bại.",
           "quality": "wrong",
-          "feedback": "Sai. Tai lieu khang dinh tinh than yeu nuoc va y chi dau tranh rat manh me; van de nam o duong loi va phuong thuc.",
+          "feedback": "Sai. Tài liệu khẳng định tinh thần yêu nước và ý chí đấu tranh rất mạnh mẽ; vấn đề nằm ở đường lối và phương thức.",
           "consequence": "ch1_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Chi can lap lai phuong phap cu thi cuoi cung se thang loi.",
+          "label": "Chỉ cần lặp lại phương pháp cũ thì cuối cùng sẽ thắng lợi.",
           "quality": "wrong",
-          "feedback": "Moi lien ket khong chinh xac. Thuc tien that bai cho thay khong the chi lap lai cac phuong phap cu.",
+          "feedback": "Mối liên kết không chính xác. Thực tiễn thất bại cho thấy không thể chỉ lặp lại các phương pháp cũ.",
           "consequence": "ch1_summary",
           "ideologyDelta": -8,
           "forcesDelta": 0
@@ -191,8 +191,8 @@
     {
       "id": "ch1_summary",
       "type": "line",
-      "speaker": "Tong ket chuong I",
-      "text": "Ban da khoi phuc duoc van de mo dau: long yeu nuoc da co, nhung duong loi dung van chua tim thay. Hanh trinh phai bat dau tu cau hoi ay.",
+      "speaker": "Tổng kết chương I",
+      "text": "Bạn đã khôi phục được vấn đề mở đầu: lòng yêu nước đã có, nhưng đường lối đúng vẫn chưa tìm thấy. Hành trình phải bắt đầu từ câu hỏi ấy.",
       "sceneCode": "C1.summary",
       "next": "next_chapter"
     }

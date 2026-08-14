@@ -183,7 +183,7 @@ function CounterfactualRoom({ alert, completed }: { alert: boolean; completed: b
 
       <BranchLinks alert={alert} completed={completed} />
       <SimulationConsole alert={alert} completed={completed} />
-      <BranchScreen position={[-2.9, 1.7, -2.65]} rotationY={0.28} label="Nhanh o lai" color="#38bdf8" alert={alert} active={!completed} />
+      <BranchScreen position={[-2.9, 1.7, -2.65]} rotationY={0.28} label="Nhánh ở lại" color="#38bdf8" alert={alert} active={!completed} />
       <BranchScreen position={[0, 2.15, -3.2]} rotationY={0} label="Chuyen di 1911" color="#facc15" alert={alert} active={completed} />
       <BranchScreen position={[2.9, 1.7, -2.65]} rotationY={-0.28} label="Con duong khac" color="#c084fc" alert={alert} active={!alert} />
 

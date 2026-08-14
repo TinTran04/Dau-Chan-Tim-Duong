@@ -145,10 +145,10 @@ function DockAndWater({ alert }: { alert: boolean }) {
 
 function JourneyMarkers({ completed }: { completed: boolean }) {
   const markers: Array<[number, string]> = [
-    [-3.2, 'Thuoc dia'],
+    [-3.2, 'Thuộc địa'],
     [-1.5, 'Can Vuong'],
     [0.2, 'Yen The'],
-    [1.9, 'Duong loi moi']
+    [1.9, 'Đường lối mới']
   ];
 
   return (

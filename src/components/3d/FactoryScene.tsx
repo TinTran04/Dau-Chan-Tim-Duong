@@ -75,9 +75,9 @@ function DocumentaryTimeline({ alert, completed }: { alert: boolean; completed: 
   const color = alert ? '#fb923c' : completed ? '#facc15' : '#38bdf8';
   const markers: Array<[number, string]> = [
     [-3.0, 'Bao chi'],
-    [-1.05, 'To chuc'],
-    [1.05, 'Duong cach menh'],
-    [3.0, 'Hoi nghi 1930']
+    [-1.05, 'Tổ chức'],
+    [1.05, 'Đường cách mệnh'],
+    [3.0, 'Hội nghị 1930']
   ];
 
   return (
