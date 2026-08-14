@@ -118,7 +118,7 @@ Khi người dùng gửi toàn bộ nội dung lịch sử chính thức, cần 
 
 ## 9. Deploy và tài liệu
 
-- Deploy lại GitHub Pages theo slug mới `dau-chan-tim-duong`.
+- Deploy lại GitHub Pages theo slug mới `Dau-Chan-Tim-Duong`.
 - Cập nhật link demo trong README sau khi deploy thật.
 - Viết hướng dẫn cho giáo viên/người tổ chức lớp học.
 - Viết hướng dẫn thêm/sửa nội dung chương trong các file JSON.

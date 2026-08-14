@@ -82,7 +82,7 @@ npm run dev
 Vite được cấu hình chạy ở cổng `5175`.
 
 ```text
-http://localhost:5175/dau-chan-tim-duong/
+http://localhost:5175/Dau-Chan-Tim-Duong/
 ```
 
 ## Build production
@@ -107,8 +107,8 @@ npm run lint
 
 Dự án đã cấu hình:
 
-- `homepage`: `https://Masterltb.github.io/dau-chan-tim-duong`
-- Vite `base`: `/dau-chan-tim-duong/`
+- `homepage`: `https://TinTran04.github.io/Dau-Chan-Tim-Duong`
+- Vite `base`: `/Dau-Chan-Tim-Duong/`
 - script deploy dùng `gh-pages`
 
 Chạy:
