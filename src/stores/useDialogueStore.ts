@@ -2,9 +2,10 @@ import { create } from 'zustand';
 import chapter1Data from '../data/chapter1.json';
 import chapter2Data from '../data/chapter2.json';
 import chapter3Data from '../data/chapter3.json';
-import chapter4Data from '../data/chapter4.json';
 import { useGameStore } from './useGameStore';
 import { submitScore } from '../services/leaderboard';
+
+export type ChoiceQuality = 'best' | 'partial' | 'wrong';
 
 export type DialogueOption = {
   key: string;
@@ -12,6 +13,8 @@ export type DialogueOption = {
   consequence: string;
   ideologyDelta: number;
   forcesDelta: number;
+  quality?: ChoiceQuality;
+  feedback?: string;
 };
 
 export type DialogueNode = {
@@ -20,6 +23,7 @@ export type DialogueNode = {
   speaker?: string;
   text?: string;
   prompt?: string;
+  sceneCode?: string;
   timerSeconds?: number;
   timeoutFallback?: string;
   options?: DialogueOption[];
@@ -29,128 +33,95 @@ export type DialogueNode = {
 interface DialogueState {
   currentNode: DialogueNode | null;
   nodesMap: Record<string, DialogueNode>;
-  
+
   loadChapter: (chapterNum: number) => void;
   advance: (nextNodeId?: string) => void;
   makeChoice: (option: DialogueOption) => void;
 }
 
+const chapters = {
+  1: { data: chapter1Data, startNode: 'ch1_start' },
+  2: { data: chapter2Data, startNode: 'ch2_start' },
+  3: { data: chapter3Data, startNode: 'ch3_start' },
+} as const;
+
+function getFinalScore(ideology: number, forces: number) {
+  return Math.max(0, ideology * 100) + forces;
+}
+
+function submitIfHighScore(score: number) {
+  const state = useGameStore.getState();
+  const localDataStr = localStorage.getItem('dau_chan_tim_duong_player');
+  let isNewHighScore = true;
+
+  if (localDataStr) {
+    const localData = JSON.parse(localDataStr);
+    if (localData.name === state.playerName && score <= localData.bestScore) {
+      isNewHighScore = false;
+    }
+  }
+
+  if (isNewHighScore) {
+    submitScore(state.playerName, score);
+  }
+}
+
 export const useDialogueStore = create<DialogueState>((set, get) => ({
   currentNode: null,
   nodesMap: {},
-  
+
   loadChapter: (chapterNum: number) => {
-    let data;
-    let startNode = 'ch1_start';
-    if (chapterNum === 1) { data = chapter1Data; startNode = 'ch1_start'; }
-    else if (chapterNum === 2) { data = chapter2Data; startNode = 'ch2_start'; }
-    else if (chapterNum === 3) { data = chapter3Data; startNode = 'ch3_start'; }
-    else if (chapterNum === 4) { data = chapter4Data; startNode = 'ch4_start'; }
-    
-    if (!data) return;
+    const chapterConfig = chapters[chapterNum as 1 | 2 | 3];
+    if (!chapterConfig) return;
 
     const map: Record<string, DialogueNode> = {};
-    data.nodes.forEach((n: any) => {
-      map[n.id] = n;
+    chapterConfig.data.nodes.forEach((node: DialogueNode) => {
+      map[node.id] = node;
     });
-    set({ nodesMap: map, currentNode: map[startNode] });
-    useGameStore.getState().setChapter(chapterNum as 1|2|3|4);
+
+    set({ nodesMap: map, currentNode: map[chapterConfig.startNode] });
+    useGameStore.getState().setChapter(chapterNum as 1 | 2 | 3);
   },
-  
+
   advance: (nextNodeId?: string) => {
     const { currentNode, nodesMap, loadChapter } = get();
     if (!currentNode) return;
-    
-    let nextId = nextNodeId || currentNode.next;
-    
+
+    const nextId = nextNodeId || currentNode.next;
+
     if (nextId === 'ending') {
       const state = useGameStore.getState();
-      // Điểm hồ sơ chưa đạt: trọng số nhận thức thấp (x10) cộng với tư liệu còn lại.
       const failScore = Math.max(0, state.ideology * 10) + state.forces;
-      
-      const localKey = 'dau_chan_tim_duong_player';
-      const localDataStr = localStorage.getItem(localKey);
-      let isNewHighScore = true;
-      if (localDataStr) {
-         const localData = JSON.parse(localDataStr);
-         if (localData.name === state.playerName && failScore <= localData.bestScore) {
-             isNewHighScore = false;
-         }
-      }
-      
-      if (isNewHighScore) {
-         submitScore(state.playerName, failScore);
-      }
-      state.saveProgress(failScore, 'game_over');
 
+      submitIfHighScore(failScore);
+      state.saveProgress(failScore, 'review_needed');
       state.setEndGameStatus({
         type: 'lose',
-        title: 'HỒ SƠ CẦN ÔN TẬP',
-        message: currentNode.text || "Hồ sơ lập luận chưa đủ chứng cứ. Hãy quay lại, đọc kỹ bối cảnh và thử phân tích lại."
+        title: 'HO SO CAN ON TAP',
+        message: currentNode.text || 'Ho so da sai lech qua nhieu. Hay quay lai doi chieu tu lieu va khoi phuc mach lich su.'
       });
       set({ currentNode: null });
       return;
     }
-    
+
     if (nextId === 'next_chapter') {
       const currentCh = useGameStore.getState().chapter;
-      if (currentCh < 4) {
-         loadChapter(currentCh + 1);
+      if (currentCh < 3) {
+        loadChapter((currentCh + 1) as 1 | 2 | 3);
       }
       return;
     }
 
     if (nextId === 'true_ending') {
       const state = useGameStore.getState();
-      const finalScore = state.ideology * 100 + state.forces;
-      
-      const localKey = 'dau_chan_tim_duong_player';
-      const localDataStr = localStorage.getItem(localKey);
-      let isNewHighScore = true;
-      if (localDataStr) {
-         const localData = JSON.parse(localDataStr);
-         if (localData.name === state.playerName && finalScore <= localData.bestScore) {
-             isNewHighScore = false;
-         }
-      }
-      
-      if (isNewHighScore) {
-         submitScore(state.playerName, finalScore);
-      }
-      state.saveProgress(finalScore, 'true_ending');
-      
-      state.setEndGameStatus({
-        type: 'win',
-        title: 'HỒ SƠ HOÀN CHỈNH',
-        message: currentNode.text || "Bạn đã hoàn thiện hồ sơ học tập với bối cảnh, chứng cứ và quan hệ nhân quả rõ ràng."
-      });
-      set({ currentNode: null });
-      return;
-    }
+      const finalScore = getFinalScore(state.ideology, state.forces);
 
-    if (nextId === 'normal_ending') {
-      const state = useGameStore.getState();
-      const finalScore = state.ideology * 50 + state.forces;
-      
-      const localKey = 'dau_chan_tim_duong_player';
-      const localDataStr = localStorage.getItem(localKey);
-      let isNewHighScore = true;
-      if (localDataStr) {
-         const localData = JSON.parse(localDataStr);
-         if (localData.name === state.playerName && finalScore <= localData.bestScore) {
-             isNewHighScore = false;
-         }
-      }
-      
-      if (isNewHighScore) {
-         submitScore(state.playerName, finalScore);
-      }
-      state.saveProgress(finalScore, 'normal_ending');
-      
+      submitIfHighScore(finalScore);
+      state.saveProgress(finalScore, 'complete_profile');
       state.setEndGameStatus({
         type: 'win',
-        title: 'HỒ SƠ ĐẠT YÊU CẦU',
-        message: currentNode.text || "Bạn đã nắm được hướng phân tích chính, nhưng vẫn còn tư liệu hoặc nhánh giải thích có thể bổ sung."
+        title: 'HO SO HOAN THIEN',
+        message: currentNode.text || 'Nhung dau chan roi rac da duoc noi thanh mot hanh trinh co phuong huong.'
       });
       set({ currentNode: null });
       return;
@@ -162,44 +133,64 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       set({ currentNode: null });
     }
   },
-  
+
   makeChoice: (option: DialogueOption) => {
-    const { advance, currentNode } = get();
-    // Update game stats
+    const { currentNode } = get();
+    if (!currentNode) return;
+
     const gameStore = useGameStore.getState();
     const newIdeology = Math.max(0, Math.min(100, gameStore.ideology + option.ideologyDelta));
     const newForces = Math.max(0, gameStore.forces + option.forcesDelta);
-    
-    // Update Session Stats
-    if (currentNode && currentNode.type === 'choice') {
-       gameStore.updateSessionStat((stats) => {
-           const newStats = { ...stats, totalQuestions: stats.totalQuestions + 1 };
-           if (option.ideologyDelta > 0) {
-               newStats.correctAnswers += 1;
-               if (currentNode.id.includes('bonus')) {
-                   newStats.bonusUnlocked += 1;
-               }
-               newStats.correctDetails = [
-                 ...newStats.correctDetails,
-                 {
-                    chapter: gameStore.chapter,
-                    question: currentNode.prompt || 'Câu hỏi',
-                    answer: option.label
-                 }
-               ];
-           } else {
-               newStats.wrongAnswers += 1;
-           }
-           return newStats;
-       });
+
+    if (currentNode.type === 'choice') {
+      gameStore.updateSessionStat((stats) => {
+        const isBest = option.quality === 'best';
+        const isWrong = option.quality === 'wrong';
+        return {
+          ...stats,
+          totalQuestions: stats.totalQuestions + 1,
+          correctAnswers: stats.correctAnswers + (isBest ? 1 : 0),
+          wrongAnswers: stats.wrongAnswers + (isWrong ? 1 : 0),
+          bonusUnlocked: stats.bonusUnlocked + (option.quality === 'partial' ? 1 : 0),
+          correctDetails: isBest
+            ? [
+                ...stats.correctDetails,
+                {
+                  chapter: gameStore.chapter,
+                  question: currentNode.prompt || 'Ho so',
+                  answer: option.label,
+                }
+              ]
+            : stats.correctDetails,
+        };
+      });
     }
-    
+
     useGameStore.setState({ ideology: newIdeology, forces: newForces });
-    
+
     if (newIdeology <= 0) {
-       advance('ending'); // Nhận thức lịch sử về 0 -> cần ôn tập lại.
-    } else {
-       advance(option.consequence);
+      gameStore.setEndGameStatus({
+        type: 'lose',
+        title: 'HO SO CAN ON TAP',
+        message: 'Ho so da sai lech qua nhieu. Hay quay lai doi chieu tu lieu va khoi phuc mach lich su.'
+      });
+      set({ currentNode: null });
+      return;
     }
+
+    set({
+      currentNode: {
+        id: `${currentNode.id}_${option.key}_feedback`,
+        type: 'line',
+        speaker: option.quality === 'best'
+          ? 'Ho so duoc khoi phuc'
+          : option.quality === 'partial'
+            ? 'Nhan dinh chua du'
+            : 'Moi lien ket sai lech',
+        text: option.feedback || 'Lua chon da duoc ghi vao ho so.',
+        next: option.consequence,
+        sceneCode: currentNode.sceneCode,
+      }
+    });
   }
 }));

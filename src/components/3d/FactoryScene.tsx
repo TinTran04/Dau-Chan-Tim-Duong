@@ -74,10 +74,10 @@ function ArchivePerson({
 function DocumentaryTimeline({ alert, completed }: { alert: boolean; completed: boolean }) {
   const color = alert ? '#fb923c' : completed ? '#facc15' : '#38bdf8';
   const markers: Array<[number, string]> = [
-    [-3.0, 'Yeu nuoc'],
-    [-1.05, 'Thuc tien'],
-    [1.05, 'Ly luan'],
-    [3.0, 'Buoc ngoat']
+    [-3.0, 'Bao chi'],
+    [-1.05, 'To chuc'],
+    [1.05, 'Duong cach menh'],
+    [3.0, 'Hoi nghi 1930']
   ];
 
   return (
@@ -190,14 +190,11 @@ function ArchiveRoom({ alert, completed }: { alert: boolean; completed: boolean 
 export function FactoryScene() {
   const currentNode = useDialogueStore((state) => state.currentNode);
   const nodeId = currentNode?.id || '';
-  const alert = nodeId === 'ch3_resB' ||
-                nodeId === 'ch3_resCluddite' ||
-                nodeId === 'ch3_resDtrap' ||
-                nodeId === 'ch3_defense_puzzle' ||
-                nodeId === 'ch3_resC' ||
+  const alert = nodeId.includes('_C_feedback') ||
+                nodeId.includes('_D_feedback') ||
                 nodeId === 'ending';
-  const completed = nodeId.startsWith('ch3_resA') ||
-                    nodeId === 'ch3_defense_win';
+  const completed = nodeId.includes('_A_feedback') ||
+                    nodeId.includes('summary');
 
   return <ArchiveRoom alert={alert} completed={completed} />;
 }

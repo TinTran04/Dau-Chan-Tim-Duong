@@ -3,182 +3,197 @@
     {
       "id": "ch1_start",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Bối cảnh mở đầu là một bến cảng đầu thế kỷ XX. Đất nước đang đứng trước nhiều ngã rẽ, còn một người thanh niên trẻ bắt đầu đặt câu hỏi: phải đi đâu để tìm con đường cứu nước thật sự?",
-      "next": "ch1_context1"
+      "speaker": "Nguoi dan chuyen",
+      "text": "Nhung trang ho so dau tien mo ra. Mot dat nuoc mat chu quyen, mot xa hoi bi dat duoi ach cai tri, va mot cau hoi bat dau hien len.",
+      "sceneCode": "C1.0",
+      "next": "ch1_scene_1"
     },
     {
-      "id": "ch1_context1",
-      "type": "line",
-      "speaker": "Người Thanh Niên",
-      "text": "Những con đường cũ đã được nhiều bậc tiền bối thử qua, nhưng kết quả vẫn chưa mở ra lối thoát. Nếu muốn hiểu sức mạnh của thế giới hiện đại, tôi phải đi ra ngoài, quan sát tận mắt và tự tìm lời giải.",
-      "next": "ch1_context2"
-    },
-    {
-      "id": "ch1_context2",
-      "type": "line",
-      "speaker": "Hồ Sơ Tư Liệu",
-      "text": "Trên bản đồ số, các mốc hành trình được ghim lại: quê hương, trường học, bến cảng, con tàu, các đô thị và phong trào xã hội ở nhiều nước. Mỗi điểm đến là một nguồn chứng cứ để phân tích.",
-      "next": "ch1_choice1"
-    },
-    {
-      "id": "ch1_choice1",
+      "id": "ch1_scene_1",
       "type": "choice",
-      "prompt": "Vì sao người thanh niên lựa chọn ra đi tìm đường cứu nước thay vì chỉ lặp lại các mô hình đã có trong nước?",
-      "timerSeconds": 20,
-      "timeoutFallback": "C",
+      "speaker": "Ho so thuoc dia",
+      "prompt": "Tren ban do cuoi the ky XIX - dau the ky XX, ban can xac dinh mau thuan lon nhat cua xa hoi Viet Nam luc nay.",
+      "sceneCode": "C1.1",
       "options": [
         {
           "key": "A",
-          "label": "Vì cần khảo sát thực tế thế giới, tìm hiểu nguồn gốc sức mạnh của các nước phát triển và từ đó chọn con đường phù hợp với dân tộc.",
-          "consequence": "ch1_resA",
-          "ideologyDelta": 25,
-          "forcesDelta": 500
+          "label": "Mau thuan lon nhat la giua dan toc Viet Nam va thuc dan Phap.",
+          "quality": "best",
+          "feedback": "Chinh xac. Ho so cho thay doc lap, chu quyen bi xam pham; mau thuan dan toc voi chu nghia thuc dan tro thanh yeu cau cap thiet nhat.",
+          "consequence": "ch1_scene_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Vì chỉ cần sao chép nguyên mẫu một nước mạnh là có thể giải quyết mọi vấn đề của Việt Nam.",
-          "consequence": "ch1_resBtrap",
-          "ideologyDelta": -15,
-          "forcesDelta": 0
+          "label": "Mau thuan trong xa hoi thuoc dia co nhieu mat, nhung noi bat nhat van la van de dan toc.",
+          "quality": "partial",
+          "feedback": "Nhan dinh co co so, nhung can noi ro hon: trong boi canh mat nuoc, mau thuan trung tam la giua dan toc Viet Nam va thuc dan Phap.",
+          "consequence": "ch1_scene_2",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Vì đi xa là cách tránh né thực tại trong nước, còn câu hỏi cứu nước có thể tạm gác lại.",
-          "consequence": "ch1_resB",
-          "ideologyDelta": -30,
+          "label": "Mau thuan chu yeu la giua cac phong trao yeu nuoc voi nhau.",
+          "quality": "wrong",
+          "feedback": "Moi lien ket sai lech. Cac phong trao co khuynh huong khac nhau, nhung do khong phai mau thuan lon nhat cua xa hoi thuoc dia.",
+          "consequence": "ch1_scene_2",
+          "ideologyDelta": -8,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Vì chỉ cần hành động thật nhanh, không cần quan sát hay phân tích điều kiện lịch sử.",
-          "consequence": "ch1_resDtrap",
-          "ideologyDelta": -20,
-          "forcesDelta": -200
+          "label": "Mau thuan chi nam trong noi bo trieu dinh phong kien.",
+          "quality": "wrong",
+          "feedback": "Ho so khong ung ho ket luan nay. Van de lich su bao trum la dat nuoc mat doc lap va nhan dan bi ap buc duoi che do thuoc dia.",
+          "consequence": "ch1_scene_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch1_resBtrap",
-      "type": "line",
-      "speaker": "Người Phản Biện",
-      "text": "Sao chép máy móc không phải là tìm đường. Một mô hình chỉ có ý nghĩa khi được kiểm chứng bằng hoàn cảnh lịch sử cụ thể của dân tộc mình.",
-      "next": "ch1_resB"
-    },
-    {
-      "id": "ch1_resDtrap",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Hành động thiếu phân tích làm hồ sơ bị rối. Bạn cần quay lại bàn tư liệu để xác định đâu là chứng cứ, đâu là cảm tính.",
-      "next": "ch1_prison_puzzle"
-    },
-    {
-      "id": "ch1_resA",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Chính xác. Chương này nhấn mạnh thao tác tái dựng bối cảnh: từ câu hỏi cứu nước đến lựa chọn đi ra thế giới để tìm hiểu thực tiễn.",
-      "next": "ch1_sidequest1"
-    },
-    {
-      "id": "ch1_resB",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Lập luận chưa đủ vững. Bản đồ hành trình chuyển sang chế độ kiểm chứng để bạn bổ sung căn cứ.",
-      "next": "ch1_prison_puzzle"
-    },
-    {
-      "id": "ch1_prison_puzzle",
+      "id": "ch1_scene_2",
       "type": "choice",
-      "prompt": "TRẠM KIỂM CHỨNG: Khi tái dựng hành trình lịch sử, thao tác nào quan trọng nhất?",
-      "timerSeconds": 12,
-      "timeoutFallback": "A",
+      "speaker": "Nhung ngon lua cu",
+      "prompt": "Can Vuong va Yen The hien len nhu nhung ngon lua ben bi. Ban se ghi chu dac diem cua cac phong trao nay nhu the nao?",
+      "sceneCode": "C1.2",
       "options": [
         {
           "key": "A",
-          "label": "Chọn chi tiết hấp dẫn nhất rồi kể thành câu chuyện, không cần đối chiếu nguồn.",
-          "consequence": "ch1_resC",
-          "ideologyDelta": -100,
-          "forcesDelta": 0
-        },
-        {
-          "key": "B",
-          "label": "Xác định mốc thời gian, bối cảnh, nhân vật, nguồn tư liệu và quan hệ nhân quả giữa các sự kiện.",
-          "consequence": "ch1_prison_escape",
+          "label": "Can Vuong va Yen The the hien long yeu nuoc manh me nhung con gioi han boi khuynh huong phong kien.",
+          "quality": "best",
+          "feedback": "Ho so duoc phan loai dung. Cac phong trao nay rat gia tri ve tinh than yeu nuoc, nhung chua dap ung yeu cau moi cua lich su.",
+          "consequence": "ch1_scene_3",
           "ideologyDelta": 10,
-          "forcesDelta": 100
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Cac phong trao nay co tinh than dau tranh cao, nhung chua du de mo ra duong loi moi.",
+          "quality": "partial",
+          "feedback": "Dung mot phan. Can bo sung khuynh huong lich su cua chung: chu yeu van gan voi gioi han phong kien.",
+          "consequence": "ch1_scene_3",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chỉ cần nhớ một ngày tháng tiêu biểu là đủ hiểu toàn bộ tiến trình.",
-          "consequence": "ch1_resC",
-          "ideologyDelta": -100,
+          "label": "Cac phong trao nay khong co y nghia vi cuoi cung that bai.",
+          "quality": "wrong",
+          "feedback": "Nhan dinh nay phu nhan sai vai tro lich su. That bai khong xoa bo tinh than yeu nuoc va y chi dau tranh cua nhan dan.",
+          "consequence": "ch1_scene_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Cac phong trao nay da xac dinh duoc con duong cach mang hien dai.",
+          "quality": "wrong",
+          "feedback": "Sai trong tam. Tai lieu cho thay cac phong trao cuoi cung van chua tim duoc duong loi phu hop voi thoi dai moi.",
+          "consequence": "ch1_scene_3",
+          "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch1_prison_escape",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Bạn đã mở khóa lớp tư liệu bối cảnh. Hành trình không còn là một chuyến đi đơn lẻ, mà là quá trình tìm kiếm có phương pháp.",
-      "next": "ch1_sidequest1"
-    },
-    {
-      "id": "ch1_resC",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "GAME OVER: Hồ sơ thiếu chứng cứ và quan hệ nhân quả. Bạn cần làm lại từ bước tái dựng bối cảnh.",
-      "next": "ending"
-    },
-    {
-      "id": "ch1_sidequest1",
+      "id": "ch1_scene_3",
       "type": "choice",
-      "prompt": "NHIỆM VỤ PHỤ: Nhóm của bạn cần chọn cách trình bày chương này trên Interactive Timeline / Digital Map. Cách nào phù hợp nhất?",
-      "timerSeconds": 18,
-      "timeoutFallback": "C",
+      "speaker": "Nhung khuynh huong moi",
+      "prompt": "Dong Du, Duy Tan va Dong Kinh Nghia Thuc dua nhung luong tu tuong moi vao xa hoi. Ban danh gia chung ra sao?",
+      "sceneCode": "C1.3",
       "options": [
         {
           "key": "A",
-          "label": "Gắn mốc hành trình với câu hỏi lịch sử, nguồn tư liệu và giải thích vì sao mỗi mốc tạo ra bước chuyển nhận thức.",
-          "consequence": "ch1_sq1_win",
-          "ideologyDelta": 15,
-          "forcesDelta": 300
+          "label": "Dong Du, Duy Tan, Dong Kinh Nghia Thuc gop phan thuc tinh dan toc nhung van chua dua cach mang den thang loi.",
+          "quality": "best",
+          "feedback": "Chinh xac. Ho so ghi nhan ca dong gop thuc tinh dan toc lan gioi han cua cac khuynh huong dau the ky XX.",
+          "consequence": "ch1_scene_4",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Chỉ xếp các địa danh theo thứ tự thời gian, không cần phần phân tích.",
-          "consequence": "ch1_sq1_mid",
-          "ideologyDelta": 5,
-          "forcesDelta": 100
+          "label": "Cac khuynh huong moi giup xa hoi Viet Nam tiep xuc voi tu tuong tien bo hon.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua du. Can thay rang chung van that bai, tu do lam ro hon cuoc khung hoang ve duong loi cuu nuoc.",
+          "consequence": "ch1_scene_4",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Tập trung vào hiệu ứng bản đồ, bỏ qua chứng cứ lịch sử vì người xem sẽ tự hiểu.",
-          "consequence": "ch1_sq1_lose",
-          "ideologyDelta": -15,
-          "forcesDelta": -100
+          "label": "Chi can dua vao su giup do cua nuoc ngoai la co the gianh doc lap.",
+          "quality": "wrong",
+          "feedback": "Ket luan nay lech voi tai lieu. Nguyen Tat Thanh khong chon cach dua dam vao ben ngoai, ma muon tu minh quan sat va kiem nghiem thuc te.",
+          "consequence": "ch1_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Cac phong trao dau the ky XX hoan toan khong lien quan den qua trinh tim duong cuu nuoc.",
+          "quality": "wrong",
+          "feedback": "Sai. Chinh nhung thanh cong gioi han va that bai cua cac phong trao nay tao nen bai hoc lich su quan trong.",
+          "consequence": "ch1_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch1_sq1_win",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Tốt. Timeline của bạn có bối cảnh, lựa chọn và bước ngoặt. Chuyển sang bản đồ tri thức Đông - Tây.",
-      "next": "next_chapter"
+      "id": "ch1_scene_4",
+      "type": "choice",
+      "speaker": "Cau hoi cua lich su",
+      "prompt": "Cac con duong cu lan luot khep lai. Tu su that bai cua cac phong trao yeu nuoc, ban rut ra ket luan nao?",
+      "sceneCode": "C1.4",
+      "options": [
+        {
+          "key": "A",
+          "label": "Su that bai cua cac phong trao cho thay cach mang Viet Nam khung hoang ve duong loi cuu nuoc va can phuong huong moi.",
+          "quality": "best",
+          "feedback": "Ho so duoc khoi phuc dung mach. Long yeu nuoc da co, nhung lich su can mot con duong cuu nuoc moi phu hop hon.",
+          "consequence": "ch1_summary",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Cac phong trao that bai nhung van de lai bai hoc va tinh than yeu nuoc.",
+          "quality": "partial",
+          "feedback": "Dung mot phan, nhung chua cham vao ket luan trung tam: cuoc khung hoang ve duong loi cuu nuoc.",
+          "consequence": "ch1_summary",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Nhan dan Viet Nam khong co tinh than dau tranh nen cac phong trao that bai.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu khang dinh tinh than yeu nuoc va y chi dau tranh rat manh me; van de nam o duong loi va phuong thuc.",
+          "consequence": "ch1_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Chi can lap lai phuong phap cu thi cuoi cung se thang loi.",
+          "quality": "wrong",
+          "feedback": "Moi lien ket khong chinh xac. Thuc tien that bai cho thay khong the chi lap lai cac phuong phap cu.",
+          "consequence": "ch1_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
     },
     {
-      "id": "ch1_sq1_mid",
+      "id": "ch1_summary",
       "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Bạn đã có trật tự thời gian, nhưng phần giải thích còn mỏng. Chuyển sang chương tiếp theo để bổ sung phương pháp phân tích.",
-      "next": "next_chapter"
-    },
-    {
-      "id": "ch1_sq1_lose",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Hiệu ứng đẹp nhưng thiếu nội dung. Hồ sơ bị trừ điểm tư liệu trước khi sang chương tiếp theo.",
+      "speaker": "Tong ket chuong I",
+      "text": "Ban da khoi phuc duoc van de mo dau: long yeu nuoc da co, nhung duong loi dung van chua tim thay. Hanh trinh phai bat dau tu cau hoi ay.",
+      "sceneCode": "C1.summary",
       "next": "next_chapter"
     }
   ]

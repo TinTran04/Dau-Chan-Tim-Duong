@@ -16,25 +16,25 @@ type Cluster = {
 
 const CLUSTERS: Cluster[] = [
   {
-    label: 'Truyen thong dan toc',
+    label: 'Ben Nha Rong',
     position: [-3.4, 1.4, -1.5],
     color: '#facc15',
     orbit: [[-3.9, 1.9, -1.3], [-2.9, 1.95, -1.8], [-3.3, 0.9, -1.05]]
   },
   {
-    label: 'Phuong Dong',
+    label: 'Phap - My - Anh',
     position: [-1.45, 2.45, -2.7],
     color: '#34d399',
     orbit: [[-2.0, 2.9, -2.45], [-0.95, 2.85, -2.95], [-1.45, 1.95, -2.25]]
   },
   {
-    label: 'Phuong Tay',
+    label: 'Ban va thu',
     position: [1.45, 2.45, -2.7],
     color: '#38bdf8',
     orbit: [[0.95, 2.85, -2.95], [2.0, 2.9, -2.45], [1.45, 1.95, -2.25]]
   },
   {
-    label: 'Thuc tien the gioi',
+    label: 'Luan cuong',
     position: [3.4, 1.4, -1.5],
     color: '#fb7185',
     orbit: [[2.9, 1.95, -1.8], [3.9, 1.9, -1.3], [3.3, 0.9, -1.05]]
@@ -154,7 +154,7 @@ function CentralSynthesisCore({ alert, completed }: { alert: boolean; completed:
         anchorX="center"
         anchorY="middle"
       >
-        Chuyen hoa sang tao
+        Hanh trinh nhan thuc
       </Text>
     </group>
   );
@@ -337,17 +337,14 @@ export function ValleyScene() {
   const currentNode = useDialogueStore((state) => state.currentNode);
   const nodeId = currentNode?.id || '';
 
-  const alert = nodeId === 'ch2_resB' ||
-                nodeId === 'ch2_ambush_puzzle' ||
-                nodeId === 'ch2_resDtrap' ||
-                nodeId === 'ch2_resC' ||
+  const alert = nodeId.includes('_C_feedback') ||
+                nodeId.includes('_D_feedback') ||
                 nodeId === 'ending';
 
-  const completed = nodeId.startsWith('ch2_resA') ||
-                    nodeId === 'ch2_ambush_win';
+  const completed = nodeId.includes('_A_feedback') ||
+                    nodeId.includes('summary');
 
-  const choiceMode = nodeId === 'ch2_choice1' ||
-                     nodeId === 'ch2_resA_bonus';
+  const choiceMode = nodeId.includes('scene');
 
   return <KnowledgeRoom alert={alert} completed={completed} choiceMode={choiceMode} />;
 }

@@ -31,7 +31,7 @@ export interface LocalPlayerData {
 
 interface GameState {
   isStarted: boolean;
-  chapter: 1 | 2 | 3 | 4;
+  chapter: 1 | 2 | 3;
   ideology: number;
   forces: number;
   playerName: string;
@@ -39,7 +39,7 @@ interface GameState {
   sessionStats: SessionStats;
   
   startGame: (name: string) => void;
-  setChapter: (ch: 1 | 2 | 3 | 4) => void;
+  setChapter: (ch: 1 | 2 | 3) => void;
   setEndGameStatus: (status: EndGameStatus | null) => void;
   setPlayerName: (name: string) => void;
   updateSessionStat: (updater: (stats: SessionStats) => SessionStats) => void;

@@ -3,162 +3,243 @@
     {
       "id": "ch3_start",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Chương 3 mở ra như một phòng dựng phim tài liệu. Trên bàn là báo chí, bản thảo, phong trào công nhân, phong trào giải phóng dân tộc và những tranh luận lớn của thời đại.",
-      "next": "ch3_context1"
+      "speaker": "Nguoi dan chuyen",
+      "text": "Tim thay con duong khong phai la ket thuc. Tu day, nhan thuc phai tro thanh hanh dong, tu tuong phai duoc truyen ba, va to chuc phai duoc xay dung.",
+      "sceneCode": "C3.0",
+      "next": "ch3_scene_1"
     },
     {
-      "id": "ch3_context1",
-      "type": "line",
-      "speaker": "Biên Tập Viên Tư Liệu",
-      "text": "Câu hỏi không chỉ là người thanh niên yêu nước như thế nào, mà là vì sao chủ nghĩa yêu nước ấy chuyển hóa thành một hệ tư tưởng có cơ sở lý luận mới.",
-      "next": "ch3_context2"
-    },
-    {
-      "id": "ch3_context2",
-      "type": "line",
-      "speaker": "Người Thanh Niên",
-      "text": "Nếu chỉ thương dân và yêu nước thì chưa đủ. Cần một lời giải thích vì sao các dân tộc bị áp bức, vì sao các con đường cũ thất bại, và lực lượng nào có thể mở ra con đường giải phóng.",
-      "next": "ch3_choice1"
-    },
-    {
-      "id": "ch3_choice1",
+      "id": "ch3_scene_1",
       "type": "choice",
-      "prompt": "Sự chuyển biến từ chủ nghĩa yêu nước đến chủ nghĩa Mác-Lênin diễn ra như thế nào và đâu là bước ngoặt?",
-      "timerSeconds": 20,
-      "timeoutFallback": "D",
+      "speaker": "Sau buoc ngoat 1920",
+      "prompt": "Sau khi xac dinh con duong cach mang vo san, nhiem vu nao can duoc dat vao trung tam ho so?",
+      "sceneCode": "C3.1",
       "options": [
         {
           "key": "A",
-          "label": "Từ trải nghiệm yêu nước, quan sát thực tiễn thế giới và tiếp cận lý luận giải phóng dân tộc gắn với chủ nghĩa Mác-Lênin.",
-          "consequence": "ch3_resA",
-          "ideologyDelta": 25,
-          "forcesDelta": 2000
+          "label": "Sau nam 1920, nhiem vu la chuan bi ve tu tuong, chinh tri va to chuc cho mot chinh dang cach mang.",
+          "quality": "best",
+          "feedback": "Chinh xac. Tim thay con duong phai di cung qua trinh chuan bi de bien nhan thuc thanh luc luong cach mang.",
+          "consequence": "ch3_scene_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Chỉ cần lòng yêu nước tự nhiên phát triển dần, không cần thêm bước ngoặt lý luận hay bối cảnh quốc tế.",
-          "consequence": "ch3_resB",
-          "ideologyDelta": -30,
-          "forcesDelta": -500
+          "label": "Sau khi tim thay con duong dung, can tiep tuc truyen ba va to chuc luc luong.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua du. Can neu ro ba mat chuan bi: tu tuong, chinh tri va to chuc.",
+          "consequence": "ch3_scene_2",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chỉ do ảnh hưởng ngẫu nhiên của một tài liệu, không liên quan đến thực tiễn trước đó.",
-          "consequence": "ch3_resCluddite",
-          "ideologyDelta": -25,
-          "forcesDelta": -300
+          "label": "Chi can tim thay ly luan dung la cach mang tu dong thang loi.",
+          "quality": "wrong",
+          "feedback": "Sai. Ly luan dung can duoc truyen ba, to chuc va gan voi phong trao thuc tien.",
+          "consequence": "ch3_scene_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Do thay đổi sở thích cá nhân, nên không cần phân tích quan hệ giữa tư tưởng và thời đại.",
-          "consequence": "ch3_resDtrap",
-          "ideologyDelta": -40,
-          "forcesDelta": -200
+          "label": "Cac hoat dong sau nam 1920 khong con huong ve Viet Nam.",
+          "quality": "wrong",
+          "feedback": "Sai. Cac hoat dong sau nam 1920 deu huong toi viec chuan bi cho cach mang Viet Nam.",
+          "consequence": "ch3_scene_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch3_resCluddite",
-      "type": "line",
-      "speaker": "Người Phản Biện",
-      "text": "Nếu xem bước ngoặt là ngẫu nhiên, bạn làm mất chuỗi nguyên nhân: trải nghiệm thực tiễn, tìm kiếm con đường mới, tiếp cận lý luận và kiểm nghiệm bằng mục tiêu giải phóng dân tộc.",
-      "next": "ch3_defense_puzzle"
-    },
-    {
-      "id": "ch3_resDtrap",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Hồ sơ tư liệu bị cảnh báo: đây không phải câu chuyện sở thích cá nhân, mà là tiến trình tư tưởng trong một bối cảnh lịch sử cụ thể.",
-      "next": "ch3_resB"
-    },
-    {
-      "id": "ch3_resA",
+      "id": "ch3_scene_2",
       "type": "choice",
-      "prompt": "BONUS: Documentary / Timeline nên làm nổi bật loại quan hệ nào?",
-      "timerSeconds": 15,
-      "timeoutFallback": "A",
+      "speaker": "Bao chi va tac pham",
+      "prompt": "Le Paria, Ban an che do thuc dan Phap va bao Thanh Nien duoc dat len ban. Vai tro cua chung la gi?",
+      "sceneCode": "C3.2",
       "options": [
         {
           "key": "A",
-          "label": "Chỉ cần dựng nhiều hình ảnh tư liệu liên tiếp để tạo cảm giác phong phú.",
-          "consequence": "ch3_resA_partial",
-          "ideologyDelta": -5,
-          "forcesDelta": 0
+          "label": "Bao chi va tac pham giup vach tran chu nghia thuc dan, truyen ba tu tuong cach mang va thuc tinh phong trao.",
+          "quality": "best",
+          "feedback": "Ho so duoc khoi phuc. Chu viet, bao chi va tac pham tro thanh cong cu dau tranh tu tuong - chinh tri.",
+          "consequence": "ch3_scene_3",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Mốc thời gian, bằng chứng và giải thích quan hệ nhân quả giữa yêu nước, thực tiễn quốc tế và tiếp cận Mác-Lênin.",
-          "consequence": "ch3_resA_full",
-          "ideologyDelta": 15,
-          "forcesDelta": 500
-        }
-      ]
-    },
-    {
-      "id": "ch3_resA_full",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Timeline của bạn có mốc, có chứng cứ và có bước ngoặt. Đây là một hồ sơ tư liệu có khả năng thuyết phục.",
-      "next": "next_chapter"
-    },
-    {
-      "id": "ch3_resA_partial",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Tư liệu nhiều nhưng chưa đủ. Bạn cần thêm lớp giải thích để người xem hiểu sự chuyển biến tư tưởng.",
-      "next": "next_chapter"
-    },
-    {
-      "id": "ch3_resB",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Lập luận rơi vào giản lược. Chủ nghĩa yêu nước là điểm xuất phát quan trọng, nhưng cần giải thích vì sao nó gặp và chuyển hóa qua lý luận mới.",
-      "next": "ch3_defense_puzzle"
-    },
-    {
-      "id": "ch3_defense_puzzle",
-      "type": "choice",
-      "prompt": "KIỂM TRA NHÂN QUẢ: Đâu là cách trình bày đúng nhất về bước chuyển tư tưởng?",
-      "timerSeconds": 8,
-      "timeoutFallback": "A",
-      "options": [
-        {
-          "key": "A",
-          "label": "Tách rời lòng yêu nước khỏi mọi bối cảnh xã hội và quốc tế.",
-          "consequence": "ch3_resC",
-          "ideologyDelta": -100,
-          "forcesDelta": 0
-        },
-        {
-          "key": "B",
-          "label": "Chỉ kể lại tiểu sử, tránh giải thích vì sợ gây tranh luận.",
-          "consequence": "ch3_resC",
-          "ideologyDelta": -100,
-          "forcesDelta": 0
+          "label": "Le Paria, Ban an che do thuc dan Phap, bao Thanh Nien deu gop phan truyen ba nhan thuc moi.",
+          "quality": "partial",
+          "feedback": "Dung mot phan. Can bo sung vai tro vach tran chu nghia thuc dan va gan voi phong trao cach mang.",
+          "consequence": "ch3_scene_3",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Đặt lòng yêu nước trong chuỗi trải nghiệm, tìm kiếm lý luận và nhận ra con đường giải phóng dân tộc gắn với Mác-Lênin.",
-          "consequence": "ch3_defense_win",
-          "ideologyDelta": 10,
-          "forcesDelta": 500
+          "label": "Day chi la hoat dong van hoc, khong lien quan den cach mang.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu cho thay day la hoat dong truyen ba tu tuong va chuan bi chinh tri.",
+          "consequence": "ch3_scene_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Nhung tac pham nay chi ghi lai ky niem ca nhan.",
+          "quality": "wrong",
+          "feedback": "Sai. Cac tac pham va to bao nay huong toi viec thuc tinh, to chuc va dan dat phong trao.",
+          "consequence": "ch3_scene_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch3_defense_win",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Bạn đã khôi phục logic nhân quả của documentary timeline. Chương cuối sẽ thử thách bạn bằng một nhánh giả định lịch sử.",
-      "next": "next_chapter"
+      "id": "ch3_scene_3",
+      "type": "choice",
+      "speaker": "Xay dung to chuc",
+      "prompt": "Mot tu tuong muon di xa can nguoi truyen di. Ban xac dinh vai tro cua Hoi Viet Nam Cach mang Thanh nien nhu the nao?",
+      "sceneCode": "C3.3",
+      "options": [
+        {
+          "key": "A",
+          "label": "Hoi Viet Nam Cach mang Thanh nien la to chuc tien than, chuan bi chinh tri va to chuc cho su ra doi cua Dang.",
+          "quality": "best",
+          "feedback": "Chinh xac. Mang luoi to chuc bat dau noi cac manh tu tuong voi luc luong cach mang.",
+          "consequence": "ch3_scene_4",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Hoi gop phan truyen ba chu nghia Mac - Lenin va dao tao luc luong cach mang.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua du. Can dat Hoi vao vai tro tien than va chuan bi cho su ra doi cua Dang.",
+          "consequence": "ch3_scene_4",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Hoi hoan toan tach roi qua trinh thanh lap Dang.",
+          "quality": "wrong",
+          "feedback": "Sai. Hoi la mot mat xich quan trong trong qua trinh chuan bi ve to chuc.",
+          "consequence": "ch3_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Hoi chi la nhom hoc tap nho, khong co tac dong lich su.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu khang dinh vai tro truyen ba va dao tao luc luong cua Hoi.",
+          "consequence": "ch3_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
     },
     {
-      "id": "ch3_resC",
+      "id": "ch3_scene_4",
+      "type": "choice",
+      "speaker": "Duong cach menh",
+      "prompt": "Tren ban hoc o Quang Chau, cuon Duong cach menh duoc mo ra. Noi dung cot loi nao can duoc ghi lai?",
+      "sceneCode": "C3.4",
+      "options": [
+        {
+          "key": "A",
+          "label": "Tac pham khang dinh cach mang Viet Nam can Dang Cong san lanh dao, lay Mac - Lenin lam nen tang, luc luong la toan dan voi nong cot cong - nong.",
+          "quality": "best",
+          "feedback": "Ho so noi mach dung. Duong loi cach mang can co ly luan, to chuc lanh dao va luc luong cach mang ro rang.",
+          "consequence": "ch3_scene_5",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Tac pham tong ket kinh nghiem cach mang the gioi de van dung vao Viet Nam.",
+          "quality": "partial",
+          "feedback": "Dung mot phan. Can bo sung ket luan trung tam ve Dang lanh dao, nen tang Mac - Lenin va luc luong cong - nong.",
+          "consequence": "ch3_scene_5",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Cach mang chi can long yeu nuoc tu phat, khong can to chuc lanh dao.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu nhan manh vai tro cua Dang Cong san va su chuan bi to chuc.",
+          "consequence": "ch3_scene_5",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Cach mang Viet Nam phai sao chep nguyen mau cach mang tu san phuong Tay.",
+          "quality": "wrong",
+          "feedback": "Sai. Tac pham tong ket kinh nghiem the gioi de van dung sang tao vao Viet Nam, khong sao chep may moc.",
+          "consequence": "ch3_scene_5",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
+    },
+    {
+      "id": "ch3_scene_5",
+      "type": "choice",
+      "speaker": "Hoi nghi 1930",
+      "prompt": "Nhung manh to chuc roi rac duoc dat len cung mot ban. Y nghia cua viec thanh lap Dang va Cuong linh dau tien la gi?",
+      "sceneCode": "C3.5",
+      "options": [
+        {
+          "key": "A",
+          "label": "Thanh lap Dang Cong san Viet Nam va Cuong linh dau tien da cham dut khung hoang ve duong loi cuu nuoc va to chuc lanh dao.",
+          "quality": "best",
+          "feedback": "Chinh xac. Ho so cuoi cung duoc hoan thien: con duong cuu nuoc duoc xac lap va to chuc lanh dao ra doi.",
+          "consequence": "ch3_summary",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Su kien nay thong nhat to chuc va xac dinh duong loi cach mang Viet Nam.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua day du. Can neu ro y nghia cham dut khung hoang ve duong loi va to chuc lanh dao.",
+          "consequence": "ch3_summary",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Day chi la su kien to chuc, khong lien quan den duong loi cuu nuoc.",
+          "quality": "wrong",
+          "feedback": "Sai. Su kien nay gan chat voi duong loi cach mang va Cuong linh chinh tri dau tien.",
+          "consequence": "ch3_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Day la su tro lai cua cac con duong cuu nuoc cu.",
+          "quality": "wrong",
+          "feedback": "Sai. Day la su xac lap con duong moi: doc lap dan toc gan lien voi chu nghia xa hoi.",
+          "consequence": "ch3_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
+    },
+    {
+      "id": "ch3_summary",
       "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "GAME OVER: Timeline chỉ còn là chuỗi sự kiện rời rạc, chưa giải thích được bước ngoặt tư tưởng.",
-      "next": "ending"
+      "speaker": "Tong ket chuong III",
+      "text": "Tu khung hoang duong loi, qua hanh trinh tim kiem va chuan bi lau dai, ho so da duoc khoi phuc: con duong cuu nuoc duoc xac lap, to chuc lanh dao ra doi, va cach mang Viet Nam buoc sang thoi ky moi.",
+      "sceneCode": "C3.summary",
+      "next": "true_ending"
     }
   ]
 }

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDialogueStore } from '../stores/useDialogueStore';
 
 export function DialogueSystem() {
   const { currentNode, advance, makeChoice, loadChapter } = useDialogueStore();
 
-  // Load chapter 1 on mount
   useEffect(() => {
     loadChapter(1);
-  }, []);
+  }, [loadChapter]);
 
   if (!currentNode) return null;
 
@@ -36,7 +35,7 @@ export function DialogueSystem() {
                 {currentNode.text}
               </p>
               <div className="absolute bottom-4 right-6 animate-pulse">
-                <span className="font-sans text-brand-gold text-xs">▼ Click để tiếp tục</span>
+                <span className="font-sans text-brand-gold text-xs">Click de tiep tuc</span>
               </div>
             </div>
           </motion.div>
@@ -52,12 +51,13 @@ export function DialogueSystem() {
           >
             <div className="backdrop-blur-xl bg-black/80 border border-brand-gold/40 p-6 rounded-xl w-full mb-4 shadow-xl text-center">
               <p className="font-sans font-bold text-brand-gold text-lg">{currentNode.prompt}</p>
+              <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">Chon cach xu ly ho so</p>
             </div>
-            
+
             <div className="w-full flex flex-col gap-3">
-              {currentNode.options?.map((opt, index) => (
+              {currentNode.options?.map((opt) => (
                 <button
-                  key={index}
+                  key={opt.key}
                   onClick={() => makeChoice(opt)}
                   className="w-full text-left backdrop-blur-md bg-black/70 hover:bg-brand-red/90 border border-white/20 hover:border-brand-gold p-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg group flex items-start gap-4"
                 >

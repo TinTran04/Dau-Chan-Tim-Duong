@@ -145,10 +145,10 @@ function DockAndWater({ alert }: { alert: boolean }) {
 
 function JourneyMarkers({ completed }: { completed: boolean }) {
   const markers: Array<[number, string]> = [
-    [-3.2, 'Que nha'],
-    [-1.5, 'Ben cang'],
-    [0.2, 'Con tau'],
-    [1.9, 'The gioi']
+    [-3.2, 'Thuoc dia'],
+    [-1.5, 'Can Vuong'],
+    [0.2, 'Yen The'],
+    [1.9, 'Duong loi moi']
   ];
 
   return (
@@ -179,15 +179,11 @@ function JourneyMarkers({ completed }: { completed: boolean }) {
 export function VillageScene() {
   const currentNode = useDialogueStore((state) => state.currentNode);
   const nodeId = currentNode?.id || '';
-  const alert = nodeId === 'ch1_resB' ||
-                nodeId === 'ch1_resBtrap' ||
-                nodeId === 'ch1_resDtrap' ||
-                nodeId === 'ch1_prison_puzzle' ||
-                nodeId === 'ch1_resC' ||
+  const alert = nodeId.includes('_C_feedback') ||
+                nodeId.includes('_D_feedback') ||
                 nodeId === 'ending';
-  const completed = nodeId.startsWith('ch1_resA') ||
-                    nodeId.startsWith('ch1_sq1_win') ||
-                    nodeId === 'ch1_prison_escape';
+  const completed = nodeId.includes('_A_feedback') ||
+                    nodeId.includes('summary');
 
   return (
     <>

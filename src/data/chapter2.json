@@ -3,155 +3,243 @@
     {
       "id": "ch2_start",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Không gian chương 2 là một bản đồ tri thức. Trên đó có các nguồn tư tưởng phương Đông, phương Tây, truyền thống dân tộc và kinh nghiệm thực tiễn mà người thanh niên quan sát trên hành trình.",
-      "next": "ch2_context1"
+      "speaker": "Nguoi dan chuyen",
+      "text": "Tu Ben Nha Rong, dau chan di qua dai duong. The gioi khong chi duoc nhin thay, ma duoc kiem nghiem bang lao dong, quan sat va nhung bai hoc thuc tien.",
+      "sceneCode": "C2.0",
+      "next": "ch2_scene_1"
     },
     {
-      "id": "ch2_context1",
-      "type": "line",
-      "speaker": "Nhà Khảo Cứu",
-      "text": "Vấn đề không phải là lấy thật nhiều tư tưởng khác nhau, mà là biết tiếp thu, chọn lọc, cải biến và phát triển chúng trong điều kiện cụ thể của Việt Nam.",
-      "next": "ch2_context2"
-    },
-    {
-      "id": "ch2_context2",
-      "type": "line",
-      "speaker": "Bản Đồ Tri Thức",
-      "text": "Mỗi nút sáng trên bản đồ đại diện cho một nguồn ảnh hưởng. Nếu nối sai quan hệ, bản đồ trở thành mê cung. Nếu nối đúng, người học thấy được logic hình thành tư tưởng.",
-      "next": "ch2_choice1"
-    },
-    {
-      "id": "ch2_choice1",
+      "id": "ch2_scene_1",
       "type": "choice",
-      "prompt": "Hồ Chí Minh tiếp thu và chuyển hóa các nguồn tư tưởng Đông - Tây như thế nào?",
-      "timerSeconds": 20,
-      "timeoutFallback": "C",
+      "speaker": "Ben Nha Rong",
+      "prompt": "Ngay 5 thang 6 nam 1911, con tau roi ben. Ban ghi nhan y nghia cua su kien nay nhu the nao?",
+      "sceneCode": "C2.1",
       "options": [
         {
           "key": "A",
-          "label": "Tiếp thu có chọn lọc, đối chiếu với thực tiễn dân tộc, giữ giá trị phù hợp và phát triển thành lập luận mới.",
-          "consequence": "ch2_resA",
-          "ideologyDelta": 25,
-          "forcesDelta": 1000
+          "label": "Su kien 5/6/1911 mo dau hanh trinh tim duong cuu nuoc bang tu duy doc lap va trai nghiem thuc tien.",
+          "quality": "best",
+          "feedback": "Chinh xac. Day la diem khoi dau cua qua trinh tim toi, quan sat va kiem nghiem con duong cuu nuoc moi.",
+          "consequence": "ch2_scene_2",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Tiếp nhận nguyên vẹn mọi tư tưởng phương Tây vì cái mới luôn đúng hơn cái cũ.",
-          "consequence": "ch2_resB",
-          "ideologyDelta": -30,
-          "forcesDelta": -500
+          "label": "Day la mot moc quan trong cho thay quyet tam ra nuoc ngoai de tim loi giai cho dan toc.",
+          "quality": "partial",
+          "feedback": "Dung mot phan. Can noi ro hon tinh chat doc lap va thuc tien cua hanh trinh tim duong cuu nuoc.",
+          "consequence": "ch2_scene_2",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Kết hợp truyền thống yêu nước với tinh hoa nhân loại, nhưng luôn kiểm nghiệm bằng điều kiện lịch sử cụ thể.",
-          "consequence": "ch2_resA_bonus",
-          "ideologyDelta": 30,
-          "forcesDelta": 1200
+          "label": "Day chi la chuyen di kiem song ca nhan, khong gan voi muc tieu cuu nuoc.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu nhan manh muc dich ra di la tim con duong giai phong dan toc.",
+          "consequence": "ch2_scene_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Chỉ cần nói mọi tư tưởng đều tốt đẹp như nhau, không cần phân biệt giá trị nào phù hợp.",
-          "consequence": "ch2_resDtrap",
-          "ideologyDelta": -10,
-          "forcesDelta": 200
+          "label": "Day la thoi diem Nguyen Tat Thanh da xac dinh hoan toan con duong cach mang vo san.",
+          "quality": "wrong",
+          "feedback": "Sai thoi diem. Nam 1911 moi la diem khoi dau; con duong cach mang vo san duoc xac dinh sau qua trinh nhan thuc den nam 1920.",
+          "consequence": "ch2_scene_2",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch2_resA_bonus",
+      "id": "ch2_scene_2",
       "type": "choice",
-      "prompt": "BONUS: Khi xây Interactive Knowledge Map, lớp thông tin nào giúp người xem hiểu rõ nhất quá trình chuyển hóa tư tưởng?",
-      "timerSeconds": 15,
-      "timeoutFallback": "B",
+      "speaker": "Quan sat the gioi",
+      "prompt": "Phap, My, Anh va nhieu vung dat khac hien len. Nguyen Tat Thanh da tiep can the gioi bang cach nao?",
+      "sceneCode": "C2.2",
       "options": [
         {
           "key": "A",
-          "label": "Danh sách nguồn ảnh hưởng thật dài, càng nhiều tên càng tốt.",
-          "consequence": "ch2_resA",
-          "ideologyDelta": -5,
-          "forcesDelta": 0
+          "label": "Nguyen Tat Thanh lao dong, tu hoc, quan sat xa hoi va kiem nghiem thuc te de tim duong cuu nuoc.",
+          "quality": "best",
+          "feedback": "Ho so sang len. Hanh trinh nay ket hop lao dong, tu hoc, nghien cuu va tham gia thuc tien.",
+          "consequence": "ch2_scene_3",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
         },
         {
           "key": "B",
-          "label": "Quan hệ giữa nguồn tư tưởng, bối cảnh tiếp nhận, điểm được chọn lọc và cách phát triển trong thực tiễn Việt Nam.",
-          "consequence": "ch2_resA_maxbonus",
-          "ideologyDelta": 10,
-          "forcesDelta": 500
-        }
-      ]
-    },
-    {
-      "id": "ch2_resA_maxbonus",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Bạn đã mở khóa lớp liên kết sâu của bản đồ tri thức. Người xem không chỉ thấy nguồn ảnh hưởng, mà còn thấy quá trình chọn lọc và phát triển.",
-      "next": "next_chapter"
-    },
-    {
-      "id": "ch2_resDtrap",
-      "type": "line",
-      "speaker": "Người Phản Biện",
-      "text": "Một kết luận quá chung sẽ làm mất khả năng phân tích. Bản đồ cần tiêu chí chọn lọc, không chỉ cần những lời khẳng định đẹp.",
-      "next": "ch2_resB"
-    },
-    {
-      "id": "ch2_resA",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Chính xác. Tư tưởng không hình thành bằng sao chép, mà bằng tiếp thu có phê phán và chuyển hóa sáng tạo.",
-      "next": "next_chapter"
-    },
-    {
-      "id": "ch2_resB",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Sai hướng. Nếu coi mọi nguồn bên ngoài là mẫu có sẵn để sao chép, bạn bỏ qua điều kiện lịch sử của Việt Nam.",
-      "next": "ch2_ambush_puzzle"
-    },
-    {
-      "id": "ch2_ambush_puzzle",
-      "type": "choice",
-      "prompt": "LẬT LẠI HỒ SƠ: Đâu là tiêu chí phân biệt tiếp thu sáng tạo với sao chép máy móc?",
-      "timerSeconds": 8,
-      "timeoutFallback": "A",
-      "options": [
-        {
-          "key": "A",
-          "label": "Cứ lấy nguyên bản từ bên ngoài, vì tư tưởng càng hiện đại càng không cần điều chỉnh.",
-          "consequence": "ch2_resC",
-          "ideologyDelta": -100,
-          "forcesDelta": 0
-        },
-        {
-          "key": "B",
-          "label": "Đặt nguồn tư tưởng vào hoàn cảnh Việt Nam, kiểm tra giá trị thực tiễn và phát triển thành cách giải quyết phù hợp.",
-          "consequence": "ch2_ambush_win",
-          "ideologyDelta": 10,
-          "forcesDelta": 200
+          "label": "Nguoi muon tim hieu cac nuoc phuong Tay de biet ho lam an, to chuc xa hoi ra sao.",
+          "quality": "partial",
+          "feedback": "Nhan dinh dung nhung chua du. Viec tim hieu do gan voi lao dong, quan sat nhan dan va kiem nghiem thuc tien cach mang.",
+          "consequence": "ch2_scene_3",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
         },
         {
           "key": "C",
-          "label": "Chỉ chọn những ý tưởng nghe quen thuộc, tránh mọi điều mới.",
-          "consequence": "ch2_resC",
-          "ideologyDelta": -100,
+          "label": "Nguoi chi can doc sach ly luan, khong can trai nghiem doi song thuc te.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu nhan manh trai nghiem lao dong va quan sat doi song thuc te la phan quan trong cua hanh trinh.",
+          "consequence": "ch2_scene_3",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Nguoi sang phuong Tay de sao chep nguyen mau mot nuoc manh.",
+          "quality": "wrong",
+          "feedback": "Ket luan nay trai voi tinh than doc lap, sang tao. Nguoi tim hieu de chon con duong phu hop voi dan toc.",
+          "consequence": "ch2_scene_3",
+          "ideologyDelta": -8,
           "forcesDelta": 0
         }
       ]
     },
     {
-      "id": "ch2_ambush_win",
-      "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "Bạn đã cứu lại bản đồ tri thức. Hồ sơ tiếp tục sang chương về bước chuyển từ chủ nghĩa yêu nước đến chủ nghĩa Mác-Lênin.",
-      "next": "next_chapter"
+      "id": "ch2_scene_3",
+      "type": "choice",
+      "speaker": "Ban va thu",
+      "prompt": "Tu thuc tien cac nuoc thuoc dia va chinh quoc, ban rut ra nhan thuc nao ve ban va thu?",
+      "sceneCode": "C2.3",
+      "options": [
+        {
+          "key": "A",
+          "label": "Nhan dan lao dong cac nuoc la ban; chu nghia de quoc, thuc dan la ke thu chung.",
+          "quality": "best",
+          "feedback": "Chinh xac. Ban do the gioi duoc doc lai theo quan he ap buc va bi ap buc, khong chi theo mau co hay bien gioi.",
+          "consequence": "ch2_scene_4",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Qua thuc tien, Nguoi thay nhieu dan toc va nguoi lao dong cung chiu ap buc.",
+          "quality": "partial",
+          "feedback": "Dung mot phan. Can bo sung ket luan ro hon: nhan dan lao dong la ban, thuc dan va de quoc la ke thu chung.",
+          "consequence": "ch2_scene_4",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Tat ca nguoi dan o cac nuoc chinh quoc deu la ke thu.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu phan biet nhan dan lao dong o chinh quoc voi chu nghia thuc dan va de quoc.",
+          "consequence": "ch2_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Chi Viet Nam bi ap buc, cac dan toc thuoc dia khac khong lien quan.",
+          "quality": "wrong",
+          "feedback": "Sai. Hanh trinh cho thay nhieu dan toc thuoc dia va nhan dan lao dong tren the gioi cung co canh ngo bi ap buc.",
+          "consequence": "ch2_scene_4",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
     },
     {
-      "id": "ch2_resC",
+      "id": "ch2_scene_4",
+      "type": "choice",
+      "speaker": "Ban yeu sach 1919",
+      "prompt": "Ban yeu sach cua nhan dan An Nam duoc gui toi Hoi nghi Vecxay. Bai hoc nao can duoc ghi vao ho so?",
+      "sceneCode": "C2.4",
+      "options": [
+        {
+          "key": "A",
+          "label": "Su kien nay giup rut ra bai hoc phai dua vao luc luong cua chinh minh de giai phong dan toc.",
+          "quality": "best",
+          "feedback": "Ho so duoc dong dau dung. Su im lang cua cac nuoc de quoc lam ro bai hoc tu luc trong su nghiep giai phong dan toc.",
+          "consequence": "ch2_scene_5",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Ban yeu sach la tieng noi chinh nghia cua nguoi Viet Nam yeu nuoc tren dien dan quoc te.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua du. Can gan y nghia do voi bai hoc: khong the trong cho vao cac nuoc de quoc.",
+          "consequence": "ch2_scene_5",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Chi can gui kien nghi thi cac nuoc de quoc se trao doc lap.",
+          "quality": "wrong",
+          "feedback": "Sai. Chinh viec yeu sach khong duoc chap nhan giup Nguoi thay ro ban chat cua cac nuoc de quoc.",
+          "consequence": "ch2_scene_5",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Ban yeu sach khong co y nghia gi vi khong duoc chap nhan.",
+          "quality": "wrong",
+          "feedback": "Sai. Dù khong dat ket qua truc tiep, day la tieng noi chinh nghia quan trong va de lai bai hoc nhan thuc sau sac.",
+          "consequence": "ch2_scene_5",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
+    },
+    {
+      "id": "ch2_scene_5",
+      "type": "choice",
+      "speaker": "Trang Luan cuong",
+      "prompt": "Thang 7 nam 1920, mot trang tai lieu mo ra. Dau la y nghia cua Luan cuong Lenin va Dai hoi Tua?",
+      "sceneCode": "C2.5",
+      "options": [
+        {
+          "key": "A",
+          "label": "Luan cuong Lenin giup Nguyen Ai Quoc tim thay con duong giai phong dan toc theo cach mang vo san.",
+          "quality": "best",
+          "feedback": "Chinh xac. Day la buoc ngoat ly luan giup xac dinh con duong giai phong dan toc gan voi cach mang vo san.",
+          "consequence": "ch2_summary",
+          "ideologyDelta": 10,
+          "forcesDelta": 120
+        },
+        {
+          "key": "B",
+          "label": "Day la buoc ngoat ly luan quan trong trong qua trinh chuyen bien nhan thuc.",
+          "quality": "partial",
+          "feedback": "Dung nhung chua day du. Can noi ro noi dung buoc ngoat: tim thay con duong cach mang vo san cho dan toc Viet Nam.",
+          "consequence": "ch2_summary",
+          "ideologyDelta": 4,
+          "forcesDelta": 60
+        },
+        {
+          "key": "C",
+          "label": "Day chi la mot tai lieu tham khao binh thuong, khong anh huong lon.",
+          "quality": "wrong",
+          "feedback": "Sai. Tai lieu khang dinh day la buoc ngoat ly luan trong hanh trinh tim duong cuu nuoc.",
+          "consequence": "ch2_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        },
+        {
+          "key": "D",
+          "label": "Tu day Nguoi tu bo muc tieu doc lap dan toc.",
+          "quality": "wrong",
+          "feedback": "Sai. Muc tieu doc lap dan toc khong bi tu bo, ma duoc gan voi lap truong cach mang vo san.",
+          "consequence": "ch2_summary",
+          "ideologyDelta": -8,
+          "forcesDelta": 0
+        }
+      ]
+    },
+    {
+      "id": "ch2_summary",
       "type": "line",
-      "speaker": "Hệ Thống",
-      "text": "GAME OVER: Bản đồ tri thức sụp đổ vì thiếu tiêu chí chọn lọc và chứng cứ chuyển hóa.",
-      "next": "ending"
+      "speaker": "Tong ket chuong II",
+      "text": "Hanh trinh 1911-1920 da bien cau hoi cuu nuoc thanh nhan thuc moi: phai hieu the gioi, nhan ro ban thu, tu luc giai phong dan toc va tim thay con duong cach mang vo san.",
+      "sceneCode": "C2.summary",
+      "next": "next_chapter"
     }
   ]
 }
