@@ -65,10 +65,10 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     
     if (nextId === 'ending') {
       const state = useGameStore.getState();
-      // Điểm thất bại: Trọng số tư tưởng rất thấp (x10) cộng với lực lượng còn sót lại
+      // Điểm hồ sơ chưa đạt: trọng số nhận thức thấp (x10) cộng với tư liệu còn lại.
       const failScore = Math.max(0, state.ideology * 10) + state.forces;
       
-      const localKey = 'binh_minh_do_player';
+      const localKey = 'dau_chan_tim_duong_player';
       const localDataStr = localStorage.getItem(localKey);
       let isNewHighScore = true;
       if (localDataStr) {
@@ -85,8 +85,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
 
       state.setEndGameStatus({
         type: 'lose',
-        title: 'KẾT CỤC',
-        message: currentNode.text || "Lịch sử đã rẽ sang một trang tăm tối vì quyết định sai lầm của bạn. Phong trào sụp đổ, bạn phải làm lại từ đầu!"
+        title: 'HỒ SƠ CẦN ÔN TẬP',
+        message: currentNode.text || "Hồ sơ lập luận chưa đủ chứng cứ. Hãy quay lại, đọc kỹ bối cảnh và thử phân tích lại."
       });
       set({ currentNode: null });
       return;
@@ -104,7 +104,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       const state = useGameStore.getState();
       const finalScore = state.ideology * 100 + state.forces;
       
-      const localKey = 'binh_minh_do_player';
+      const localKey = 'dau_chan_tim_duong_player';
       const localDataStr = localStorage.getItem(localKey);
       let isNewHighScore = true;
       if (localDataStr) {
@@ -121,8 +121,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       
       state.setEndGameStatus({
         type: 'win',
-        title: 'TRUE ENDING',
-        message: currentNode.text || "BÌNH MINH ĐỎ! Lịch sử ghi nhận vinh quang của giai cấp vô sản. Bạn là Lãnh tụ kiệt xuất!"
+        title: 'HỒ SƠ HOÀN CHỈNH',
+        message: currentNode.text || "Bạn đã hoàn thiện hồ sơ học tập với bối cảnh, chứng cứ và quan hệ nhân quả rõ ràng."
       });
       set({ currentNode: null });
       return;
@@ -132,7 +132,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       const state = useGameStore.getState();
       const finalScore = state.ideology * 50 + state.forces;
       
-      const localKey = 'binh_minh_do_player';
+      const localKey = 'dau_chan_tim_duong_player';
       const localDataStr = localStorage.getItem(localKey);
       let isNewHighScore = true;
       if (localDataStr) {
@@ -149,8 +149,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
       
       state.setEndGameStatus({
         type: 'win',
-        title: 'NORMAL ENDING',
-        message: currentNode.text || "KHÚC TRÁNG CA! Phong trào bước vào kháng chiến trường kỳ gian khổ."
+        title: 'HỒ SƠ ĐẠT YÊU CẦU',
+        message: currentNode.text || "Bạn đã nắm được hướng phân tích chính, nhưng vẫn còn tư liệu hoặc nhánh giải thích có thể bổ sung."
       });
       set({ currentNode: null });
       return;
@@ -197,7 +197,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     useGameStore.setState({ ideology: newIdeology, forces: newForces });
     
     if (newIdeology <= 0) {
-       advance('ending'); // Lực lượng tư tưởng sụp đổ -> Game Over
+       advance('ending'); // Nhận thức lịch sử về 0 -> cần ôn tập lại.
     } else {
        advance(option.consequence);
     }

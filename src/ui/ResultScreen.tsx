@@ -21,7 +21,7 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
 
   const isWin = endGameStatus.type === 'win';
   const score = isWin ? 
-    (endGameStatus.title === 'TRUE ENDING' ? ideology * 100 + forces : ideology * 50 + forces) : 
+    (endGameStatus.title.includes('HOÀN CHỈNH') ? ideology * 100 + forces : ideology * 50 + forces) : 
     (Math.max(0, ideology * 10) + forces);
 
   return (
@@ -41,11 +41,11 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
         {/* Score Card */}
         <div className={`mb-6 p-4 rounded-lg flex justify-between items-center ${isWin ? 'bg-yellow-900/30 border border-yellow-500/50' : 'bg-red-900/30 border border-red-500/50'}`}>
           <div className="text-left font-sans">
-            <p className="text-gray-400 text-sm">CHIẾN SĨ</p>
+            <p className="text-gray-400 text-sm">HỒ SƠ</p>
             <p className="text-white font-bold text-xl uppercase">{playerName}</p>
           </div>
           <div className="text-right font-sans">
-            <p className="text-gray-400 text-sm">ĐIỂM SỐ</p>
+            <p className="text-gray-400 text-sm">ĐIỂM NHẬN THỨC</p>
             <p className={`font-black text-3xl ${isWin ? 'text-brand-gold' : 'text-brand-red'}`}>
               {score.toLocaleString()} Đ
             </p>
@@ -55,7 +55,7 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 font-sans">
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">CÂU ĐÚNG</span>
+            <span className="text-gray-400 text-xs mb-1">LẬP LUẬN ĐÚNG</span>
             <span className="text-green-400 font-bold text-2xl">{sessionStats.correctAnswers} / {totalQuestions}</span>
             <div className="w-full h-1 bg-gray-700 mt-2 rounded overflow-hidden">
               <div className="h-full bg-green-500" style={{ width: `${percentage}%` }} />
@@ -63,12 +63,12 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
           </div>
           
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">CÂU SAI</span>
+            <span className="text-gray-400 text-xs mb-1">LẬP LUẬN SAI</span>
             <span className="text-red-400 font-bold text-2xl">{sessionStats.wrongAnswers}</span>
           </div>
 
           <div className="bg-black/40 p-4 rounded-lg border border-white/10 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">BONUS MỞ KHÓA</span>
+            <span className="text-gray-400 text-xs mb-1">TƯ LIỆU MỞ KHÓA</span>
             <span className="text-purple-400 font-bold text-2xl">{sessionStats.bonusUnlocked}</span>
           </div>
 
@@ -81,7 +81,7 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
         {/* Details List */}
         {sessionStats.correctDetails.length > 0 && (
           <div className="bg-black/40 border border-white/10 rounded-lg p-4 mb-8 max-h-48 overflow-y-auto text-left font-sans scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-            <h3 className="text-gray-400 text-sm font-bold mb-3 uppercase tracking-wider sticky top-0 bg-zinc-950/90 py-1">Lịch sử trả lời đúng</h3>
+            <h3 className="text-gray-400 text-sm font-bold mb-3 uppercase tracking-wider sticky top-0 bg-zinc-950/90 py-1">Lịch sử lập luận đúng</h3>
             <ul className="space-y-3">
               {sessionStats.correctDetails.map((detail, idx) => (
                 <li key={idx} className="border-b border-white/5 pb-2 last:border-0 last:pb-0">
@@ -103,7 +103,7 @@ export function ResultScreen({ onRestart }: ResultScreenProps) {
           onClick={onRestart}
           className={`px-10 py-4 font-bold rounded shadow-lg transform transition hover:scale-105 tracking-widest ${isWin ? 'bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 active:from-yellow-700 active:to-yellow-800 text-white font-black text-xl shadow-[0_0_20px_rgba(234,179,8,0.4)]' : 'bg-red-700 hover:bg-red-600 active:bg-red-800 text-white'}`}
         >
-          {isWin ? 'HOÀN THÀNH HÀNH TRÌNH' : 'LÀM LẠI TỪ ĐẦU'}
+          {isWin ? 'HOÀN THÀNH HỒ SƠ' : 'ÔN TẬP LẠI'}
         </button>
       </div>
     </div>

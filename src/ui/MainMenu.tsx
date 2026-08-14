@@ -14,7 +14,7 @@ export function MainMenu() {
   const [localPlayer, setLocalPlayer] = useState<any>(null);
 
   useEffect(() => {
-    const localKey = 'binh_minh_do_player';
+    const localKey = 'dau_chan_tim_duong_player';
     const localData = localStorage.getItem(localKey);
     if (localData) {
       try {
@@ -55,26 +55,26 @@ export function MainMenu() {
     >
       <div className="backdrop-blur-md bg-black/40 border border-white/20 p-12 rounded-2xl shadow-2xl pointer-events-auto flex flex-col items-center gap-6 text-center max-w-xl w-full">
         <div>
-          <p className="font-press text-brand-gold text-xs tracking-widest mb-2 uppercase">Game Lịch Sử - Tư Tưởng</p>
-          <h1 className="font-serif text-6xl text-brand-red font-bold uppercase" style={{ textShadow: '2px 2px 10px rgba(220, 20, 60, 0.5)' }}>Bình Minh Đỏ</h1>
-          <p className="font-sans text-gray-300 mt-2">— Cuộc Hành Trình Lý Luận Cách Mạng —</p>
+          <p className="font-press text-brand-gold text-xs tracking-widest mb-2 uppercase">Game Lịch Sử - Tư Duy Phản Biện</p>
+          <h1 className="font-serif text-6xl text-brand-red font-bold uppercase" style={{ textShadow: '2px 2px 10px rgba(220, 20, 60, 0.5)' }}>Dấu Chân Tìm Đường</h1>
+          <p className="font-sans text-gray-300 mt-2">— Hành trình khám phá con đường cứu nước —</p>
         </div>
         
         {localPlayer && localPlayer.name === name.trim() ? (
           <div className="w-full bg-brand-red/10 border border-brand-red/30 p-4 rounded-lg my-2">
-            <h3 className="font-bold text-brand-gold text-lg mb-2">⚔️ CHÀO MỪNG TRỞ LẠI, {localPlayer.name.toUpperCase()}! ⚔️</h3>
+            <h3 className="font-bold text-brand-gold text-lg mb-2">CHÀO MỪNG TRỞ LẠI, {localPlayer.name.toUpperCase()}!</h3>
             <div className="text-sm text-gray-300 font-sans grid grid-cols-2 gap-2 text-left bg-black/30 p-3 rounded">
-              <p>Kỷ lục hiện tại:</p><p className="font-bold text-white text-right">{localPlayer.bestScore?.toLocaleString() || 0} Đ</p>
-              <p>Tổng lần chơi:</p><p className="font-bold text-white text-right">{localPlayer.totalPlays || 0}</p>
+              <p>Điểm hiểu biết cao nhất:</p><p className="font-bold text-white text-right">{localPlayer.bestScore?.toLocaleString() || 0} Đ</p>
+              <p>Số lượt ôn tập:</p><p className="font-bold text-white text-right">{localPlayer.totalPlays || 0}</p>
             </div>
-            <p className="text-xs text-brand-gold mt-3 font-sans italic">Sẵn sàng phá kỷ lục của chính mình chưa?</p>
+            <p className="text-xs text-brand-gold mt-3 font-sans italic">Sẵn sàng nối lại hồ sơ nghiên cứu của bạn?</p>
           </div>
         ) : null}
 
         <div className="flex flex-col w-full gap-4 mt-2">
           <input 
             type="text" 
-            placeholder="NHẬP TÊN CỦA BẠN (VD: ĐỒNG CHÍ A)" 
+            placeholder="NHẬP TÊN NHÓM / NGƯỜI CHƠI" 
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full bg-black/50 border-2 border-brand-red/50 focus:border-brand-gold text-white font-sans text-center text-lg py-3 rounded-lg outline-none transition-all placeholder:text-gray-500"
@@ -85,7 +85,7 @@ export function MainMenu() {
             onClick={handleStart}
             className="w-full px-10 py-4 bg-gradient-to-r from-red-800 to-brand-red hover:from-brand-red hover:to-red-500 border-none text-white font-sans font-black text-xl rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(220,20,60,0.5)] hover:shadow-[0_0_30px_rgba(220,20,60,0.9)] hover:scale-105 tracking-widest cursor-pointer uppercase"
           >
-            {localPlayer && localPlayer.name === name.trim() ? 'TIẾP TỤC HÀNH TRÌNH' : 'BẮT ĐẦU HÀNH TRÌNH'}
+            {localPlayer && localPlayer.name === name.trim() ? 'TIẾP TỤC KHÁM PHÁ' : 'BẮT ĐẦU KHÁM PHÁ'}
           </button>
 
           <button 
@@ -108,7 +108,7 @@ export function MainMenu() {
             <div className="bg-zinc-900 border-2 border-brand-gold rounded-2xl w-[600px] max-w-[90vw] max-h-[80vh] flex flex-col shadow-[0_0_50px_rgba(255,215,0,0.3)] overflow-hidden relative">
               <div className="bg-gradient-to-r from-yellow-700 via-brand-gold to-yellow-700 py-4 px-6 relative">
                 <h2 className="text-2xl font-black text-black text-center uppercase tracking-widest">
-                  Bảng Vàng Danh Dự
+                  Bảng Điểm Học Tập
                 </h2>
                 <button 
                   onClick={() => setShowLeaderboard(false)}
@@ -120,9 +120,9 @@ export function MainMenu() {
               
               <div className="flex-1 overflow-y-auto p-6 bg-black/40">
                 {loadingLB ? (
-                  <div className="text-center text-brand-gold py-10 font-sans animate-pulse">Đang tải dữ liệu tình báo...</div>
+                  <div className="text-center text-brand-gold py-10 font-sans animate-pulse">Đang tải dữ liệu học tập...</div>
                 ) : leaderboardData.length === 0 ? (
-                  <div className="text-center text-gray-400 py-10 font-sans italic">Chưa có đồng chí nào được ghi danh. Bạn hãy là người đầu tiên!</div>
+                  <div className="text-center text-gray-400 py-10 font-sans italic">Chưa có nhóm học nào được ghi danh. Bạn hãy là người đầu tiên!</div>
                 ) : (
                   <div className="flex flex-col gap-2">
                     {leaderboardData.map((entry, index) => (
@@ -142,7 +142,7 @@ export function MainMenu() {
                 )}
               </div>
               <div className="p-4 bg-zinc-950 text-center text-xs text-gray-500 font-sans">
-                Dữ liệu được đồng bộ Realtime qua Hệ thống Intel (Google Sheets).
+                Dữ liệu được đồng bộ qua Google Sheets.
               </div>
             </div>
           </motion.div>
@@ -150,7 +150,7 @@ export function MainMenu() {
       </AnimatePresence>
 
       <div className="absolute bottom-4 left-4 font-press text-[10px] text-gray-500">
-        React 3D Engine | Diorama Style
+        React 3D Engine | Historical Diorama
       </div>
       <div className="absolute bottom-4 right-4 font-press text-[10px] text-gray-500">
         v2.1.0 © 2026

@@ -16,7 +16,7 @@ export function HUD() {
       <div className="absolute top-4 left-4 flex flex-col gap-3">
         <div className="backdrop-blur-md bg-black/50 border border-white/10 px-4 py-3 rounded-lg flex flex-col gap-2 min-w-[200px]">
           <div className="flex justify-between items-center">
-            <span className="font-sans font-bold text-xs text-brand-gold uppercase tracking-wider">Tư Tưởng</span>
+            <span className="font-sans font-bold text-xs text-brand-gold uppercase tracking-wider">Nhận thức lịch sử</span>
             <span className="font-press text-[10px] text-white">{ideology}%</span>
           </div>
           <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
@@ -30,7 +30,7 @@ export function HUD() {
         </div>
         
         <div className="backdrop-blur-md bg-black/50 border border-white/10 px-4 py-3 rounded-lg flex justify-between items-center">
-          <span className="font-sans font-bold text-xs text-green-400 uppercase tracking-wider">Lực Lượng</span>
+          <span className="font-sans font-bold text-xs text-green-400 uppercase tracking-wider">Tư liệu</span>
           <span className="font-press text-[10px] text-white">{forces.toLocaleString()}</span>
         </div>
       </div>
@@ -42,10 +42,10 @@ export function HUD() {
             Chương {chapter === 1 ? 'I' : chapter === 2 ? 'II' : chapter === 3 ? 'III' : 'IV'}
           </h2>
           <p className="font-sans text-xs text-gray-300 mt-1">
-            {chapter === 1 && "Đại Điền Trang Oros"}
-            {chapter === 2 && "Sơn Cước Thời Gian"}
-            {chapter === 3 && "Thành Phố Khói Thép"}
-            {chapter === 4 && "Chiến Khu Tự Do"}
+            {chapter === 1 && "Hành trình tìm đường cứu nước"}
+            {chapter === 2 && "Tiếp thu Đông - Tây"}
+            {chapter === 3 && "Từ yêu nước đến Mác-Lênin"}
+            {chapter === 4 && "Giả định lịch sử 1911"}
           </p>
         </div>
       </div>

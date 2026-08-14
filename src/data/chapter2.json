@@ -3,55 +3,55 @@
     {
       "id": "ch2_start",
       "type": "line",
-      "speaker": "Tộc Trưởng",
-      "text": "Cộng đồng người của chúng ta từ xưa đến nay gắn kết bằng quan hệ huyết thống thiêng liêng! Tại sao bây giờ lại xuất hiện những người lạ không cùng máu mủ đến đòi chung sống trên cùng vùng đất của tổ tiên chúng ta?",
+      "speaker": "Người Kể Chuyện",
+      "text": "Không gian chương 2 là một bản đồ tri thức. Trên đó có các nguồn tư tưởng phương Đông, phương Tây, truyền thống dân tộc và kinh nghiệm thực tiễn mà người thanh niên quan sát trên hành trình.",
       "next": "ch2_context1"
     },
     {
       "id": "ch2_context1",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Bạn nhìn thấy bản đồ vùng thung lũng cổ xưa: Bốn nhóm người với phong tục khác nhau đang tranh chấp đất đai. Phía xa, toán quân viễn chinh ngoại bang đang quan sát sự hỗn loạn này với ánh mắt lạnh lùng — chúng đang chờ cơ hội.",
+      "speaker": "Nhà Khảo Cứu",
+      "text": "Vấn đề không phải là lấy thật nhiều tư tưởng khác nhau, mà là biết tiếp thu, chọn lọc, cải biến và phát triển chúng trong điều kiện cụ thể của Việt Nam.",
       "next": "ch2_context2"
     },
     {
       "id": "ch2_context2",
       "type": "line",
-      "speaker": "Sơn Dân",
-      "text": "Huyết thống ư? Huyết thống của ta đã trộn lẫn với ba dòng máu khác nhau qua hàng trăm năm hôn nhân và di cư. Vậy 'huyết thống thuần khiết' mà ông nói đến... còn tồn tại không?",
+      "speaker": "Bản Đồ Tri Thức",
+      "text": "Mỗi nút sáng trên bản đồ đại diện cho một nguồn ảnh hưởng. Nếu nối sai quan hệ, bản đồ trở thành mê cung. Nếu nối đúng, người học thấy được logic hình thành tư tưởng.",
       "next": "ch2_choice1"
     },
     {
       "id": "ch2_choice1",
       "type": "choice",
-      "prompt": "(20 GIÂY) Bạn phải giải thích tiến trình hình thành cộng đồng người trong lịch sử. Cẩn thận — có bẫy lý luận áp dụng mô hình Phương Tây vào Phương Đông!",
+      "prompt": "Hồ Chí Minh tiếp thu và chuyển hóa các nguồn tư tưởng Đông - Tây như thế nào?",
       "timerSeconds": 20,
       "timeoutFallback": "C",
       "options": [
         {
           "key": "A",
-          "label": "Huyết thống chỉ là đặc trưng của Thị tộc – Bộ lạc sơ khai. LLSX phát triển thúc đẩy ta thành Dân tộc — gắn kết bởi lãnh thổ, kinh tế, ngôn ngữ, văn hóa, tâm lý!",
+          "label": "Tiếp thu có chọn lọc, đối chiếu với thực tiễn dân tộc, giữ giá trị phù hợp và phát triển thành lập luận mới.",
           "consequence": "ch2_resA",
           "ideologyDelta": 25,
           "forcesDelta": 1000
         },
         {
           "key": "B",
-          "label": "Dân tộc chỉ xuất hiện khi CNTB ra đời và lập thị trường kinh tế chung, do đó vùng núi này chưa thể có dân tộc thực sự.",
+          "label": "Tiếp nhận nguyên vẹn mọi tư tưởng phương Tây vì cái mới luôn đúng hơn cái cũ.",
           "consequence": "ch2_resB",
           "ideologyDelta": -30,
           "forcesDelta": -500
         },
         {
           "key": "C",
-          "label": "Lịch sử nhân loại phát triển tuần tự: Thị tộc → Bộ lạc → Bộ tộc → Dân tộc. Chúng ta đã đi qua Bộ tộc và đang bước vào giai đoạn Dân tộc. Huyết thống không còn là điều kiện bắt buộc!",
+          "label": "Kết hợp truyền thống yêu nước với tinh hoa nhân loại, nhưng luôn kiểm nghiệm bằng điều kiện lịch sử cụ thể.",
           "consequence": "ch2_resA_bonus",
           "ideologyDelta": 30,
           "forcesDelta": 1200
         },
         {
           "key": "D",
-          "label": "Tất cả mọi người đều là anh em một nhà, huyết thống hay không không quan trọng — điều quan trọng là sống hòa thuận!",
+          "label": "Chỉ cần nói mọi tư tưởng đều tốt đẹp như nhau, không cần phân biệt giá trị nào phù hợp.",
           "consequence": "ch2_resDtrap",
           "ideologyDelta": -10,
           "forcesDelta": 200
@@ -61,20 +61,20 @@
     {
       "id": "ch2_resA_bonus",
       "type": "choice",
-      "prompt": "(BONUS – 15 GIÂY) Tộc Trưởng hỏi thêm: 'Vậy dân tộc ở Phương Đông như chúng ta — điều gì đã thực sự gắn kết chúng ta lại từ trong lịch sử?'",
+      "prompt": "BONUS: Khi xây Interactive Knowledge Map, lớp thông tin nào giúp người xem hiểu rõ nhất quá trình chuyển hóa tư tưởng?",
       "timerSeconds": 15,
       "timeoutFallback": "B",
       "options": [
         {
           "key": "A",
-          "label": "Sự phát triển của thương mại và thị trường kinh tế tư bản chủ nghĩa.",
+          "label": "Danh sách nguồn ảnh hưởng thật dài, càng nhiều tên càng tốt.",
           "consequence": "ch2_resA",
           "ideologyDelta": -5,
           "forcesDelta": 0
         },
         {
           "key": "B",
-          "label": "Quá trình đấu tranh chống ngoại xâm và cải tạo thiên nhiên — đặc thù riêng của Phương Đông!",
+          "label": "Quan hệ giữa nguồn tư tưởng, bối cảnh tiếp nhận, điểm được chọn lọc và cách phát triển trong thực tiễn Việt Nam.",
           "consequence": "ch2_resA_maxbonus",
           "ideologyDelta": 10,
           "forcesDelta": 500
@@ -84,55 +84,55 @@
     {
       "id": "ch2_resA_maxbonus",
       "type": "line",
-      "speaker": "Tộc Trưởng",
-      "text": "Đúng! Chính những cơn lũ dữ và giặc ngoại xâm đã buộc chúng ta phải cùng nhau sống chết. Máu mủ thứ hai! Tôi đồng ý liên hiệp và sẽ gửi thêm 500 dũng sĩ tinh nhuệ nhất!",
+      "speaker": "Hệ Thống",
+      "text": "Bạn đã mở khóa lớp liên kết sâu của bản đồ tri thức. Người xem không chỉ thấy nguồn ảnh hưởng, mà còn thấy quá trình chọn lọc và phát triển.",
       "next": "next_chapter"
     },
     {
       "id": "ch2_resDtrap",
       "type": "line",
-      "speaker": "Tộc Trưởng",
-      "text": "Câu trả lời đẹp... nhưng rỗng tuếch. 'Sống hòa thuận' không phải là lý luận chính trị. Trong khi ta còn đang tranh cãi về cảm xúc, quân thám báo viễn chinh đã xâm nhập vào bản!",
+      "speaker": "Người Phản Biện",
+      "text": "Một kết luận quá chung sẽ làm mất khả năng phân tích. Bản đồ cần tiêu chí chọn lọc, không chỉ cần những lời khẳng định đẹp.",
       "next": "ch2_resB"
     },
     {
       "id": "ch2_resA",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "CHÍNH XÁC! Các bộ tộc đồng lòng bãi bỏ xung đột, liên hiệp thành một cộng đồng dân tộc vững chắc. Lực lượng được bổ sung đáng kể.",
+      "text": "Chính xác. Tư tưởng không hình thành bằng sao chép, mà bằng tiếp thu có phê phán và chuyển hóa sáng tạo.",
       "next": "next_chapter"
     },
     {
       "id": "ch2_resB",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "Sai lầm nghiêm trọng — áp dụng máy móc mô hình Dân tộc Phương Tây vào Phương Đông! Người dân nổi giận, trục xuất bạn. Nghĩa quân rơi thẳng vào trận phục kích của quân viễn chinh tại cửa thung lũng!",
+      "text": "Sai hướng. Nếu coi mọi nguồn bên ngoài là mẫu có sẵn để sao chép, bạn bỏ qua điều kiện lịch sử của Việt Nam.",
       "next": "ch2_ambush_puzzle"
     },
     {
       "id": "ch2_ambush_puzzle",
       "type": "choice",
-      "prompt": "(LẬT KÈO SINH TỬ – 8 GIÂY) Tên đạn rít bên tai. Bạn cần một khẩu hiệu chính xác để kêu gọi Sơn dân xung trận cứu viện — Chọn sai là chết!",
+      "prompt": "LẬT LẠI HỒ SƠ: Đâu là tiêu chí phân biệt tiếp thu sáng tạo với sao chép máy móc?",
       "timerSeconds": 8,
       "timeoutFallback": "A",
       "options": [
         {
           "key": "A",
-          "label": "Chiến đấu vì huyết thống và tổ tiên!",
+          "label": "Cứ lấy nguyên bản từ bên ngoài, vì tư tưởng càng hiện đại càng không cần điều chỉnh.",
           "consequence": "ch2_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
         },
         {
           "key": "B",
-          "label": "Ở Phương Đông, dân tộc hình thành gắn liền với chống ngoại xâm và cải tạo thiên nhiên — đây là giờ phút đó! Đứng lên!",
+          "label": "Đặt nguồn tư tưởng vào hoàn cảnh Việt Nam, kiểm tra giá trị thực tiễn và phát triển thành cách giải quyết phù hợp.",
           "consequence": "ch2_ambush_win",
           "ideologyDelta": 10,
           "forcesDelta": 200
         },
         {
           "key": "C",
-          "label": "Dân tộc chỉ là ý niệm trừu tượng, hãy chiến đấu vì lợi ích kinh tế của mình!",
+          "label": "Chỉ chọn những ý tưởng nghe quen thuộc, tránh mọi điều mới.",
           "consequence": "ch2_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
@@ -143,14 +143,14 @@
       "id": "ch2_ambush_win",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "Sơn dân nghe tiếng gọi yêu nước và đặc thù lịch sử, đồng loạt xông ra đánh tan quân phục kích. Bạn thoát hiểm nhưng với lực lượng suy yếu hơn so với nhánh đúng.",
+      "text": "Bạn đã cứu lại bản đồ tri thức. Hồ sơ tiếp tục sang chương về bước chuyển từ chủ nghĩa yêu nước đến chủ nghĩa Mác-Lênin.",
       "next": "next_chapter"
     },
     {
       "id": "ch2_resC",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "GAME OVER: Lý luận sai lầm, tiếng kêu cứu vang lên vô ích. Sơn dân không hiểu — không phản ứng. Bạn bị quân viễn chinh tiêu diệt hoàn toàn tại cửa thung lũng.",
+      "text": "GAME OVER: Bản đồ tri thức sụp đổ vì thiếu tiêu chí chọn lọc và chứng cứ chuyển hóa.",
       "next": "ending"
     }
   ]

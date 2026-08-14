@@ -3,55 +3,55 @@
     {
       "id": "ch4_start",
       "type": "line",
-      "speaker": "Tướng Hoàng Gia",
-      "text": "Quân đế quốc đang ở cổng thành! Toàn bộ địa chủ và tư sản mại bản đã cúi đầu quy phục để giữ tài sản. Ta cần ngươi đặt mâu thuẫn giai cấp xuống — đoàn kết trung thành với Nhà vua lật đổ ngoại bang, khôi phục trật tự xã hội cũ!",
+      "speaker": "Người Kể Chuyện",
+      "text": "Chương cuối là một phòng giả định lịch sử. Trên màn hình xuất hiện câu hỏi: nếu không có chuyến đi năm 1911, tiến trình hình thành tư tưởng có thể thay đổi như thế nào?",
       "next": "ch4_context1"
     },
     {
       "id": "ch4_context1",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "ĐÂY LÀ BẪY CUỐI CÙNG. Kẻ thù không chỉ là đế quốc bên ngoài mà còn là giai cấp phong kiến muốn lợi dụng lòng yêu nước của bạn để phục hồi trật tự bóc lột cũ sau khi đánh đuổi ngoại xâm.",
+      "speaker": "Hệ Thống Mô Phỏng",
+      "text": "Đây không phải trò đoán mò. Mọi nhánh giả định phải dựa trên dữ kiện lịch sử, điều kiện xã hội, các con đường cứu nước đương thời và giới hạn của từng lựa chọn.",
       "next": "ch4_context2"
     },
     {
       "id": "ch4_context2",
       "type": "line",
-      "speaker": "Chính Ủy",
-      "text": "Cẩn thận! Đây là câu hỏi biện chứng giữa Giải phóng dân tộc và Giải phóng giai cấp. Nếu đặt cái này lên, sẽ mâu thuẫn với cái kia. Lịch sử sẽ phán xét quyết định này!",
+      "speaker": "Người Phản Biện",
+      "text": "Một phản thực tế tốt không phủ nhận lịch sử đã xảy ra. Nó giúp ta hiểu vì sao một lựa chọn trở thành bước ngoặt bằng cách so sánh với những khả năng khác trong cùng điều kiện.",
       "next": "ch4_choice1"
     },
     {
       "id": "ch4_choice1",
       "type": "choice",
-      "prompt": "(20 GIÂY) Đây là lựa chọn định đoạt vận mệnh. Phân tích mối quan hệ biện chứng giữa giai cấp và dân tộc — cả 4 đáp án đều có lý luận bề ngoài nghe có vẻ đúng!",
+      "prompt": "Nếu xây Counterfactual Game / Branching Story cho câu hỏi 'Nếu không có chuyến đi năm 1911?', nguyên tắc nào quan trọng nhất?",
       "timerSeconds": 20,
       "timeoutFallback": "D",
       "options": [
         {
           "key": "A",
-          "label": "Không! Giai cấp phong kiến đã phản bội. GC vô sản phải trở thành GC dân tộc — kết hợp Giải phóng dân tộc với Giải phóng giai cấp. Độc lập dân tộc phải gắn liền Chủ nghĩa xã hội!",
+          "label": "Mỗi nhánh giả định phải xuất phát từ điều kiện lịch sử có thật, rồi giải thích hệ quả một cách thận trọng.",
           "consequence": "ch4_resA",
           "ideologyDelta": 50,
           "forcesDelta": 5000
         },
         {
           "key": "B",
-          "label": "Vì lợi ích chung của toàn nhân loại, ta kêu gọi hòa bình vô điều kiện, ngừng bắn ngay lập tức — bạo lực chỉ sinh ra bạo lực!",
+          "label": "Có thể tưởng tượng tùy ý, miễn câu chuyện kịch tính và nhiều bất ngờ.",
           "consequence": "ch4_resB",
           "ideologyDelta": -40,
           "forcesDelta": -2000
         },
         {
           "key": "C",
-          "label": "Đồng ý với Tướng Hoàng Gia — tạm thời liên minh với phong kiến để đánh đuổi ngoại xâm trước, sau đó mới giải quyết mâu thuẫn giai cấp!",
+          "label": "Chỉ cần kết luận rằng mọi con đường đều dẫn đến cùng một kết quả, không cần phân tích khác biệt.",
           "consequence": "ch4_resCcoalition",
           "ideologyDelta": -20,
           "forcesDelta": 1000
         },
         {
           "key": "D",
-          "label": "Chúng ta là vô sản quốc tế, chỉ quan tâm đến đấu tranh giai cấp — không quan tâm đến quốc gia dân tộc. Kệ đế quốc xâm lược nước mình!",
+          "label": "Không nên đặt giả định lịch sử vì mọi câu hỏi phản thực tế đều vô nghĩa.",
           "consequence": "ch4_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
@@ -61,27 +61,27 @@
     {
       "id": "ch4_resCcoalition",
       "type": "line",
-      "speaker": "Tướng Hoàng Gia",
-      "text": "Tốt lắm! Sau chiến thắng... Nhà vua tuyên bố: 'Nước đã được giải phóng, trật tự cũ được khôi phục. Quân của ngươi hãy giải tán!' Bạn đã rơi vào bẫy: không có nền tảng giai cấp, chiến thắng dân tộc bị giai cấp tư sản thu hoạch mất!",
+      "speaker": "Người Phản Biện",
+      "text": "Nếu mọi nhánh đều cho cùng một kết quả, trò chơi phản thực tế mất ý nghĩa. Điểm quan trọng là hiểu điều kiện nào làm nên bước ngoặt.",
       "next": "ch4_final_puzzle"
     },
     {
       "id": "ch4_resA",
       "type": "choice",
-      "prompt": "(BOSS FINAL – 15 GIÂY) Nông Dân và Chính Ủy đang chờ lời hiệu triệu. Khẩu hiệu nào CHÍNH XÁC nhất để đặt tên cho con đường bạn vừa chọn?",
+      "prompt": "BOSS FINAL: Nhánh giả định nào phù hợp nhất để người học thấy vai trò của chuyến đi năm 1911?",
       "timerSeconds": 15,
       "timeoutFallback": "A",
       "options": [
         {
           "key": "A",
-          "label": "Phá hủy toàn bộ nhà nước cũ, lập ngay chính quyền vô sản trên toàn quốc!",
+          "label": "Một nhánh chỉ kể rằng nhân vật ở lại quê nhà, nhưng không phân tích bối cảnh hay giới hạn của lựa chọn.",
           "consequence": "ch4_resA_partial",
           "ideologyDelta": -10,
           "forcesDelta": 0
         },
         {
           "key": "B",
-          "label": "Giai cấp vô sản phải lãnh đạo cuộc giải phóng dân tộc, biến thắng lợi dân tộc thành tiền đề tất yếu cho thắng lợi xã hội chủ nghĩa!",
+          "label": "Nhiều nhánh so sánh các con đường đương thời, chỉ ra cơ hội và giới hạn của từng hướng, rồi đối chiếu với hành trình ra thế giới.",
           "consequence": "ch4_victory_true",
           "ideologyDelta": 30,
           "forcesDelta": 2000
@@ -92,47 +92,47 @@
       "id": "ch4_victory_true",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "BÌNH MINH ĐỎ! Khối liên minh Công-Nông-Binh hoàn chỉnh dưới sự lãnh đạo của Chính đảng Vô sản. Tổng khởi nghĩa long trời lở đất bùng nổ, quét sạch quân đế quốc và bọn tay sai phong kiến. Trang sử mới được viết bằng máu và lý tưởng!",
+      "text": "Hồ sơ hoàn chỉnh. Bạn đã dùng phản thực tế để làm rõ bước ngoặt lịch sử mà không rời khỏi chứng cứ.",
       "next": "true_ending"
     },
     {
       "id": "ch4_resA_partial",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "Chiến thắng... nhưng quá cực đoan. Phá nhà nước cũ mà không xây được nền móng mới, đất nước rơi vào hỗn loạn. Đây là bài học của cánh tả tả khuynh. Cách mạng chuyển sang kháng chiến trường kỳ.",
+      "text": "Hồ sơ đạt yêu cầu. Ý tưởng đúng hướng nhưng còn thiếu nhánh so sánh. Người học hiểu được câu hỏi, nhưng chưa thấy đầy đủ điều kiện lịch sử.",
       "next": "normal_ending"
     },
     {
       "id": "ch4_resB",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "Sai lầm nguy hiểm — tuyệt đối hóa lợi ích nhân loại, quên mất tính giai cấp. Quân đế quốc giả vờ đàm phán, cắm cờ 'hòa bình' rồi bất ngờ bao vây tổng hành dinh chiến khu. Trận chiến sinh tử bắt đầu!",
+      "text": "Cảnh báo: tưởng tượng không kiểm chứng có thể làm sai lệch bài học lịch sử. Phòng mô phỏng yêu cầu bạn quay lại nguyên tắc dữ kiện.",
       "next": "ch4_final_puzzle"
     },
     {
       "id": "ch4_final_puzzle",
       "type": "choice",
-      "prompt": "(LẬT KÈO SINH TỬ – 8 GIÂY) Quân địch phá cổng. Bạn phải hét lên chân lý để binh sĩ không buông vũ khí — CHỌN SAI LÀ CHẾT!",
+      "prompt": "LẬT LẠI MÔ PHỎNG: Câu nào là nguyên tắc đúng khi làm lịch sử phản thực tế?",
       "timerSeconds": 8,
       "timeoutFallback": "A",
       "options": [
         {
           "key": "A",
-          "label": "Lợi ích nhân loại vĩnh hằng, đứng trên mọi mâu thuẫn giai cấp — hãy thương lượng!",
+          "label": "Càng hư cấu càng tốt, vì lịch sử phản thực tế không cần chứng cứ.",
           "consequence": "ch4_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
         },
         {
           "key": "B",
-          "label": "Trong xã hội đối kháng giai cấp, lợi ích nhân loại không tách rời lợi ích giai cấp và luôn bị chi phối bởi lợi ích giai cấp — chiến đấu!",
+          "label": "Phản thực tế phải dựa trên dữ kiện có thật, giới hạn khả năng hợp lý và giải thích hệ quả bằng quan hệ nhân quả.",
           "consequence": "ch4_final_win",
           "ideologyDelta": 20,
           "forcesDelta": 1000
         },
         {
           "key": "C",
-          "label": "Vô sản không có tổ quốc — hãy bỏ súng xuống, đế quốc cũng là anh em vô sản!",
+          "label": "Chỉ cần đổi một sự kiện lớn, mọi kết quả sau đó có thể viết tùy ý.",
           "consequence": "ch4_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
@@ -142,15 +142,15 @@
     {
       "id": "ch4_final_win",
       "type": "line",
-      "speaker": "Chính Ủy",
-      "text": "Lực lượng thức tỉnh! Binh sĩ nhận ra bộ mặt thật của kẻ thù. Chúng ta liều mình phá vây. Cách mạng chuyển sang Kháng chiến trường kỳ gian khổ — con đường vẫn còn dài nhưng lý tưởng không bao giờ tắt!",
+      "speaker": "Hệ Thống",
+      "text": "Hồ sơ đạt yêu cầu. Bạn đã cứu được mô phỏng bằng nguyên tắc chứng cứ. Hồ sơ đủ để kết luận, nhưng chưa mở hết các nhánh so sánh sâu.",
       "next": "normal_ending"
     },
     {
       "id": "ch4_resC",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "GAME OVER: Vi phạm nguyên tắc lịch sử — giải phóng dân tộc là tiền đề cho giải phóng giai cấp. Lực lượng tan rã từ bên trong. Quân đế quốc xóa sổ cả hai phe. Bạn bị lịch sử xét xử và kết án.",
+      "text": "GAME OVER: Mô phỏng rời khỏi dữ kiện lịch sử. Bạn cần làm lại với nguyên tắc phản thực tế có kiểm chứng.",
       "next": "ending"
     }
   ]

@@ -85,7 +85,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const { playerName, sessionStats } = get();
     if (!playerName) return;
     
-    const LOCAL_KEY = 'binh_minh_do_player';
+    const LOCAL_KEY = 'dau_chan_tim_duong_player';
     const existingStr = localStorage.getItem(LOCAL_KEY);
     let player: LocalPlayerData = {
       name: playerName,

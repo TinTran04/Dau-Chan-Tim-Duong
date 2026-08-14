@@ -1,288 +1,353 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { ContactShadows, Environment, Sky } from '@react-three/drei';
+import { ContactShadows, Environment, Float, Text } from '@react-three/drei';
 import { VanguardModel } from './VanguardModel';
 import { useDialogueStore } from '../../stores/useDialogueStore';
 import * as THREE from 'three';
 
-// Tribal people arguing (Red vs Blue tribes)
-function TribalMob({ isFighting }: { isFighting: boolean }) {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      if (isFighting) {
-        // Chaotic fighting movement
-        groupRef.current.children.forEach((child, i) => {
-          child.position.y = Math.sin(state.clock.elapsedTime * 10 + i) * 0.1;
-          child.rotation.y = Math.sin(state.clock.elapsedTime * 5 + i) * 0.5;
-        });
-      } else {
-        // Calm breathing
-        groupRef.current.children.forEach((child, i) => {
-          child.position.y = Math.sin(state.clock.elapsedTime * 2 + i) * 0.02;
-          child.rotation.y = 0;
-        });
-      }
-    }
-  });
+type Vec3 = [number, number, number];
 
-  const Tribesman = ({ color, pos, rot }: { color: string, pos: [number, number, number], rot: [number, number, number] }) => (
-    <group position={pos} rotation={rot}>
-      {/* Head */}
-      <mesh position={[0, 1.2, 0]} castShadow>
-        <sphereGeometry args={[0.3, 32, 32]} />
-        <meshPhysicalMaterial color="#b45309" roughness={0.7} />
-      </mesh>
-      {/* Headband */}
-      <mesh position={[0, 1.3, 0]} castShadow>
-        <cylinderGeometry args={[0.31, 0.31, 0.08, 16]} />
-        <meshPhysicalMaterial color={color} roughness={0.9} />
-      </mesh>
-      {/* Body */}
-      <mesh position={[0, 0.6, 0]} castShadow>
-        <capsuleGeometry args={[0.2, 0.4, 16, 16]} />
-        <meshPhysicalMaterial color="#422006" roughness={0.9} />
-      </mesh>
-      {/* Loincloth/Sash */}
-      <mesh position={[0, 0.4, 0.15]} rotation={[0.2, 0, 0]} castShadow>
-        <boxGeometry args={[0.25, 0.3, 0.05]} />
-        <meshPhysicalMaterial color={color} roughness={0.9} />
-      </mesh>
-      {/* Arms */}
-      <mesh position={[-0.25, 0.65, 0]} rotation={[0, 0, -0.2]} castShadow>
-        <capsuleGeometry args={[0.06, 0.3, 16, 16]} />
-        <meshPhysicalMaterial color="#b45309" />
-      </mesh>
-      <mesh position={[0.25, 0.65, 0]} rotation={[0, 0, 0.2]} castShadow>
-        <capsuleGeometry args={[0.06, 0.3, 16, 16]} />
-        <meshPhysicalMaterial color="#b45309" />
-      </mesh>
-      {/* Spear */}
-      <mesh position={[0.35, 0.6, 0.2]} rotation={[0.2, 0, -0.1]} castShadow>
-        <cylinderGeometry args={[0.02, 0.02, 1.5, 8]} />
-        <meshPhysicalMaterial color="#78350f" />
-      </mesh>
-      <mesh position={[0.35, 1.35, 0.35]} rotation={[0.2, 0, -0.1]} castShadow>
-        <coneGeometry args={[0.04, 0.2, 8]} />
-        <meshPhysicalMaterial color="#94a3b8" metalness={0.8} />
-      </mesh>
-      {/* Legs */}
-      <mesh position={[-0.1, 0.15, 0]} castShadow>
-        <cylinderGeometry args={[0.07, 0.07, 0.35, 16]} />
-        <meshPhysicalMaterial color="#b45309" />
-      </mesh>
-      <mesh position={[0.1, 0.15, 0]} castShadow>
-        <cylinderGeometry args={[0.07, 0.07, 0.35, 16]} />
-        <meshPhysicalMaterial color="#b45309" />
-      </mesh>
-    </group>
+type Cluster = {
+  label: string;
+  position: Vec3;
+  color: string;
+  orbit: Vec3[];
+};
+
+const CLUSTERS: Cluster[] = [
+  {
+    label: 'Truyen thong dan toc',
+    position: [-3.4, 1.4, -1.5],
+    color: '#facc15',
+    orbit: [[-3.9, 1.9, -1.3], [-2.9, 1.95, -1.8], [-3.3, 0.9, -1.05]]
+  },
+  {
+    label: 'Phuong Dong',
+    position: [-1.45, 2.45, -2.7],
+    color: '#34d399',
+    orbit: [[-2.0, 2.9, -2.45], [-0.95, 2.85, -2.95], [-1.45, 1.95, -2.25]]
+  },
+  {
+    label: 'Phuong Tay',
+    position: [1.45, 2.45, -2.7],
+    color: '#38bdf8',
+    orbit: [[0.95, 2.85, -2.95], [2.0, 2.9, -2.45], [1.45, 1.95, -2.25]]
+  },
+  {
+    label: 'Thuc tien the gioi',
+    position: [3.4, 1.4, -1.5],
+    color: '#fb7185',
+    orbit: [[2.9, 1.95, -1.8], [3.9, 1.9, -1.3], [3.3, 0.9, -1.05]]
+  }
+];
+
+const CORE_POSITION: Vec3 = [0, 1.45, 0.35];
+
+function KnowledgeLink({ from, to, color, alert }: { from: Vec3; to: Vec3; color: string; alert: boolean }) {
+  const start = new THREE.Vector3(...from);
+  const end = new THREE.Vector3(...to);
+  const direction = new THREE.Vector3().subVectors(end, start);
+  const midpoint = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+  const length = direction.length();
+  const quaternion = new THREE.Quaternion().setFromUnitVectors(
+    new THREE.Vector3(0, 1, 0),
+    direction.clone().normalize()
   );
 
   return (
-    <group ref={groupRef} position={[0, 0, -2]}>
-      {/* Red Tribe (Arguing with Blue) */}
-      <Tribesman color="#dc2626" pos={[-1, 0, 0]} rot={[0, Math.PI / 4, 0]} />
-      <Tribesman color="#dc2626" pos={[-1.8, 0, 0.5]} rot={[0, Math.PI / 3, 0]} />
-      
-      {/* Blue Tribe */}
-      <Tribesman color="#2563eb" pos={[1, 0, 0]} rot={[0, -Math.PI / 4, 0]} />
-      <Tribesman color="#2563eb" pos={[1.8, 0, 0.5]} rot={[0, -Math.PI / 3, 0]} />
+    <mesh position={midpoint.toArray()} quaternion={quaternion}>
+      <cylinderGeometry args={[alert ? 0.026 : 0.018, alert ? 0.026 : 0.018, length, 16]} />
+      <meshBasicMaterial color={alert ? '#fb923c' : color} transparent opacity={alert ? 0.72 : 0.48} />
+    </mesh>
+  );
+}
+
+function KnowledgeNode({
+  position,
+  color,
+  scale = 1,
+  alert = false
+}: {
+  position: Vec3;
+  color: string;
+  scale?: number;
+  alert?: boolean;
+}) {
+  return (
+    <group position={position} scale={scale}>
+      <mesh castShadow>
+        <sphereGeometry args={[0.22, 32, 32]} />
+        <meshPhysicalMaterial
+          color={alert ? '#f97316' : color}
+          emissive={alert ? '#ea580c' : color}
+          emissiveIntensity={alert ? 0.75 : 0.42}
+          roughness={0.32}
+          clearcoat={0.4}
+        />
+      </mesh>
+      <mesh>
+        <torusGeometry args={[0.34, 0.01, 12, 56]} />
+        <meshBasicMaterial color={alert ? '#fdba74' : color} transparent opacity={0.62} />
+      </mesh>
     </group>
   );
 }
 
-// Royal Expeditionary Force (Ambush)
-function RoyalAmbushForce({ isActive }: { isActive: boolean }) {
-  const groupRef = useRef<THREE.Group>(null);
-  const targetZ = isActive ? -3 : -15; // Move in when active
-  
+function KnowledgeCluster({ cluster, alert, active }: { cluster: Cluster; alert: boolean; active: boolean }) {
+  return (
+    <group>
+      <KnowledgeNode position={cluster.position} color={cluster.color} scale={active ? 1.25 : 1.05} alert={alert} />
+      {cluster.orbit.map((position, index) => (
+        <React.Fragment key={`${cluster.label}-${index}`}>
+          <KnowledgeLink from={cluster.position} to={position} color={cluster.color} alert={alert} />
+          <KnowledgeNode position={position} color={cluster.color} scale={0.62} alert={alert} />
+        </React.Fragment>
+      ))}
+      <Text
+        position={[cluster.position[0], cluster.position[1] - 0.55, cluster.position[2] + 0.12]}
+        rotation={[-0.25, 0, 0]}
+        fontSize={0.18}
+        maxWidth={1.6}
+        textAlign="center"
+        color={alert ? '#fed7aa' : '#e5e7eb'}
+        anchorX="center"
+        anchorY="middle"
+      >
+        {cluster.label}
+      </Text>
+    </group>
+  );
+}
+
+function CentralSynthesisCore({ alert, completed }: { alert: boolean; completed: boolean }) {
+  const coreRef = useRef<THREE.Group>(null);
+
   useFrame((state, delta) => {
-    if (groupRef.current) {
-      // Smoothly move forward
-      groupRef.current.position.z = THREE.MathUtils.lerp(groupRef.current.position.z, targetZ, delta * 2);
-      
-      if (isActive) {
-        groupRef.current.children.forEach((child, i) => {
-          child.position.y = Math.sin(state.clock.elapsedTime * 8 + i) * 0.1; // Marching
-        });
-      }
-    }
+    if (!coreRef.current) return;
+    coreRef.current.rotation.y += delta * (completed ? 0.65 : 0.35);
+    coreRef.current.position.y = CORE_POSITION[1] + Math.sin(state.clock.elapsedTime * 1.7) * 0.05;
   });
 
-  const Soldier = ({ pos }: { pos: [number, number, number] }) => (
-    <group position={pos}>
-      {/* Head */}
-      <mesh position={[0, 1.2, 0]} castShadow>
-        <sphereGeometry args={[0.3, 16, 16]} />
-        <meshPhysicalMaterial color="#FFE0BD" roughness={0.5} />
-      </mesh>
-      {/* Colonial Helmet */}
-      <mesh position={[0, 1.35, 0]} castShadow>
-        <sphereGeometry args={[0.32, 16, 16, 0, Math.PI * 2, 0, Math.PI/2]} />
-        <meshPhysicalMaterial color="#e4e4e7" metalness={0.5} roughness={0.5} />
-      </mesh>
-      {/* Uniform Body */}
-      <mesh position={[0, 0.6, 0]} castShadow>
-        <capsuleGeometry args={[0.22, 0.4, 16, 16]} />
-        <meshPhysicalMaterial color="#1e3a8a" roughness={0.8} />
-      </mesh>
-      {/* Crossbelts */}
-      <mesh position={[0, 0.65, 0.22]} rotation={[0, 0, Math.PI/4]} castShadow>
-        <boxGeometry args={[0.05, 0.5, 0.02]} />
-        <meshPhysicalMaterial color="#ffffff" />
-      </mesh>
-      <mesh position={[0, 0.65, 0.22]} rotation={[0, 0, -Math.PI/4]} castShadow>
-        <boxGeometry args={[0.05, 0.5, 0.02]} />
-        <meshPhysicalMaterial color="#ffffff" />
-      </mesh>
-      {/* Rifle */}
-      <mesh position={[0.25, 0.6, 0.3]} rotation={[Math.PI/4, 0, 0]} castShadow>
-        <boxGeometry args={[0.04, 0.8, 0.08]} />
-        <meshPhysicalMaterial color="#3f3f46" roughness={0.5} />
-      </mesh>
-      {/* Legs */}
-      <mesh position={[-0.1, 0.15, 0]} castShadow>
-        <cylinderGeometry args={[0.08, 0.08, 0.35, 16]} />
-        <meshPhysicalMaterial color="#000000" roughness={0.5} />
-      </mesh>
-      <mesh position={[0.1, 0.15, 0]} castShadow>
-        <cylinderGeometry args={[0.08, 0.08, 0.35, 16]} />
-        <meshPhysicalMaterial color="#000000" roughness={0.5} />
-      </mesh>
-    </group>
-  );
-
   return (
-    <group ref={groupRef} position={[0, -0.2, -15]}>
-      <Soldier pos={[0, 0, 0]} />
-      <Soldier pos={[-1.2, 0, 0.5]} />
-      <Soldier pos={[1.2, 0, 0.5]} />
-      <Soldier pos={[-2.4, 0, 1]} />
-      <Soldier pos={[2.4, 0, 1]} />
+    <group ref={coreRef} position={CORE_POSITION}>
+      <mesh castShadow>
+        <icosahedronGeometry args={[0.55, 2]} />
+        <meshPhysicalMaterial
+          color={alert ? '#f97316' : completed ? '#facc15' : '#e5e7eb'}
+          emissive={alert ? '#ea580c' : completed ? '#f59e0b' : '#38bdf8'}
+          emissiveIntensity={alert ? 0.75 : completed ? 0.85 : 0.45}
+          roughness={0.24}
+          clearcoat={0.6}
+        />
+      </mesh>
+      <mesh>
+        <torusGeometry args={[0.84, 0.018, 16, 72]} />
+        <meshBasicMaterial color={alert ? '#fdba74' : completed ? '#fde68a' : '#93c5fd'} transparent opacity={0.68} />
+      </mesh>
+      <Text
+        position={[0, -0.86, 0.05]}
+        rotation={[-0.25, 0, 0]}
+        fontSize={0.19}
+        maxWidth={2.2}
+        textAlign="center"
+        color={completed ? '#fef3c7' : '#e0f2fe'}
+        anchorX="center"
+        anchorY="middle"
+      >
+        Chuyen hoa sang tao
+      </Text>
     </group>
   );
 }
 
-// Tree model for the valley
-function PineTree({ pos, scale = 1 }: { pos: [number, number, number], scale?: number }) {
+function ArchivePanels({ alert, completed }: { alert: boolean; completed: boolean }) {
+  const panelColor = alert ? '#7f1d1d' : completed ? '#1e3a8a' : '#111827';
+  const glowColor = alert ? '#fb923c' : completed ? '#facc15' : '#38bdf8';
+
   return (
-    <group position={pos} scale={scale}>
-      <mesh position={[0, 1, 0]} castShadow>
-        <cylinderGeometry args={[0.2, 0.2, 2]} />
-        <meshStandardMaterial color="#451a03" />
+    <group position={[0, 1.75, -4.4]}>
+      {[-3.1, 0, 3.1].map((x, index) => (
+        <group key={x} position={[x, 0, 0]} rotation={[0, index === 0 ? 0.16 : index === 2 ? -0.16 : 0, 0]}>
+          <mesh castShadow>
+            <boxGeometry args={[2.25, 1.55, 0.08]} />
+            <meshStandardMaterial color={panelColor} roughness={0.58} metalness={0.12} />
+          </mesh>
+          <mesh position={[0, 0, 0.05]}>
+            <boxGeometry args={[1.82, 1.04, 0.02]} />
+            <meshBasicMaterial color={glowColor} transparent opacity={index === 1 ? 0.34 : 0.2} />
+          </mesh>
+          <mesh position={[0, -0.58, 0.08]}>
+            <boxGeometry args={[1.55, 0.04, 0.025]} />
+            <meshBasicMaterial color="#e5e7eb" transparent opacity={0.45} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function ResearchTable({ alert }: { alert: boolean }) {
+  return (
+    <group position={[0, 0.1, 1.35]}>
+      <mesh position={[0, 0.32, 0]} castShadow receiveShadow>
+        <cylinderGeometry args={[3.6, 3.95, 0.22, 56]} />
+        <meshStandardMaterial color={alert ? '#3f1d12' : '#334155'} roughness={0.72} metalness={0.15} />
       </mesh>
-      <mesh position={[0, 2.5, 0]} castShadow>
-        <coneGeometry args={[1.5, 3, 5]} />
-        <meshStandardMaterial color="#14532d" />
+      <mesh position={[0, 0.47, 0]}>
+        <torusGeometry args={[2.72, 0.018, 16, 96]} />
+        <meshBasicMaterial color={alert ? '#fb923c' : '#38bdf8'} transparent opacity={0.45} />
       </mesh>
-      <mesh position={[0, 4, 0]} castShadow>
-        <coneGeometry args={[1.2, 2.5, 5]} />
-        <meshStandardMaterial color="#166534" />
+      {[-1.35, 0, 1.35].map((x, index) => (
+        <mesh key={x} position={[x, 0.52, index === 1 ? 0.18 : -0.22]} rotation={[0, 0, index === 0 ? 0.12 : index === 2 ? -0.1 : 0]} castShadow>
+          <boxGeometry args={[0.9, 0.035, 1.15]} />
+          <meshStandardMaterial color="#f8fafc" roughness={0.55} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function ResearcherFigure({
+  position,
+  coat,
+  accent,
+  active
+}: {
+  position: Vec3;
+  coat: string;
+  accent: string;
+  active: boolean;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!groupRef.current) return;
+    groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 1.4 + position[0]) * (active ? 0.025 : 0.012);
+  });
+
+  return (
+    <group ref={groupRef} position={position}>
+      <mesh position={[0, 1.08, 0]} castShadow>
+        <sphereGeometry args={[0.24, 32, 32]} />
+        <meshPhysicalMaterial color="#e8c39e" roughness={0.5} />
       </mesh>
-      <mesh position={[0, 5.2, 0]} castShadow>
-        <coneGeometry args={[0.9, 2, 5]} />
-        <meshStandardMaterial color="#15803d" />
+      <mesh position={[0, 1.26, -0.02]} castShadow>
+        <sphereGeometry args={[0.25, 24, 24, 0, Math.PI * 2, 0, Math.PI * 0.72]} />
+        <meshPhysicalMaterial color="#111827" roughness={0.85} />
+      </mesh>
+      <mesh position={[0, 0.55, 0]} castShadow>
+        <capsuleGeometry args={[0.18, 0.36, 16, 20]} />
+        <meshPhysicalMaterial color={coat} roughness={0.72} />
+      </mesh>
+      <mesh position={[0.24, 0.58, 0.15]} rotation={[1.1, 0, -0.25]} castShadow>
+        <boxGeometry args={[0.28, 0.03, 0.38]} />
+        <meshPhysicalMaterial color="#f8fafc" roughness={0.6} />
+      </mesh>
+      <mesh position={[0, 0.75, 0.19]} castShadow>
+        <boxGeometry args={[0.25, 0.045, 0.035]} />
+        <meshPhysicalMaterial color={accent} roughness={0.5} />
+      </mesh>
+      <mesh position={[-0.08, 0.12, 0]} castShadow>
+        <cylinderGeometry args={[0.055, 0.06, 0.28, 16]} />
+        <meshPhysicalMaterial color="#111827" roughness={0.85} />
+      </mesh>
+      <mesh position={[0.08, 0.12, 0]} castShadow>
+        <cylinderGeometry args={[0.055, 0.06, 0.28, 16]} />
+        <meshPhysicalMaterial color="#111827" roughness={0.85} />
       </mesh>
     </group>
+  );
+}
+
+function KnowledgeMap({
+  alert,
+  completed,
+  choiceMode
+}: {
+  alert: boolean;
+  completed: boolean;
+  choiceMode: boolean;
+}) {
+  const mapRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!mapRef.current) return;
+    mapRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.22) * (alert ? 0.18 : 0.08);
+    mapRef.current.position.y = Math.sin(state.clock.elapsedTime * (alert ? 4 : 1.4)) * (alert ? 0.08 : 0.025);
+  });
+
+  return (
+    <Float speed={1.15} rotationIntensity={0.06} floatIntensity={0.08}>
+      <group ref={mapRef} position={[0, 0.25, -0.6]}>
+        {CLUSTERS.map((cluster) => (
+          <React.Fragment key={cluster.label}>
+            <KnowledgeLink from={cluster.position} to={CORE_POSITION} color={cluster.color} alert={alert} />
+            <KnowledgeCluster cluster={cluster} alert={alert} active={choiceMode || completed} />
+          </React.Fragment>
+        ))}
+        <CentralSynthesisCore alert={alert} completed={completed} />
+      </group>
+    </Float>
+  );
+}
+
+function KnowledgeRoom({
+  alert,
+  completed,
+  choiceMode
+}: {
+  alert: boolean;
+  completed: boolean;
+  choiceMode: boolean;
+}) {
+  return (
+    <>
+      <fog attach="fog" args={[alert ? '#210b08' : completed ? '#111827' : '#020617', 8, 28]} />
+      <ambientLight intensity={alert ? 0.32 : 0.5} color={alert ? '#fed7aa' : '#dbeafe'} />
+      <directionalLight position={[4, 8, 6]} intensity={alert ? 1.6 : 2.4} color={alert ? '#fb923c' : '#bae6fd'} castShadow />
+      <pointLight position={[0, 3.2, 0.2]} intensity={completed ? 42 : alert ? 26 : 34} color={alert ? '#fb923c' : completed ? '#facc15' : '#38bdf8'} distance={10} />
+      <spotLight position={[0, 6, 4]} angle={0.65} penumbra={0.8} intensity={alert ? 38 : 52} color={alert ? '#f97316' : '#e0f2fe'} castShadow />
+
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.18, -0.65]} receiveShadow>
+        <circleGeometry args={[9, 72]} />
+        <meshStandardMaterial color={alert ? '#1c0f0b' : '#0f172a'} roughness={0.86} metalness={0.08} />
+      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.15, -0.65]}>
+        <ringGeometry args={[3.95, 4.08, 96]} />
+        <meshBasicMaterial color={alert ? '#fb923c' : '#38bdf8'} transparent opacity={0.28} />
+      </mesh>
+
+      <ArchivePanels alert={alert} completed={completed} />
+      <ResearchTable alert={alert} />
+      <KnowledgeMap alert={alert} completed={completed} choiceMode={choiceMode} />
+      <ResearcherFigure position={[-2.25, -0.25, 1.65]} coat="#1e293b" accent="#38bdf8" active={!alert} />
+      <ResearcherFigure position={[2.15, -0.25, 1.35]} coat="#312e81" accent="#facc15" active={completed} />
+
+      <group position={[0, -0.35, 4.0]} rotation={[0, Math.PI, 0]}>
+        <VanguardModel />
+      </group>
+
+      <ContactShadows position={[0, -0.15, 0]} opacity={0.58} scale={15} resolution={512} blur={2.4} far={5} color="#020617" />
+      <Environment preset="city" />
+    </>
   );
 }
 
 export function ValleyScene() {
   const currentNode = useDialogueStore((state) => state.currentNode);
-  
-  const isBonusNode = currentNode?.id.startsWith('ch2_resA_bonus') ||
-                      currentNode?.id.startsWith('ch2_resA_maxbonus');
-                      
-  const isFighting = (currentNode?.id === 'ch2_start' || currentNode?.id === 'ch2_choice1') && !isBonusNode;
-  const isAmbushed = currentNode?.id === 'ch2_resB' || 
-                     currentNode?.id === 'ch2_ambush_puzzle' ||
-                     currentNode?.id === 'ch2_resDtrap';
-                     
-  const isGameOver = currentNode?.id === 'ch2_resC' || currentNode?.id === 'ending';
+  const nodeId = currentNode?.id || '';
 
-  return (
-    <>
-      <Sky distance={450000} sunPosition={[-2, 0.5, -5]} turbidity={isGameOver ? 15 : 8} rayleigh={isGameOver ? 4 : 2} mieCoefficient={0.05} />
-      <fog attach="fog" args={[isGameOver ? '#000000' : '#27272a', isGameOver ? 2 : 5, isGameOver ? 15 : 30]} />
-      
-      <ambientLight intensity={isGameOver ? 0.1 : 0.4} color={isGameOver ? '#ef4444' : '#a1a1aa'} />
-      {!isGameOver && (
-        <directionalLight 
-          position={[0, 20, -20]} 
-          intensity={2} 
-          color="#fef08a"
-          castShadow 
-          shadow-mapSize={[512, 512]}
-          shadow-camera-far={60}
-          shadow-camera-left={-20}
-          shadow-camera-right={20}
-          shadow-camera-top={20}
-          shadow-camera-bottom={-20}
-        />
-      )}
-      
-      <Environment preset="sunset" />
-      <ContactShadows position={[0, -0.2, 0]} opacity={0.7} scale={20} blur={2} far={4} color={isGameOver ? '#000000' : '#451a03'} />
+  const alert = nodeId === 'ch2_resB' ||
+                nodeId === 'ch2_ambush_puzzle' ||
+                nodeId === 'ch2_resDtrap' ||
+                nodeId === 'ch2_resC' ||
+                nodeId === 'ending';
 
-      {/* Ground - Valley floor (Dirt/Grass) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, -10]} receiveShadow>
-        <planeGeometry args={[80, 80]} />
-        <meshStandardMaterial color="#3f6212" roughness={1} />
-      </mesh>
-      
-      {/* Epic Valley Walls (Left side) */}
-      <group position={[-12, 0, -10]}>
-        <mesh position={[0, 5, 0]} rotation={[0, Math.PI / 8, 0]} receiveShadow castShadow>
-          <boxGeometry args={[8, 12, 30]} />
-          <meshStandardMaterial color="#3f3f46" roughness={1} />
-        </mesh>
-        <mesh position={[4, 2, 10]} rotation={[0.1, -Math.PI / 6, 0.1]} receiveShadow castShadow>
-          <boxGeometry args={[5, 6, 10]} />
-          <meshStandardMaterial color="#27272a" roughness={1} />
-        </mesh>
-        <mesh position={[2, 1, -5]} rotation={[-0.1, Math.PI / 4, 0]} receiveShadow castShadow>
-          <boxGeometry args={[6, 4, 8]} />
-          <meshStandardMaterial color="#52525b" roughness={1} />
-        </mesh>
-      </group>
+  const completed = nodeId.startsWith('ch2_resA') ||
+                    nodeId === 'ch2_ambush_win';
 
-      {/* Epic Valley Walls (Right side) */}
-      <group position={[12, 0, -10]}>
-        <mesh position={[0, 5, 0]} rotation={[0, -Math.PI / 8, 0]} receiveShadow castShadow>
-          <boxGeometry args={[8, 12, 30]} />
-          <meshStandardMaterial color="#3f3f46" roughness={1} />
-        </mesh>
-        <mesh position={[-4, 2, 10]} rotation={[0.1, Math.PI / 6, -0.1]} receiveShadow castShadow>
-          <boxGeometry args={[5, 6, 10]} />
-          <meshStandardMaterial color="#27272a" roughness={1} />
-        </mesh>
-        <mesh position={[-2, 1, -5]} rotation={[0.1, -Math.PI / 4, 0]} receiveShadow castShadow>
-          <boxGeometry args={[6, 4, 8]} />
-          <meshStandardMaterial color="#52525b" roughness={1} />
-        </mesh>
-      </group>
+  const choiceMode = nodeId === 'ch2_choice1' ||
+                     nodeId === 'ch2_resA_bonus';
 
-      {/* Forest Trees (Background context) */}
-      <PineTree pos={[-6, 0, -8]} scale={1.2} />
-      <PineTree pos={[-8, 0, -4]} scale={0.9} />
-      <PineTree pos={[-5, 0, -12]} scale={1.5} />
-      
-      <PineTree pos={[6, 0, -8]} scale={1.1} />
-      <PineTree pos={[8, 0, -4]} scale={0.8} />
-      <PineTree pos={[5, 0, -12]} scale={1.4} />
-
-      {/* Player (Lowered to fix floating) */}
-      <group position={[0, -0.4, 4]} rotation={[0, Math.PI, 0]}>
-        <VanguardModel />
-      </group>
-
-      {/* Characters */}
-      <TribalMob isFighting={isFighting} />
-      <RoyalAmbushForce isActive={isAmbushed} />
-
-      <ContactShadows resolution={256} scale={40} blur={1} opacity={0.6} far={10} color="#000000" />
-      <Environment preset="dawn" />
-    </>
-  );
+  return <KnowledgeRoom alert={alert} completed={completed} choiceMode={choiceMode} />;
 }

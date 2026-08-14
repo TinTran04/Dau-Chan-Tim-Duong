@@ -3,55 +3,55 @@
     {
       "id": "ch1_start",
       "type": "line",
-      "speaker": "Bá Tước Địa Chủ",
-      "text": "Trật tự xã hội này là vĩnh hằng! Ta giàu và có quyền sở hữu đất đai này là do luật pháp nhà nước quy định từ ngàn năm. Các ngươi nghèo là vì số mệnh Thần định, hoặc do bản tính lười biếng, thiếu trí tuệ!",
+      "speaker": "Người Kể Chuyện",
+      "text": "Bối cảnh mở đầu là một bến cảng đầu thế kỷ XX. Đất nước đang đứng trước nhiều ngã rẽ, còn một người thanh niên trẻ bắt đầu đặt câu hỏi: phải đi đâu để tìm con đường cứu nước thật sự?",
       "next": "ch1_context1"
     },
     {
       "id": "ch1_context1",
       "type": "line",
-      "speaker": "Nông Dân",
-      "text": "Nghe lời hắn, tim tôi như đứt từng khúc... Cha tôi và ông tôi cũng đã cúi đầu chấp nhận số phận ở mảnh đất này. Lẽ nào đây là sự thật?",
+      "speaker": "Người Thanh Niên",
+      "text": "Những con đường cũ đã được nhiều bậc tiền bối thử qua, nhưng kết quả vẫn chưa mở ra lối thoát. Nếu muốn hiểu sức mạnh của thế giới hiện đại, tôi phải đi ra ngoài, quan sát tận mắt và tự tìm lời giải.",
       "next": "ch1_context2"
     },
     {
       "id": "ch1_context2",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Trước mắt bạn: Ruộng đất màu mỡ do mồ hôi nước mắt của Nông Dân và cha ông canh tác bao đời, nay bị lính canh của Bá tước Địa chủ dùng súng trường canh giữ. Đây chính là hiện thân của 'TƯ LIỆU SẢN XUẤT BỊ CHIẾM ĐOẠT'.",
+      "speaker": "Hồ Sơ Tư Liệu",
+      "text": "Trên bản đồ số, các mốc hành trình được ghim lại: quê hương, trường học, bến cảng, con tàu, các đô thị và phong trào xã hội ở nhiều nước. Mỗi điểm đến là một nguồn chứng cứ để phân tích.",
       "next": "ch1_choice1"
     },
     {
       "id": "ch1_choice1",
       "type": "choice",
-      "prompt": "Đám đông nông dân đang run rẩy nhưng nhìn về phía bạn. Bạn cần vạch trần bản chất giai cấp theo định nghĩa của Lênin — nhưng hãy cẩn thận với các bẫy lý luận!",
+      "prompt": "Vì sao người thanh niên lựa chọn ra đi tìm đường cứu nước thay vì chỉ lặp lại các mô hình đã có trong nước?",
       "timerSeconds": 20,
       "timeoutFallback": "C",
       "options": [
         {
           "key": "A",
-          "label": "Giai cấp không do Thần định! Đó là tập đoàn người phân biệt nhau bởi quan hệ với tư liệu sản xuất, do đó chế độ tư hữu chiếm đoạt là căn nguyên thật sự!",
+          "label": "Vì cần khảo sát thực tế thế giới, tìm hiểu nguồn gốc sức mạnh của các nước phát triển và từ đó chọn con đường phù hợp với dân tộc.",
           "consequence": "ch1_resA",
           "ideologyDelta": 25,
           "forcesDelta": 500
         },
         {
           "key": "B",
-          "label": "Sự bất công này là do giáo dục thấp kém. Hãy mở trường học cho nông dân, tri thức sẽ xóa bỏ bất công!",
+          "label": "Vì chỉ cần sao chép nguyên mẫu một nước mạnh là có thể giải quyết mọi vấn đề của Việt Nam.",
           "consequence": "ch1_resBtrap",
           "ideologyDelta": -15,
           "forcesDelta": 0
         },
         {
           "key": "C",
-          "label": "Ai cũng là con người. Xin ngài hãy có lòng thương, giảm bớt tô thuế để hòa bình chung sống.",
+          "label": "Vì đi xa là cách tránh né thực tại trong nước, còn câu hỏi cứu nước có thể tạm gác lại.",
           "consequence": "ch1_resB",
           "ideologyDelta": -30,
           "forcesDelta": 0
         },
         {
           "key": "D",
-          "label": "Hãy dùng bạo lực ngay lập tức! Giết địa chủ, đốt dinh thự, lấy đất mà chia!",
+          "label": "Vì chỉ cần hành động thật nhanh, không cần quan sát hay phân tích điều kiện lịch sử.",
           "consequence": "ch1_resDtrap",
           "ideologyDelta": -20,
           "forcesDelta": -200
@@ -61,55 +61,55 @@
     {
       "id": "ch1_resBtrap",
       "type": "line",
-      "speaker": "Bá Tước Địa Chủ",
-      "text": "Haha! Vậy thì cứ mở trường mà học đi! Con cái ngươi học xong vẫn không có đất mà cày, vì đất vẫn thuộc về ta! Cải lương giáo dục không xóa bỏ được quan hệ sở hữu!",
+      "speaker": "Người Phản Biện",
+      "text": "Sao chép máy móc không phải là tìm đường. Một mô hình chỉ có ý nghĩa khi được kiểm chứng bằng hoàn cảnh lịch sử cụ thể của dân tộc mình.",
       "next": "ch1_resB"
     },
     {
       "id": "ch1_resDtrap",
       "type": "line",
-      "speaker": "Người Kể Chuyện",
-      "text": "Bạo động vô tổ chức! Lính canh đàn áp tức thì bằng vũ khí. Bạo lực tự phát không có lý luận dẫn đường chỉ là tự sát. Bạn và Silas bị bắt vào ngục...",
+      "speaker": "Hệ Thống",
+      "text": "Hành động thiếu phân tích làm hồ sơ bị rối. Bạn cần quay lại bàn tư liệu để xác định đâu là chứng cứ, đâu là cảm tính.",
       "next": "ch1_prison_puzzle"
     },
     {
       "id": "ch1_resA",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "CHÍNH XÁC! Đám đông thức tỉnh — họ nhận ra Địa chủ không phải 'ý Trời' mà là kẻ chiếm đoạt tư liệu sản xuất. Nông Dân được giải cứu. Nhưng địch còn mạnh, bạn cần thêm liên minh...",
+      "text": "Chính xác. Chương này nhấn mạnh thao tác tái dựng bối cảnh: từ câu hỏi cứu nước đến lựa chọn đi ra thế giới để tìm hiểu thực tiễn.",
       "next": "ch1_sidequest1"
     },
     {
       "id": "ch1_resB",
       "type": "line",
-      "speaker": "Bá Tước Địa Chủ",
-      "text": "Lòng thương hại ư? Kẻ yếu hèn! Bắt giam tất cả chúng vào ngục tối!",
+      "speaker": "Hệ Thống",
+      "text": "Lập luận chưa đủ vững. Bản đồ hành trình chuyển sang chế độ kiểm chứng để bạn bổ sung căn cứ.",
       "next": "ch1_prison_puzzle"
     },
     {
       "id": "ch1_prison_puzzle",
       "type": "choice",
-      "prompt": "(GIẢI ĐỐ VƯỢT NGỤC – 12 GIÂY) Dòng chữ khắc trên vách đá: 'Nguồn gốc sâu xa và điều kiện để xóa bỏ hoàn toàn giai cấp là gì?' — Chọn sai, còn ở tù!",
+      "prompt": "TRẠM KIỂM CHỨNG: Khi tái dựng hành trình lịch sử, thao tác nào quan trọng nhất?",
       "timerSeconds": 12,
       "timeoutFallback": "A",
       "options": [
         {
           "key": "A",
-          "label": "Giáo dục đạo đức và khuyến khích địa chủ tự nguyện chia đất cho dân nghèo.",
+          "label": "Chọn chi tiết hấp dẫn nhất rồi kể thành câu chuyện, không cần đối chiếu nguồn.",
           "consequence": "ch1_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
         },
         {
           "key": "B",
-          "label": "Nguồn gốc là LLSX chưa phát triển; giai cấp chỉ bị xóa bỏ khi LLSX đạt xã hội hóa cao, tiêu tan chế độ tư hữu.",
+          "label": "Xác định mốc thời gian, bối cảnh, nhân vật, nguồn tư liệu và quan hệ nhân quả giữa các sự kiện.",
           "consequence": "ch1_prison_escape",
           "ideologyDelta": 10,
           "forcesDelta": 100
         },
         {
           "key": "C",
-          "label": "Nhà nước ban hành luật pháp công bằng, điều tiết phân phối thu nhập giữa các giai cấp.",
+          "label": "Chỉ cần nhớ một ngày tháng tiêu biểu là đủ hiểu toàn bộ tiến trình.",
           "consequence": "ch1_resC",
           "ideologyDelta": -100,
           "forcesDelta": 0
@@ -120,40 +120,40 @@
       "id": "ch1_prison_escape",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "Chính xác! Người lính gác vốn là nông dân, được thức tỉnh bởi lý luận của bạn và lén mở cửa ngục. Nhưng lực lượng đã bị suy giảm đáng kể vì những ngày bị giam cầm.",
+      "text": "Bạn đã mở khóa lớp tư liệu bối cảnh. Hành trình không còn là một chuyến đi đơn lẻ, mà là quá trình tìm kiếm có phương pháp.",
       "next": "ch1_sidequest1"
     },
     {
       "id": "ch1_resC",
       "type": "line",
       "speaker": "Hệ Thống",
-      "text": "BAD ENDING 1: Bạn sa vào tư duy duy tâm – lý tưởng hóa đạo đức mà quên mất căn nguyên vật chất. Nông Dân chết trong ngục. Phong trào tan vỡ ngay từ trứng nước.",
+      "text": "GAME OVER: Hồ sơ thiếu chứng cứ và quan hệ nhân quả. Bạn cần làm lại từ bước tái dựng bối cảnh.",
       "next": "ending"
     },
     {
       "id": "ch1_sidequest1",
       "type": "choice",
-      "prompt": "(NHIỆM VỤ PHỤ – 18 GIÂY) Trưởng Thôn từ chối quyên góp lương thực cho công nhân bãi công vì cho rằng nông dân và công nhân 'chẳng dính líu gì nhau'. Hãy thuyết phục ông bằng lý luận liên minh giai cấp:",
+      "prompt": "NHIỆM VỤ PHỤ: Nhóm của bạn cần chọn cách trình bày chương này trên Interactive Timeline / Digital Map. Cách nào phù hợp nhất?",
       "timerSeconds": 18,
       "timeoutFallback": "C",
       "options": [
         {
           "key": "A",
-          "label": "Nông dân và công nhân đều là giai cấp bị áp bức bóc lột, có lợi ích cơ bản thống nhất. Liên minh Công-Nông là tất yếu lịch sử!",
+          "label": "Gắn mốc hành trình với câu hỏi lịch sử, nguồn tư liệu và giải thích vì sao mỗi mốc tạo ra bước chuyển nhận thức.",
           "consequence": "ch1_sq1_win",
           "ideologyDelta": 15,
           "forcesDelta": 300
         },
         {
           "key": "B",
-          "label": "Công nhân và nông dân đều là dân nghèo cả, cứu nhau là đạo lý làm người thôi!",
+          "label": "Chỉ xếp các địa danh theo thứ tự thời gian, không cần phần phân tích.",
           "consequence": "ch1_sq1_mid",
           "ideologyDelta": 5,
           "forcesDelta": 100
         },
         {
           "key": "C",
-          "label": "Hãy quyên góp đi, sau này họ giàu thì sẽ mua hàng nông sản của ông nhiều hơn.",
+          "label": "Tập trung vào hiệu ứng bản đồ, bỏ qua chứng cứ lịch sử vì người xem sẽ tự hiểu.",
           "consequence": "ch1_sq1_lose",
           "ideologyDelta": -15,
           "forcesDelta": -100
@@ -163,22 +163,22 @@
     {
       "id": "ch1_sq1_win",
       "type": "line",
-      "speaker": "Trưởng Thôn",
-      "text": "Môi hở răng lạnh! Lý luận này mở mắt tôi rồi. Chúng tôi lập tức chi viện lương thực đầy đủ và cử thêm 300 tráng đinh đi cùng!",
+      "speaker": "Hệ Thống",
+      "text": "Tốt. Timeline của bạn có bối cảnh, lựa chọn và bước ngoặt. Chuyển sang bản đồ tri thức Đông - Tây.",
       "next": "next_chapter"
     },
     {
       "id": "ch1_sq1_mid",
       "type": "line",
-      "speaker": "Trưởng Thôn",
-      "text": "Đạo lý thì có... nhưng thuyết phục không được chắc. Thôi được, tôi góp ít gạo thôi.",
+      "speaker": "Hệ Thống",
+      "text": "Bạn đã có trật tự thời gian, nhưng phần giải thích còn mỏng. Chuyển sang chương tiếp theo để bổ sung phương pháp phân tích.",
       "next": "next_chapter"
     },
     {
       "id": "ch1_sq1_lose",
       "type": "line",
-      "speaker": "Trưởng Thôn",
-      "text": "Lời hứa hão huyền! Chúng tôi giữ lại gạo cho mình. Tự lo mà đi!",
+      "speaker": "Hệ Thống",
+      "text": "Hiệu ứng đẹp nhưng thiếu nội dung. Hồ sơ bị trừ điểm tư liệu trước khi sang chương tiếp theo.",
       "next": "next_chapter"
     }
   ]
